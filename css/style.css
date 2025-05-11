@@ -91,3 +91,23 @@ footer {
     padding: 1rem;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+#scrollTopBtn {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+}
+
+#scrollTopBtn:hover {
+  background-color: #274bbf;
+}
