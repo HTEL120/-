@@ -111,3 +111,9 @@ html {
 #scrollTopBtn:hover {
   background-color: #274bbf;
 }
+.faculty-member img {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
