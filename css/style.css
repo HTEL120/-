@@ -77,7 +77,7 @@ footer {
   margin-top: 3rem;
 }
 
-@media (max-width: 200px) {
+@media (max-width: 10px) {
   nav a {
     display: block;
     margin: 10px 0;
