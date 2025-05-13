@@ -112,35 +112,13 @@ html {
   background-color: #274bbf;
 }
 .faculty-member img {
-  width: 120px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
-.faculty-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-
-.faculty-member {
-  flex: 0 1 48%;
-  background-color: #f9f9f9;
-  padding: 15px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.faculty-member img {
   width: 100%;
   height: auto;
+  max-height: 250px;  /* 你可以依畫面微調，原本估約750px */
+  object-fit: cover;
   border-radius: 8px;
-}
-
-.faculty-info {
-  margin-top: 10px;
+  display: block;
+  margin: 0 auto;
 }
 @media (max-width: 768px) {
   .faculty-member {
@@ -148,6 +126,3 @@ html {
     margin-bottom: 20px;
   }
 }
-
-
-
