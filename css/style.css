@@ -128,8 +128,8 @@ html {
 }
 
 .faculty-member img {
-  width: 50%;
-  height: auto;
+  width: auto;
+  height: 50%;
   border-radius: 8px;
 }
 
