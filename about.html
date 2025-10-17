@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   <header>
+  <!-- 頁首 Header 區塊 -->
+  <header>
     <h1>熱管理技術研究中心</h1>
     <nav>
       <a href="index.html">首頁</a>
@@ -15,39 +16,70 @@
       <a href="services.html">服務項目</a>
     </nav>
   </header>
+  <!-- 頁首 Header 區塊結束 -->
 
+  <!-- 主要內容 Main 區塊 -->
   <main>
+    <!-- 中心簡介 Section 開始 -->
     <h2>中心簡介</h2> 
- <div class="content">
+    <div class="content">
+      <p class="justify-text">
+        本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行：
+      </p>
 
-<p class="justify-text">本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行： </p>
-   <p class="justify-text">一、元件及系統設計組</p>
-   <p class="justify-text">本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
-   <p class="justify-text">1.均溫板、冷板與散熱鰭片設計 </p>
-   <p class="justify-text">2.晶片元件熱傳機制分析與溫度分布模擬</p>
-   <p class="justify-text">3.單相與兩相熱交換器設計</p>
- 
-   <p class="justify-text">二、熱傳裝置製造組</p>  
-   <p class="justify-text">本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>  
-   <p class="justify-text">1.五軸銑削製程，金屬微結構加工</p> 
-   <p class="justify-text">2.超快雷射加工（皮秒/飛秒），無接觸微加工技術</p>  
-   <p class="justify-text">3.微流道與高密度散熱結構製程平台</p>
-   
-   <p class="justify-text">三、熱傳材料技術組</p> 
-   <p class="justify-text">本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
-   <p class="justify-text">1.液態金屬（如鎵銦錫合金）熱界面材料開發與改質</p>  
-   <p class="justify-text">2.熱交換器材料（銅、鋁）之腐蝕與耐候性改善</p>
-   <p class="justify-text">3.填料設計與流變性調控，製作高κ值TIMs</p>  
-   
-</div>
-  
+      <!-- 元件及系統設計組 -->
+      <p class="justify-text"><strong>一、元件及系統設計組</strong></p>
+      <p class="justify-text">本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
+      <p class="justify-text">1. 均溫板、冷板與散熱鰭片設計</p>
+      <p class="justify-text">2. 晶片元件熱傳機制分析與溫度分布模擬</p>
+      <p class="justify-text">3. 單相與兩相熱交換器設計</p>
+
+      <!-- 熱傳裝置製造組 -->
+      <p class="justify-text"><strong>二、熱傳裝置製造組</strong></p>  
+      <p class="justify-text">本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>  
+      <p class="justify-text">1. 五軸銑削製程，金屬微結構加工</p> 
+      <p class="justify-text">2. 超快雷射加工（皮秒/飛秒），無接觸微加工技術</p>  
+      <p class="justify-text">3. 微流道與高密度散熱結構製程平台</p>
+
+      <!-- 熱傳材料技術組 -->
+      <p class="justify-text"><strong>三、熱傳材料技術組</strong></p> 
+      <p class="justify-text">本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
+      <p class="justify-text">1. 液態金屬（如鎵銦錫合金）熱界面材料開發與改質</p>  
+      <p class="justify-text">2. 熱交換器材料（銅、鋁）之腐蝕與耐候性改善</p>
+      <p class="justify-text">3. 填料設計與流變性調控，製作高κ值TIMs</p>  
+    </div>
+    <!-- 中心簡介 Section 結束 -->
   </main>
+  <!-- 主要內容 Main 區塊結束 -->
 
+  <!-- 回到頂端按鈕 Back to Top Button -->
+  <button id="scrollTopBtn" onclick="scrollToTop()">⬆ 回頂部</button>
+
+  <!-- 頁尾 Footer 區塊 -->
   <footer>
     <p>&copy; 2025 熱管理技術研究中心</p>
   </footer>
+  <!-- 頁尾 Footer 區塊結束 -->
+
+  <!-- JavaScript 控制回到頂端按鈕 -->
+  <script>
+    // 當使用者滾動頁面時，檢查是否要顯示按鈕
+    window.onscroll = function() { scrollFunction() };
+
+    function scrollFunction() {
+      const btn = document.getElementById("scrollTopBtn");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block"; // 顯示按鈕
+      } else {
+        btn.style.display = "none";  // 隱藏按鈕
+      }
+    }
+
+    // 點擊按鈕回到頁面頂端（平滑滑動）
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  <!-- JavaScript 區塊結束 -->
 </body>
 </html>
-
-<button onclick="scrollToTop()" id="scrollTopBtn">⬆ 回頂部</button>
-
