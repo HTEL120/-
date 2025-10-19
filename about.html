@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>熱管理技術研究中心</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="images/favicon.ico">
+  <meta charset="UTF-8"> <!-- 設定中文不亂碼 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 手機可自適應 -->
+  <title>中心簡介</title> <!-- 瀏覽器分頁標題 -->
+  <link rel="stylesheet" href="css/style.css"> <!-- 外部樣式表 -->
 </head>
+
 <body>
+  <!-- 頁首：標題與導覽列 -->
   <header>
     <h1>熱管理技術研究中心</h1>
     <nav>
@@ -17,28 +18,55 @@
       <a href="services.html">服務項目</a>
     </nav>
   </header>
-<main>
-    <section class="hero">
-      <img src="images/logo.png" alt="中心 logo" class="logo">
-  <section class="hero">
-    <h2>歡迎來到熱管理技術研究中心</h2>
+
+  <!-- 主要內容 -->
+  <main>
+    <h2>中心簡介</h2>
     <div class="content">
-    <p align="left">本中心隸屬於國立中央大學工學院，熱管理技術研究中心旨在整合校內外熱流、製造與材料等領域的研發技術，聚焦於電子元件及設備的高效散熱技術。隨著AI與高運算設備的快速發展，晶片功耗與發熱量急遽提升，熱管理已成為資訊與電子產業發展的關鍵挑戰。 </p>
-<p align="left">本中心致力於技術整合與創新，提供晶片與系統等級的熱管理解決方案，並培育熱管理跨領域人才，支援國內外產業應對未來高效能散熱的挑戰。 </p>
+      <p class="justify-text">
+        本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行：
+      </p>
+
+      <p class="justify-text"><strong>一、元件及系統設計組</strong></p>
+      <p class="justify-text">本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
+      <p class="justify-text">1. 均溫板、冷板與散熱鰭片設計</p>
+      <p class="justify-text">2. 晶片元件熱傳機制分析與溫度分布模擬</p>
+      <p class="justify-text">3. 單相與兩相熱交換器設計</p>
+
+      <p class="justify-text"><strong>二、熱傳裝置製造組</strong></p>
+      <p class="justify-text">本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>
+      <p class="justify-text">1. 五軸銑削製程，金屬微結構加工</p>
+      <p class="justify-text">2. 超快雷射加工（皮秒/飛秒），無接觸微加工技術</p>
+      <p class="justify-text">3. 微流道與高密度散熱結構製程平台</p>
+
+      <p class="justify-text"><strong>三、熱傳材料技術組</strong></p>
+      <p class="justify-text">本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
+      <p class="justify-text">1. 液態金屬（如鎵銦錫合金）熱界面材料開發與改質</p>
+      <p class="justify-text">2. 熱交換器材料（銅、鋁）之腐蝕與耐候性改善</p>
+      <p class="justify-text">3. 填料設計與流變性調控，製作高κ值TIMs</p>
     </div>
-  </section>
+  </main>
 
-  <section class="content">
-    <h3 style="text-align: left;">聯絡資訊</h3>
-    <ul>
-      <li style="text-align: left;">Email:generallab120@gmail.com</li>
-      <li style="text-align: left;">地址:桃園市中壢區中大路300號機械系</li>
-      <li style="text-align: left;">電話:03-4267358 #34358 </li>
-    </ul>
-  </section>
+  <!-- 回頂部按鈕 -->
+  <button id="scrollTopBtn" onclick="scrollToTop()">⬆ 回頂部</button>
 
+  <!-- 頁尾 -->
   <footer>
     <p>&copy; 2025 熱管理技術研究中心</p>
   </footer>
+
+  <!-- 回頂部按鈕控制 -->
+  <script>
+    // 當頁面滾動超過 200px 時顯示按鈕
+    window.onscroll = () => {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+
+    // 點擊按鈕後平滑滾動回頂部
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
