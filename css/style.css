@@ -400,3 +400,13 @@ footer p {
 .indent-first-line {
   text-indent: 2em; /* 2em 約等於兩個中文字的寬度 */
 }
+
+/* ===========================
+   標題附註 (h2-note) - 新增
+=========================== */
+.h2-note {
+  font-size: 0.75rem; /* 字體會比較小 (18px * 0.75 = 13.5px) */
+  color: #888; /* 灰色的字 */
+  font-weight: 500; /* 一般粗細 */
+  margin-left: 10px; /* 離主標題一點距離 */
+}
