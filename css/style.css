@@ -170,13 +170,21 @@ p {
 /* 成員照片 */
 .faculty-member img {
   display: block;
-  width: 150px; /* 固定圖片寬度 */
-  height: 180px; /* 固定圖片高度 (可根據照片比例調整此值) */
+  /* 關鍵修改：
+     設定為 2:3 比例 (150px 寬, 225px 高)
+  */
+  width: 150px; 
+  height: 225px; 
+  
   margin: 0 auto 1rem auto; /* 置中並下方留白 */
   
-  /* 關鍵屬性：確保圖片完整顯示在指定尺寸內 */
-  object-fit: contain; 
-  background-color: #f0f0f0; /* 為確保一致性，可以給個背景色 */
+  /* 使用 'cover' 確保圖片填滿方框，
+    即使有幾張圖片大小略有出入，版面也能保持一致。
+  */
+  object-fit: cover; 
+  
+  /* 裁切時從圖片頂部中央開始，最適合人像照片 */
+  object-position: center top; 
   
   border-radius: 8px; /* 保留一點圓角 */
   border: 1px solid #e0e0e0; /* 增加一個淺色邊框 */
@@ -266,10 +274,10 @@ footer p {
    響應式設計 (RWD)
 =========================== */
 @media (max-width: 760px) {
-  /* ... (RWD 其他樣式保持不變) ... */
-  
   .faculty-member img {
-    width: 120px; /* 手機版照片稍小 */
-    height: 150px; /* 相應調整高度 */
+    /* 手機版也維持 2:3 比例 
+    */
+    width: 120px; 
+    height: 180px; 
   }
 }
