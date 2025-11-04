@@ -5,11 +5,16 @@
 =========================== */
 html {
   scroll-behavior: smooth;
+  /* 關鍵修改：放大字體
+    將基礎字體從 16px 放大到 17px。
+    所有使用 rem 單位的元素都會等比例放大。
+  */
+  font-size: 17px; 
 }
 
 body {
   font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
-  background-color: #f5f7fa; /* 保持輕盈的底色 */
+  background-color: #f5f7fa; 
   color: #333;
   margin: 0;
   padding: 0;
@@ -17,19 +22,17 @@ body {
 }
 
 /* ===========================
-   標頭區 (Header) - 改造重點
+   標頭區 (Header)
 =========================== */
 header {
-  /* 移除深藍色背景，改為白色，並加上陰影，這是現代網站的標準做法 */
   background-color: #ffffff;
-  color: #333; /* 文字改為深色 */
+  color: #333; 
   padding: 1rem 2rem;
-  /* 使用 flex 讓 H1 和 Nav 分列左右 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: sticky; /* 讓標頭固定在頂部 */
+  position: sticky; 
   top: 0;
   z-index: 100;
 }
@@ -37,43 +40,42 @@ header {
 header h1 {
   margin: 0;
   font-size: 1.75rem;
-  color: #1e3a8a; /* 標題保留主題色 */
+  color: #1e3a8a;
 }
 
 /* ===========================
-   導覽列 (Navigation) - 改造重點
+   導覽列 (Navigation)
 =========================== */
 nav {
-  background-color: transparent; /* 移除背景色 */
+  background-color: transparent; 
   padding: 0;
   text-align: right;
 }
 
 nav a {
-  color: #1e3a8a; /* 連結改為主題色 */
+  color: #1e3a8a;
   margin: 0 0.75rem;
   text-decoration: none;
-  font-weight: 500; /* 稍微加粗 */
+  font-weight: 500; 
   transition: 0.3s;
   font-size: 1rem;
 }
 
 nav a:hover {
-  color: #3b5dc9; /* 滑過時變亮 */
-  text-decoration: none; /* 移除底線，現代導覽列較少使用 */
+  color: #3b5dc9;
+  text-decoration: none;
 }
 
 /* ===========================
    主要內容區 (Main)
 =========================== */
 main {
-  max-width: 1100px; /* 稍微加寬以符合現代螢幕 */
-  margin: 2rem auto; /* 增加上下間距 */
+  max-width: 1100px;
+  margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* 內容卡片 - 改造重點 */
-/* 這是參考NCU網站風格的關鍵：將內容放進白色卡片中 */
+/* 內容卡片 */
 .content-card {
   background: #ffffff;
   padding: 2rem 2.5rem;
@@ -95,15 +97,17 @@ h2, h3 {
 =========================== */
 .hero-logo {
   display: block;
-  max-width: 180px;
+  /* 關鍵修改：放大 Logo
+    (原 180px)
+  */
+  max-width: 200px; 
   margin: 0 auto 1.5rem auto;
 }
 
-/* 段落格式 - 改造重點 */
+/* 段落格式 */
 p {
-  /* 移除 text-indent: 2em; 這是最關鍵的修改 */
   text-indent: 0;
-  text-align: justify; /* 讓文字左右對齊，更整潔 */
+  text-align: justify;
   margin-bottom: 1.25rem;
 }
 
@@ -131,12 +135,45 @@ p {
 }
 
 .news li::before {
-  content: "»"; /* 使用不同的符號 */
+  content: "»"; 
   color: #3b5dc9;
   font-weight: bold;
   display: inline-block;
   width: 1.5em;
   margin-left: -1em;
+}
+
+.news li a {
+  text-decoration: none; 
+  color: #333; 
+  transition: color 0.3s;
+}
+
+.news li a:hover {
+  color: #3b5dc9; 
+  text-decoration: underline; 
+}
+
+.view-all-container {
+  text-align: right; 
+  margin-top: 1.5rem;
+}
+
+.view-all-link {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #f5f7fa; 
+  color: #1e3a8a; 
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.view-all-link:hover {
+  background-color: #1e3a8a;
+  color: #ffffff;
 }
 
 /* ===========================
@@ -159,7 +196,7 @@ p {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
   margin-bottom: 20px;
-  text-align: center; /* 讓圖片置中 */
+  text-align: center;
 }
 
 .faculty-member:hover {
@@ -167,28 +204,21 @@ p {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* 成員照片 */
 .faculty-member img {
   display: block;
-  /* 關鍵修改：
-     設定為 2:3 比例 (150px 寬, 225px 高)
+  /* 關鍵修改：放大成員照片
+    (原 150px 寬, 225px 高)
+    (維持 2:3 比例)
   */
-  width: 150px; 
-  height: 225px; 
+  width: 170px; 
+  height: 255px; 
   
-  margin: 0 auto 1rem auto; /* 置中並下方留白 */
-  
-  /* 使用 'cover' 確保圖片填滿方框，
-    即使有幾張圖片大小略有出入，版面也能保持一致。
-  */
+  margin: 0 auto 1rem auto;
   object-fit: cover; 
-  
-  /* 裁切時從圖片頂部中央開始，最適合人像照片 */
   object-position: center top; 
-  
-  border-radius: 8px; /* 保留一點圓角 */
-  border: 1px solid #e0e0e0; /* 增加一個淺色邊框 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 輕微陰影 */
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .faculty-info {
@@ -210,14 +240,12 @@ p {
    中心簡介 (About Page)
 =========================== */
 .about-content h3 {
-  /* 簡介頁的小標題 */
   font-size: 1.3rem;
   color: #3b5dc9;
   border-bottom: none;
   margin-top: 2rem;
 }
 
-/* 簡介頁的列表（原為P標籤） */
 .about-content ol {
   padding-left: 2rem;
   line-height: 1.9;
@@ -231,10 +259,10 @@ p {
    回到頂部按鈕
 =========================== */
 #scrollTopBtn {
-  background-color: #1e3a8a; /* 改為主題色 */
+  background-color: #1e3a8a;
   color: white;
   border: none;
-  border-radius: 50%; /* 改為圓形 */
+  border-radius: 50%;
   width: 50px;
   height: 50px;
   font-size: 1.5rem;
@@ -258,7 +286,7 @@ p {
    頁尾 (Footer)
 =========================== */
 footer {
-  background-color: #333; /* 改為深灰色，避免與標題用色重複 */
+  background-color: #333;
   color: #ccc;
   text-align: center;
   padding: 2rem 1rem;
@@ -267,84 +295,12 @@ footer {
 }
 footer p {
   margin: 0;
-  text-align: center; /* 覆蓋全域的 justify */
+  text-align: center;
 }
 
 /* ===========================
-   響應式設計 (RWD)
+   文章頁面 (Article Page)
 =========================== */
-@media (max-width: 760px) {
-  .faculty-member img {
-    /* 手機版也維持 2:3 比例 
-    */
-    width: 120px; 
-    height: 180px; 
-  }
-}
-
-/* ===========================
-   最新消息 (News Section) - 新增
-=========================== */
-.news ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.news li {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dashed #ddd;
-}
-
-.news li::before {
-  content: "»"; /* 使用不同的符號 */
-  color: #3b5dc9;
-  font-weight: bold;
-  display: inline-block;
-  width: 1.5em;
-  margin-left: -1em;
-}
-
-/* 讓最新消息的連結看起來更美觀 */
-.news li a {
-  text-decoration: none; /* 移除預設的底線 */
-  color: #333; /* 顏色與一般內文相同 */
-  transition: color 0.3s;
-}
-
-.news li a:hover {
-  color: #3b5dc9; /* 變為主題亮色 */
-  text-decoration: underline; /* 加上底線 */
-}
-
-/* 首頁「觀看所有消息」按鈕 */
-.view-all-container {
-  text-align: right; /* 讓按鈕靠右 */
-  margin-top: 1.5rem;
-}
-
-.view-all-link {
-  display: inline-block;
-  text-decoration: none;
-  background-color: #f5f7fa; /* 輕盈的背景色 */
-  color: #1e3a8a; /* 主題色 */
-  padding: 8px 16px;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.view-all-link:hover {
-  background-color: #1e3a8a; /* 滑過時變為主題色 */
-  color: #ffffff; /* 文字變白 */
-}
-
-/* ===========================
-   文章頁面 (Article Page) - 新增
-=========================== */
-
-/* 文章的元資訊 (日期、分類) */
 .article-meta {
   font-size: 0.9rem;
   color: #777;
@@ -353,21 +309,18 @@ footer p {
   border-bottom: 1px solid #eee;
 }
 
-/* 文章內文容器 */
 .article-content {
-  line-height: 1.9; /* 增加行高，更易閱讀 */
+  line-height: 1.9;
 }
 
-/* 文章內文中的圖片 */
 .article-content img {
-  max-width: 100%; /* 響應式圖片 */
+  max-width: 100%; 
   height: auto;
-  border-radius: 8px; /* 圖片加一點圓角 */
-  margin: 1rem 0 1.5rem 0; /* 圖片上下留白 */
+  border-radius: 8px;
+  margin: 1rem 0 1.5rem 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* 文章內文中的子標題 (h3) */
 .article-content h3 {
   font-size: 1.4rem;
   color: #3b5dc9;
@@ -377,14 +330,12 @@ footer p {
   padding-bottom: 5px;
 }
 
-/* 文章內文中的列表 */
 .article-content ul,
 .article-content ol {
   padding-left: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
-/* 返回連結 */
 .back-link {
   display: inline-block;
   margin-top: 2rem;
@@ -396,5 +347,47 @@ footer p {
 
 .back-link:hover {
   color: #3b5dc9;
-  transform: translateX(-5px); /* 滑過時向左移動 */
+  transform: translateX(-5px);
+}
+
+/* ===========================
+   響應式設計 (RWD)
+=========================== */
+@media (max-width: 760px) {
+  header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  header h1 {
+    margin-bottom: 1rem;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  main {
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .content-card {
+    padding: 1.5rem;
+  }
+
+  .faculty-member {
+    flex: 0 1 100%;
+  }
+
+  .faculty-member img {
+    /* 關鍵修改：放大手機版成員照片
+      (原 120px 寬, 180px 高)
+      (維持 2:3 比例)
+    */
+    width: 130px; 
+    height: 195px;
+  }
 }
