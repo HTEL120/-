@@ -281,3 +281,120 @@ footer p {
     height: 180px; 
   }
 }
+
+/* ===========================
+   最新消息 (News Section) - 新增
+=========================== */
+.news ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.news li {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #ddd;
+}
+
+.news li::before {
+  content: "»"; /* 使用不同的符號 */
+  color: #3b5dc9;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1em;
+}
+
+/* 讓最新消息的連結看起來更美觀 */
+.news li a {
+  text-decoration: none; /* 移除預設的底線 */
+  color: #333; /* 顏色與一般內文相同 */
+  transition: color 0.3s;
+}
+
+.news li a:hover {
+  color: #3b5dc9; /* 變為主題亮色 */
+  text-decoration: underline; /* 加上底線 */
+}
+
+/* 首頁「觀看所有消息」按鈕 */
+.view-all-container {
+  text-align: right; /* 讓按鈕靠右 */
+  margin-top: 1.5rem;
+}
+
+.view-all-link {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #f5f7fa; /* 輕盈的背景色 */
+  color: #1e3a8a; /* 主題色 */
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.view-all-link:hover {
+  background-color: #1e3a8a; /* 滑過時變為主題色 */
+  color: #ffffff; /* 文字變白 */
+}
+
+/* ===========================
+   文章頁面 (Article Page) - 新增
+=========================== */
+
+/* 文章的元資訊 (日期、分類) */
+.article-meta {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* 文章內文容器 */
+.article-content {
+  line-height: 1.9; /* 增加行高，更易閱讀 */
+}
+
+/* 文章內文中的圖片 */
+.article-content img {
+  max-width: 100%; /* 響應式圖片 */
+  height: auto;
+  border-radius: 8px; /* 圖片加一點圓角 */
+  margin: 1rem 0 1.5rem 0; /* 圖片上下留白 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 文章內文中的子標題 (h3) */
+.article-content h3 {
+  font-size: 1.4rem;
+  color: #3b5dc9;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+/* 文章內文中的列表 */
+.article-content ul,
+.article-content ol {
+  padding-left: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 返回連結 */
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1e3a8a;
+  transition: transform 0.2s;
+}
+
+.back-link:hover {
+  color: #3b5dc9;
+  transform: translateX(-5px); /* 滑過時向左移動 */
+}
