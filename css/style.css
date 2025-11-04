@@ -1,15 +1,11 @@
-/* style.css */
+/* style.css) */
 
 /* ===========================
    基本設定
 =========================== */
 html {
   scroll-behavior: smooth;
-  /* 關鍵修改：放大字體
-    將基礎字體從 16px 放大到 17px。
-    所有使用 rem 單位的元素都會等比例放大。
-  */
-  font-size: 17px; 
+  font-size: 18px; 
 }
 
 body {
@@ -39,7 +35,11 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 1.75rem;
+  /* 關鍵修改：顯著放大網站標題
+    (原 1.75rem)
+  */
+  font-size: 2.1rem; 
+  font-weight: 700; /* 加粗 */
   color: #1e3a8a;
 }
 
@@ -58,7 +58,7 @@ nav a {
   text-decoration: none;
   font-weight: 500; 
   transition: 0.3s;
-  font-size: 1rem;
+  font-size: 1rem; /* (等於 18px) */
 }
 
 nav a:hover {
@@ -84,8 +84,21 @@ main {
   margin-bottom: 2rem;
 }
 
-/* 通用標題樣式 */
-h2, h3 {
+/* 關鍵修改：
+  統一並「顯著放大」所有 h2 和 h3 標題
+*/
+h2 {
+  font-size: 1.9rem; /* (約 34px) */
+  font-weight: 700;
+  color: #1e3a8a;
+  border-bottom: 3px solid #e0f2fe;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.6rem; /* (約 29px) */
+  font-weight: 700;
   color: #1e3a8a;
   border-bottom: 3px solid #e0f2fe;
   padding-bottom: 10px;
@@ -97,9 +110,6 @@ h2, h3 {
 =========================== */
 .hero-logo {
   display: block;
-  /* 關鍵修改：放大 Logo
-    (原 180px)
-  */
   max-width: 200px; 
   margin: 0 auto 1.5rem auto;
 }
@@ -176,6 +186,15 @@ p {
   color: #ffffff;
 }
 
+/* 標題附註 (h2-note) */
+.h2-note {
+  font-size: 0.75rem; /* (18px * 0.75 = 13.5px) */
+  color: #888; 
+  font-weight: 500; 
+  margin-left: 10px; 
+}
+
+
 /* ===========================
    成員介紹 (Faculty Section)
 =========================== */
@@ -206,13 +225,8 @@ p {
 
 .faculty-member img {
   display: block;
-  /* 關鍵修改：放大成員照片
-    (原 150px 寬, 225px 高)
-    (維持 2:3 比例)
-  */
   width: 170px; 
   height: 255px; 
-  
   margin: 0 auto 1rem auto;
   object-fit: cover; 
   object-position: center top; 
@@ -227,12 +241,16 @@ p {
 }
 .faculty-info h4 {
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  /* 關鍵修改：顯著放大成員姓名
+    (原 1.2rem)
+  */
+  font-size: 1.4rem; /* (約 25px) */
   color: #1e3a8a;
+  font-weight: 700;
 }
 .faculty-info p {
   text-align: left;
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* (約 16.2px) */
   line-height: 1.6;
 }
 
@@ -240,7 +258,11 @@ p {
    中心簡介 (About Page)
 =========================== */
 .about-content h3 {
-  font-size: 1.3rem;
+  /* 關鍵修改：
+    使用我們新的 h3 基礎大小 (1.6rem)
+    並覆蓋掉底線
+  */
+  font-size: 1.6rem; 
   color: #3b5dc9;
   border-bottom: none;
   margin-top: 2rem;
@@ -291,7 +313,7 @@ footer {
   text-align: center;
   padding: 2rem 1rem;
   margin-top: 3rem;
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* (約 16.2px) */
 }
 footer p {
   margin: 0;
@@ -302,7 +324,7 @@ footer p {
    文章頁面 (Article Page)
 =========================== */
 .article-meta {
-  font-size: 0.9rem;
+  font-size: 0.9rem; /* (約 16.2px) */
   color: #777;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
@@ -322,7 +344,10 @@ footer p {
 }
 
 .article-content h3 {
-  font-size: 1.4rem;
+  /* 關鍵修改：
+    使用我們新的 h3 基礎大小 (1.6rem)
+  */
+  font-size: 1.6rem; 
   color: #3b5dc9;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
@@ -348,6 +373,15 @@ footer p {
 .back-link:hover {
   color: #3b5dc9;
   transform: translateX(-5px);
+}
+
+/* ===========================
+   工具樣式 (Utilities)
+=========================== */
+
+/* 用於首行縮排兩個字 */
+.indent-first-line {
+  text-indent: 2em; /* 2em (約 36px) */
 }
 
 /* ===========================
@@ -383,30 +417,7 @@ footer p {
   }
 
   .faculty-member img {
-    /* 關鍵修改：放大手機版成員照片
-      (原 120px 寬, 180px 高)
-      (維持 2:3 比例)
-    */
     width: 130px; 
     height: 195px;
   }
-}
-
-/* ===========================
-   工具樣式 (Utilities) - 新增
-=========================== */
-
-/* 用於首行縮排兩個字 */
-.indent-first-line {
-  text-indent: 2em; /* 2em 約等於兩個中文字的寬度 */
-}
-
-/* ===========================
-   標題附註 (h2-note) - 新增
-=========================== */
-.h2-note {
-  font-size: 0.75rem; /* 字體會比較小 (18px * 0.75 = 13.5px) */
-  color: #888; /* 灰色的字 */
-  font-weight: 500; /* 一般粗細 */
-  margin-left: 10px; /* 離主標題一點距離 */
 }
