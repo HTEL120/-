@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8"> <!-- 設定中文不亂碼 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 手機可自適應 -->
-  <title>中心簡介</title> <!-- 瀏覽器分頁標題 -->
-  <link rel="stylesheet" href="css/style.css"> <!-- 外部樣式表 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中心簡介</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!-- 頁首：標題與導覽列 -->
   <header>
     <h1>熱管理技術研究中心</h1>
     <nav>
@@ -19,51 +18,50 @@
     </nav>
   </header>
 
-  <!-- 主要內容 -->
   <main>
-    <h2>中心簡介</h2>
-    <div class="content">
-      <p class="justify-text">
-        本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行：
-      </p>
+    <section class="content-card about-content">
+      <h2>中心簡介</h2>
+      <div>
+        <p>本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行：</p>
 
-      <p class="justify-text"><strong>一、元件及系統設計組</strong></p>
-      <p class="justify-text">本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
-      <p class="justify-text">1. 均溫板、冷板與散熱鰭片設計</p>
-      <p class="justify-text">2. 晶片元件熱傳機制分析與溫度分布模擬</p>
-      <p class="justify-text">3. 單相與兩相熱交換器設計</p>
+        <h3>一、元件及系統設計組</h3>
+        <p>本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
+        <ol>
+          <li>均溫板、冷板與散熱鰭片設計</li>
+          <li>晶片元件熱傳機制分析與溫度分布模擬</li>
+          <li>單相與兩相熱交換器設計</li>
+        </ol>
 
-      <p class="justify-text"><strong>二、熱傳裝置製造組</strong></p>
-      <p class="justify-text">本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>
-      <p class="justify-text">1. 五軸銑削製程，金屬微結構加工</p>
-      <p class="justify-text">2. 超快雷射加工（皮秒/飛秒），無接觸微加工技術</p>
-      <p class="justify-text">3. 微流道與高密度散熱結構製程平台</p>
+        <h3>二、熱傳裝置製造組</h3>
+        <p>本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>
+        <ol>
+          <li>五軸銑削製程，金屬微結構加工</li>
+          <li>超快雷射加工（皮秒/飛秒），無接觸微加工技術</li>
+          <li>微流道與高密度散熱結構製程平台</li>
+        </ol>
 
-      <p class="justify-text"><strong>三、熱傳材料技術組</strong></p>
-      <p class="justify-text">本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
-      <p class="justify-text">1. 液態金屬（如鎵銦錫合金）熱界面材料開發與改質</p>
-      <p class="justify-text">2. 熱交換器材料（銅、鋁）之腐蝕與耐候性改善</p>
-      <p class="justify-text">3. 填料設計與流變性調控，製作高κ值TIMs</p>
-    </div>
+        <h3>三、熱傳材料技術組</h3>
+        <p>本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
+        <ol>
+          <li>液態金屬（如鎵銦錫合金）熱界面材料開發與改質</li>
+          <li>熱交換器材料（銅、鋁）之腐蝕與耐候性改善</li>
+          <li>填料設計與流變性調控，製作高κ值TIMs</li>
+        </ol>
+      </div>
+    </section>
   </main>
 
-  <!-- 回頂部按鈕 -->
-  <button id="scrollTopBtn" onclick="scrollToTop()">⬆ 回頂部</button>
+  <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
 
-  <!-- 頁尾 -->
   <footer>
     <p>&copy; 2025 熱管理技術研究中心</p>
   </footer>
 
-  <!-- 回頂部按鈕控制 -->
   <script>
-    // 當頁面滾動超過 200px 時顯示按鈕
     window.onscroll = () => {
       const btn = document.getElementById("scrollTopBtn");
       btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
     };
-
-    // 點擊按鈕後平滑滾動回頂部
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
