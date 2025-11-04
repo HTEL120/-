@@ -144,33 +144,6 @@ p {
 =========================== */
 .faculty-row {
   display: flex;
-  justify-content: flex-start; /* 改為由左開始排列 */
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  gap: 2%; /* 保持固定的間距 */
-}
-
-.faculty-member {
-  flex: 0 1 48%; /* 保持兩欄 */
-  background-color: #fdfdfd;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 統一陰影 */
-  transition: transform 0.2s;
-  margin-bottom: 20px;
-}
-
-.faculty-member:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* ===========================
-   成員介紹 (Faculty Section)
-=========================== */
-.faculty-row {
-  display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -194,16 +167,20 @@ p {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* 成員照片*/
+/* 成員照片 */
 .faculty-member img {
   display: block;
-  /* 移除圓角和固定寬高，改為限制最大寬度並維持比例 */
-  max-width: 100%; /* 讓圖片在容器內自適應 */
-  height: auto; /* 維持圖片原始比例 */
+  width: 150px; /* 固定圖片寬度 */
+  height: 180px; /* 固定圖片高度 (可根據照片比例調整此值) */
   margin: 0 auto 1rem auto; /* 置中並下方留白 */
-  border-radius: 8px; /* 可以保留一點點圓角讓邊緣更柔和 */
-  object-fit: cover; /* 如果圖片比例不同，會裁切以填滿 */
+  
+  /* 關鍵屬性：確保圖片完整顯示在指定尺寸內 */
+  object-fit: contain; 
+  background-color: #f0f0f0; /* 為確保一致性，可以給個背景色 */
+  
+  border-radius: 8px; /* 保留一點圓角 */
   border: 1px solid #e0e0e0; /* 增加一個淺色邊框 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 輕微陰影 */
 }
 
 .faculty-info {
@@ -292,7 +269,7 @@ footer p {
   /* ... (RWD 其他樣式保持不變) ... */
   
   .faculty-member img {
-    max-width: 80%; /* 手機版照片寬度自適應，但不要太寬 */
-    height: auto;
+    width: 120px; /* 手機版照片稍小 */
+    height: 150px; /* 相應調整高度 */
   }
 }
