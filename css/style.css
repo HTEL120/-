@@ -188,7 +188,7 @@ p {
 
 /* 標題附註 (h2-note) */
 .h2-note {
-  font-size: 0.75rem; /* (18px * 0.75 = 13.5px) */
+  font-size: 1rem; /* (18px * 0.75 = 13.5px) */
   color: #888; 
   font-weight: 500; 
   margin-left: 10px; 
