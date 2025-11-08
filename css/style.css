@@ -445,10 +445,21 @@ footer p {
 
   .faculty-member {
     flex: 0 1 100%;
+    padding-bottom: 70px; /* 為按鈕預留空間 */
   }
 
   .faculty-member img {
     width: 130px; 
     height: 195px;
+  }
+  
+  .btn-more {
+    bottom: 15px; /* 在小螢幕下按鈕離底部可以近一點 */
+    
+    left: 50%; /* 確保 RWD 也是置中 */
+    transform: translateX(-50%); /* 確保 RWD 也是置中 */
+
+    padding: 5px 12px; /* 小螢幕下按鈕再縮小一點 */
+    font-size: 0.8rem; /* 小螢幕下字體再縮小一點 */
   }
 }
