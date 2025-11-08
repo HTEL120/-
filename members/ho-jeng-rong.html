@@ -455,13 +455,16 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const rowsPerPage = 5; 
+      const rowsPerPage = 5; // *** 在這裡設定每頁顯示幾筆資料 ***
       
-      const listContainer = document.getElementById("projectList"); // 適用於 <ol>
+      // --- 修正： targeting "tbody" ---
+      const tableBody = document.getElementById("projectTableBody");
       
-      if (listContainer) { 
-        const allItems = listContainer.getElementsByTagName("li"); // 適用於 <li>
-        const totalRows = allItems.length;
+      if (tableBody) { // 檢查表格是否存在
+        const allRows = tableBody.getElementsByTagName("tr"); // 從 "li" 改為 "tr"
+        // --- 修正結束 ---
+
+        const totalRows = allRows.length;
         const totalPages = Math.ceil(totalRows / rowsPerPage);
         const paginationControls = document.getElementById("paginationControls");
         let currentPage = 1;
@@ -469,12 +472,12 @@
         // 顯示特定頁面的函式
         function showPage(page) {
           for (let i = 0; i < totalRows; i++) {
-            allItems[i].style.display = "none";
+            allRows[i].style.display = "none";
           }
           const startIndex = (page - 1) * rowsPerPage;
           const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
           for (let i = startIndex; i < endIndex; i++) {
-            allItems[i].style.display = "list-item"; // 適用於 <li>
+            allRows[i].style.display = ""; // 從 "list-item" 改為 "" (恢復表格預設)
           }
         }
 
@@ -484,7 +487,7 @@
 
           // --- 1. "第一頁" (<<) 按鈕 ---
           let firstButton = document.createElement("a");
-          firstButton.href = "#projectList"; 
+          firstButton.href = "#projectTable"; 
           firstButton.innerText = "«";
           firstButton.classList.add("pagination-btn");
           if (currentPage === 1) {
@@ -502,7 +505,7 @@
 
           // --- 2. "上一頁" (<) 按鈕 ---
           let prevButton = document.createElement("a");
-          prevButton.href = "#projectList"; 
+          prevButton.href = "#projectTable"; 
           prevButton.innerText = "<"; // 修改符號
           prevButton.classList.add("pagination-btn");
           if (currentPage === 1) {
@@ -537,7 +540,7 @@
           
           for (let i = startPage; i <= endPage; i++) {
             let pageButton = document.createElement("a");
-            pageButton.href = "#projectList";
+            pageButton.href = "#projectTable";
             pageButton.innerText = i;
             pageButton.classList.add("pagination-btn");
             if (i === currentPage) {
@@ -563,7 +566,7 @@
 
           // --- 4. "下一頁" (>) 按鈕 ---
           let nextButton = document.createElement("a");
-          nextButton.href = "#projectList";
+          nextButton.href = "#projectTable";
           nextButton.innerText = ">"; // 修改符號
           nextButton.classList.add("pagination-btn");
           if (currentPage === totalPages) {
@@ -581,7 +584,7 @@
           
           // --- 5. "最後一頁" (>>) 按鈕 ---
           let lastButton = document.createElement("a");
-          lastButton.href = "#projectList"; 
+          lastButton.href = "#projectTable"; 
           lastButton.innerText = "»";
           lastButton.classList.add("pagination-btn");
           if (currentPage === totalPages) {
@@ -604,7 +607,10 @@
           showPage(currentPage);
           setupPagination();
         } else {
-           listContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
+           const tableContainer = document.querySelector(".table-container");
+           if(tableContainer) {
+              tableContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
+           }
            if(paginationControls) paginationControls.style.display = 'none';
         }
       }
