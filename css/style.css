@@ -573,62 +573,68 @@ footer p {
 }
 
 /* ===========================
-   首頁 Hero 橫幅 (新樣式)
+   首頁 Hero 橫幅
 =========================== */
 .hero-section {
   width: 100%;
-  height: 450px; /* 橫幅的高度，您可以自行調整 */
+  height: 400px; /* 橫幅高度 (您可以自行調整，400px 或 450px 都不錯) */
   position: relative; /* 用於文字疊加定位 */
   display: flex;
   align-items: center; /* 垂直置中文字區塊 */
 
-  /* --- 關鍵：背景圖片 --- */
-  /* 注意路徑是 ../images/ 因為 css 檔案在 css/ 資料夾內 */
-  background-image: url('../images/ncu_campus.jpg'); 
-  background-size: cover; /* 圖片填滿容器，不變形 */
+  /* --- 關鍵修改：
+     1. 加入 40% 透明度的黑色漸層，疊在圖片上 (使其變暗)
+     2. 設定背景圖片
+  --- */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
+
+  background-size: cover; 
   background-position: center 70%; /* 圖片顯示的中心點 (70% 表示偏下，可看見 "中大") */
 }
 
-/* 文字內容的容器 (模仿 ISTP 的半透明白框) */
+/* 文字內容的容器 */
 .hero-content {
   width: 90%;
   max-width: 550px; /* 限制文字區塊的最大寬度 */
-  margin-left: 10%; /* 讓文字區塊靠左 (您可以調整 % 來改變位置) */
+  margin-left: 10%; /* 讓文字區塊靠左 (可調整 10%) */
 
-  /* --- 關鍵：半透明背景 --- */
-  background-color: rgba(255, 255, 255, 0.9); /* 90% 透明度的白色 */
-
-  /* (可選) 增加一點 "毛玻璃" 效果，支援的瀏覽器會看到 */
+  /* --- 關鍵修改：移除所有背景和陰影 --- */
+  background-color: transparent; /* 移除白色背景 */
   @supports (backdrop-filter: blur(5px)) {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(5px);
+    backdrop-filter: none; /* 移除毛玻璃效果 */
   }
+  box-shadow: none; /* 移除陰影 */
+  padding: 0; /* 移除內邊距 */
 
-  padding: 2rem 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  /* --- 關鍵修改：設定文字顏色為白色 --- */
+  color: #ffffff;
 }
 
 /* 調整 Hero 區塊內的標題 */
 .hero-content h2 {
-  font-size: 2.2rem; /* 放大標題 */
-  color: #1e3a8a;
+  font-size: 2.2rem; 
+  color: #ffffff; /* 修改為白色 */
   margin-top: 0;
-  border-bottom: none; /* 移除 h2 的預設底線 */
-  padding-bottom: 0;
+
+  /* --- 關鍵修改：模仿 E-DReM 的白色底線 --- */
+  border-bottom: 3px solid #ffffff; 
+  padding-bottom: 1rem; /* 底線和內文的間距 */
+  margin-bottom: 1.5rem; /* 標題和內文的間距 */
 }
 
 /* 調整 Hero 區塊內的文字 */
 .hero-content p {
-  text-indent: 0; /* 移除首行縮排 */
+  text-indent: 0; 
   text-align: justify;
-  color: #333;
+  color: #f0f0f0; /* 使用微灰色(f0f0f0)，比純白更易讀 */
   margin-bottom: 1rem;
-  line-height: 1.7;
+  line-height: 1.8; /* 增加行高 */
+  font-size: 1.1rem; /* 稍微放大文字，使其更像範例 */
 }
 
-/* 確保 <main> 內容不會被 <header> 擋住 (如果 header 不是 sticky 則不需要) */
-/* 我們需要讓 main 區塊從 2rem 的 margin-top 開始 */
+/*
+  確保 <main> 內容 (最新消息卡片) 和橫幅有間距 
+*/
 main {
    margin-top: 2rem;
 }
@@ -638,14 +644,14 @@ main {
 =========================== */
 @media (max-width: 760px) {
   .hero-section {
-    height: 350px; /* 手機版橫幅調低一點 */
+    height: 350px; 
     justify-content: center; /* 手機版文字置中 */
   }
   .hero-content {
     margin-left: 0; /* 移除左邊距 */
     width: 90%;
     max-width: 90%;
-    padding: 1.5rem;
+    padding: 0; /* 移除內邊距 */
   }
   .hero-content h2 {
     font-size: 1.8rem; /* 手機版標題縮小 */
