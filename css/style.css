@@ -50,7 +50,7 @@ header h1 {
 
 /* --- 控制 Logo 圖片的大小並微調垂直對齊 --- */
 .ncu-logo {
-  height: 55px; /* 可調整這個高度 */
+  height: 60px; /* 可調整這個高度 */
   width: auto;  /* 寬度自動縮放 */
   margin-right: 15px; /* Logo 和文字之間的間距 */
   
