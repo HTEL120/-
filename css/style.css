@@ -126,10 +126,16 @@ h3 {
 /* ===========================
    首頁 (Index Page)
 =========================== */
-.hero-logo {
+/* --- 使用校園橫幅照片樣式 --- */
+.hero-banner-image {
   display: block;
-  max-width: 200px; 
-  margin: 0 auto 1.5rem auto;
+  width: 100%; /* 讓圖片填滿卡片寬度 */
+  height: auto; /* 高度自動縮放 */
+  max-height: 400px; /* 限制最大高度，避免圖片太大 */
+  object-fit: cover; /* 裁切並填滿空間，不變形 */
+  border-radius: 8px; /* 圖片圓角 (使其與卡片圓角一致) */
+  margin-bottom: 2rem; /* 圖片下方的間距 */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* 加上一點立體陰影 */
 }
 
 /* 段落格式 */
