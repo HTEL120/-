@@ -126,18 +126,39 @@ h3 {
 /* ===========================
    首頁 (Index Page)
 =========================== */
-/* --- 使用校園橫幅照片樣式 --- */
+/* --- 將校園照片用於獨立的頁面橫幅 --- */
 .hero-banner-image {
   display: block;
-  width: 100%; /* 讓圖片填滿卡片寬度 */
-  height: auto; /* 高度自動縮放 */
-  max-height: 400px; /* 限制最大高度，避免圖片太大 */
-  object-fit: cover; /* 裁切並填滿空間，不變形 */
-  border-radius: 8px; /* 圖片圓角 (使其與卡片圓角一致) */
-  margin-bottom: 2rem; /* 圖片下方的間距 */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* 加上一點立體陰影 */
+  width: 100%; /* 100% 填滿 main 區域的寬度 */
+  height: auto;
+  max-height: 400px; /* 限制最大高度 */
+  object-fit: cover;
+  border-radius: 8px; /* 保持圓角 */
+
+  /* --- 關鍵修改：
+     移除 margin-bottom: 2rem; (因為卡片自己有 margin-top) 
+     並新增 box-shadow 讓它獨立浮起
+  --- */
+  margin-bottom: 0; 
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); 
 }
 
+/* --- 關鍵修改：
+   讓第一張卡片和上方的橫幅照片之間有距離 
+--- */
+main > .content-card:first-child {
+    margin-top: 2rem;
+}
+
+/* ---
+   我們也需要修改 content-card 的 hover 效果
+   避免它和橫幅照片的陰影打架
+--- */
+.content-card:hover {
+  transform: translateY(-5px);
+  /* --- 修改：陰影稍微調淡一點 --- */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+}
 /* 段落格式 */
 p {
   text-indent: 0;
