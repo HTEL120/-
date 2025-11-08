@@ -254,6 +254,25 @@ p {
   line-height: 1.6;
 }
 
+/* 新增：成員介紹頁面的 "More" 按鈕樣式 */
+.btn-more {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #1e3a8a; /* 主要佈景顏色 */
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 15px; /* 與上方文字的間距 */
+}
+
+.btn-more:hover {
+  background-color: #3b5dc9; /* 滑鼠懸停時的顏色 */
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
 /* ===========================
    研究項目
 =========================== */
