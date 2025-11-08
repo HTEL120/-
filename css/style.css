@@ -254,17 +254,26 @@ p {
   line-height: 1.6;
 }
 
-/* 新增：成員介紹頁面的 "More" 按鈕樣式 */
+/* 新增成員介紹頁面的 "More" 按鈕樣式在右下角 */
+.faculty-member {
+  position: relative; /* 設置相對定位，讓內部絕對定位的按鈕可以參考 */
+  padding-bottom: 70px; /* 為按鈕留出空間，避免內容重疊 */
+}
+
 .btn-more {
+  position: absolute; /* 絕對定位 */
+  bottom: 20px; /* 距離底部 20px */
+  right: 20px; /* 距離右側 20px */
   display: inline-block;
   text-decoration: none;
   background-color: #1e3a8a; /* 主要佈景顏色 */
   color: #ffffff;
-  padding: 8px 20px;
+  padding: 6px 15px; /* 縮小按鈕的 padding */
   border-radius: 5px;
   font-weight: bold;
+  font-size: 0.9rem; /* 縮小字體大小 */
   transition: background-color 0.3s, transform 0.3s;
-  margin-top: 15px; /* 與上方文字的間距 */
+  /* 移除 margin-top，因為現在使用絕對定位 */
 }
 
 .btn-more:hover {
