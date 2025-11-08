@@ -579,7 +579,7 @@ footer p {
   width: 100%;
 
   /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
-  height: 550px; /* 您可以改成 500px, 600px 等您喜歡的高度 */
+  height: 600px; /* 可以改成 500px, 600px 等高度 */
 
   position: relative; 
   display: flex;
