@@ -307,6 +307,17 @@ p {
   margin-bottom: 0.5rem;
 }
 
+/* 讓研究項目的連結看起來像一般文字 */
+.about-content ol li a {
+  text-decoration: none; /* 移除底線 */
+  color: #333; /* 設置為預設文字顏色 */
+  transition: color 0.3s;
+}
+
+.about-content ol li a:hover {
+  color: #3b5dc9; /* 滑鼠懸停時的顏色 (同導覽列) */
+  text-decoration: underline; /* 滑鼠懸停時顯示底線 */
+}
 
 /* ===========================
    回到頂部按鈕
