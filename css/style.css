@@ -1,423 +1,423 @@
 /* style.css */
 
 /* ===========================
-   基本設定
+   基本設定
 =========================== */
 html {
-  scroll-behavior: smooth;
-  font-size: 18px; 
+  scroll-behavior: smooth;
+  font-size: 18px; 
 }
 
 body {
-  font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
-  background-color: #f5f7fa; 
-  color: #333;
-  margin: 0;
-  padding: 0;
-  line-height: 1.8;
+  font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
+  background-color: #f5f7fa; 
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
 }
 
 /* ===========================
-   標頭區 (Header)
+   標頭區 (Header)
 =========================== */
 header {
-  background-color: #ffffff;
-  color: #333; 
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: sticky; 
-  top: 0;
-  z-index: 100;
+  background-color: #ffffff;
+  color: #333; 
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky; 
+  top: 0;
+  z-index: 100;
 }
 
 header h1 {
-  margin: 0;
-  /* 關鍵修改：顯著放大網站標題
-    (原 1.75rem)
-  */
-  font-size: 2.1rem; 
-  font-weight: 700; /* 加粗 */
-  color: #1e3a8a;
+  margin: 0;
+  /* 關鍵修改：顯著放大網站標題
+    (原 1.75rem)
+  */
+  font-size: 2.1rem; 
+  font-weight: 700; /* 加粗 */
+  color: #1e3a8a;
 }
 
 /* ===========================
-   導覽列 (Navigation)
+   導覽列 (Navigation)
 =========================== */
 nav {
-  background-color: transparent; 
-  padding: 0;
-  text-align: right;
+  background-color: transparent; 
+  padding: 0;
+  text-align: right;
 }
 
 nav a {
-  color: #1e3a8a;
-  margin: 0 0.75rem;
-  text-decoration: none;
-  font-weight: 500; 
-  transition: 0.3s;
-  font-size: 1rem; /* (等於 18px) */
+  color: #1e3a8a;
+  margin: 0 0.75rem;
+  text-decoration: none;
+  font-weight: 500; 
+  transition: 0.3s;
+  font-size: 1rem; /* (等於 18px) */
 }
 
 nav a:hover {
-  color: #3b5dc9;
-  text-decoration: none;
+  color: #3b5dc9;
+  text-decoration: none;
 }
 
 /* ===========================
-   主要內容區 (Main)
+   主要內容區 (Main)
 =========================== */
 main {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 /* 內容卡片 */
 .content-card {
-  background: #ffffff;
-  padding: 2rem 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
 }
 
 /* 關鍵修改：
-  統一並「顯著放大」所有 h2 和 h3 標題
+  統一並「顯著放大」所有 h2 和 h3 標題
 */
 h2 {
-  font-size: 1.9rem; /* (約 34px) */
-  font-weight: 700;
-  color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe;
-  padding-bottom: 10px;
-  margin-top: 0;
+  font-size: 1.9rem; /* (約 34px) */
+  font-weight: 700;
+  color: #1e3a8a;
+  border-bottom: 3px solid #e0f2fe;
+  padding-bottom: 10px;
+  margin-top: 0;
 }
 
 h3 {
-  font-size: 1.6rem; /* (約 29px) */
-  font-weight: 700;
-  color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe;
-  padding-bottom: 10px;
-  margin-top: 0;
+  font-size: 1.6rem; /* (約 29px) */
+  font-weight: 700;
+  color: #1e3a8a;
+  border-bottom: 3px solid #e0f2fe;
+  padding-bottom: 10px;
+  margin-top: 0;
 }
 
 /* ===========================
-   首頁 (Index Page)
+   首頁 (Index Page)
 =========================== */
 .hero-logo {
-  display: block;
-  max-width: 200px; 
-  margin: 0 auto 1.5rem auto;
+  display: block;
+  max-width: 200px; 
+  margin: 0 auto 1.5rem auto;
 }
 
 /* 段落格式 */
 p {
-  text-indent: 0;
-  text-align: justify;
-  margin-bottom: 1.25rem;
+  text-indent: 0;
+  text-align: justify;
+  margin-bottom: 1.25rem;
 }
 
 /* 聯絡資訊 */
 .contact-info ul {
-  list-style-type: none;
-  padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
 .contact-info li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* ===========================
-   最新消息 (News Section)
+   最新消息 (News Section)
 =========================== */
 .news ul {
-  list-style-type: none;
-  padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .news li {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dashed #ddd;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #ddd;
 }
 
 .news li::before {
-  content: "»"; 
-  color: #3b5dc9;
-  font-weight: bold;
-  display: inline-block;
-  width: 1.5em;
-  margin-left: -1em;
+  content: "»"; 
+  color: #3b5dc9;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1em;
 }
 
 .news li a {
-  text-decoration: none; 
-  color: #333; 
-  transition: color 0.3s;
+  text-decoration: none; 
+  color: #333; 
+  transition: color 0.3s;
 }
 
 .news li a:hover {
-  color: #3b5dc9; 
-  text-decoration: underline; 
+  color: #3b5dc9; 
+  text-decoration: underline; 
 }
 
 .view-all-container {
-  text-align: right; 
-  margin-top: 1.5rem;
+  text-align: right; 
+  margin-top: 1.5rem;
 }
 
 .view-all-link {
-  display: inline-block;
-  text-decoration: none;
-  background-color: #f5f7fa; 
-  color: #1e3a8a; 
-  padding: 8px 16px;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #f5f7fa; 
+  color: #1e3a8a; 
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .view-all-link:hover {
-  background-color: #1e3a8a;
-  color: #ffffff;
+  background-color: #1e3a8a;
+  color: #ffffff;
 }
 
 /* 標題附註 (h2-note) */
 .h2-note {
-  font-size: 1rem; /* (18px * 0.75 = 13.5px) */
-  color: #888; 
-  font-weight: 500; 
-  margin-left: 10px; 
+  font-size: 1rem; /* (18px * 0.75 = 13.5px) */
+  color: #888; 
+  font-weight: 500; 
+  margin-left: 10px; 
 }
 
 
 /* ===========================
-   成員介紹 (Faculty Section)
+   成員介紹 (Faculty Section)
 =========================== */
 .faculty-row {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  gap: 2%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 2%;
 }
 
 .faculty-member {
-  flex: 0 1 48%;
-  background-color: #fdfdfd;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s;
-  margin-bottom: 20px;
-  text-align: center;
+  flex: 0 1 48%;
+  background-color: #fdfdfd;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .faculty-member:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
 .faculty-member img {
-  display: block;
-  width: 170px; 
-  height: 255px; 
-  margin: 0 auto 1rem auto;
-  object-fit: cover; 
-  object-position: center top; 
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  display: block;
+  width: 170px; 
+  height: 255px; 
+  margin: 0 auto 1rem auto;
+  object-fit: cover; 
+  object-position: center top; 
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .faculty-info {
-  margin-top: 10px;
-  text-align: center;
+  margin-top: 10px;
+  text-align: center;
 }
 .faculty-info h4 {
-  margin-bottom: 10px;
-  /* 關鍵修改：顯著放大成員姓名
-    (原 1.2rem)
-  */
-  font-size: 1.4rem; /* (約 25px) */
-  color: #1e3a8a;
-  font-weight: 700;
+  margin-bottom: 10px;
+  /* 關鍵修改：顯著放大成員姓名
+    (原 1.2rem)
+  */
+  font-size: 1.4rem; /* (約 25px) */
+  color: #1e3a8a;
+  font-weight: 700;
 }
 .faculty-info p {
-  text-align: left;
-  font-size: 0.9rem; /* (約 16.2px) */
-  line-height: 1.6;
+  text-align: left;
+  font-size: 0.9rem; /* (約 16.2px) */
+  line-height: 1.6;
 }
 
 /* ===========================
-   研究項目 (About Page)
+   中心簡介 (About Page)
 =========================== */
 .about-content h3 {
-  /* 關鍵修改：
-    使用我們新的 h3 基礎大小 (1.6rem)
-    並覆蓋掉底線
-  */
-  font-size: 1.6rem; 
-  color: #3b5dc9;
-  border-bottom: none;
-  margin-top: 2rem;
+  /* 關鍵修改：
+    使用我們新的 h3 基礎大小 (1.6rem)
+    並覆蓋掉底線
+  */
+  font-size: 1.6rem; 
+  color: #3b5dc9;
+  border-bottom: none;
+  margin-top: 2rem;
 }
 
 .about-content ol {
-  padding-left: 2rem;
-  line-height: 1.9;
+  padding-left: 2rem;
+  line-height: 1.9;
 }
 .about-content ol li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 
 /* ===========================
-   回到頂部按鈕
+   回到頂部按鈕
 =========================== */
 #scrollTopBtn {
-  background-color: #1e3a8a;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  padding: 0;
-  cursor: pointer;
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.3s;
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  padding: 0;
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 #scrollTopBtn:hover {
-  background-color: #3b5dc9;
-  transform: translateY(-3px);
+  background-color: #3b5dc9;
+  transform: translateY(-3px);
 }
 
 /* ===========================
-   頁尾 (Footer)
+   頁尾 (Footer)
 =========================== */
 footer {
-  background-color: #333;
-  color: #ccc;
-  text-align: center;
-  padding: 2rem 1rem;
-  margin-top: 3rem;
-  font-size: 0.9rem; /* (約 16.2px) */
+  background-color: #333;
+  color: #ccc;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem; /* (約 16.2px) */
 }
 footer p {
-  margin: 0;
-  text-align: center;
+  margin: 0;
+  text-align: center;
 }
 
 /* ===========================
-   文章頁面 (Article Page)
+   文章頁面 (Article Page)
 =========================== */
 .article-meta {
-  font-size: 0.9rem; /* (約 16.2px) */
-  color: #777;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
+  font-size: 0.9rem; /* (約 16.2px) */
+  color: #777;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
 }
 
 .article-content {
-  line-height: 1.9;
+  line-height: 1.9;
 }
 
 .article-content img {
-  max-width: 100%; 
-  height: auto;
-  border-radius: 8px;
-  margin: 1rem 0 1.5rem 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 100%; 
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0 1.5rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .article-content h3 {
-  /* 關鍵修改：
-    使用我們新的 h3 基礎大小 (1.6rem)
-  */
-  font-size: 1.6rem; 
-  color: #3b5dc9;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 5px;
+  /* 關鍵修改：
+    使用我們新的 h3 基礎大小 (1.6rem)
+  */
+  font-size: 1.6rem; 
+  color: #3b5dc9;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
 }
 
 .article-content ul,
 .article-content ol {
-  padding-left: 2.5rem;
-  margin-bottom: 1.5rem;
+  padding-left: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .back-link {
-  display: inline-block;
-  margin-top: 2rem;
-  text-decoration: none;
-  font-weight: bold;
-  color: #1e3a8a;
-  transition: transform 0.2s;
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1e3a8a;
+  transition: transform 0.2s;
 }
 
 .back-link:hover {
-  color: #3b5dc9;
-  transform: translateX(-5px);
+  color: #3b5dc9;
+  transform: translateX(-5px);
 }
 
 /* ===========================
-   工具樣式 (Utilities)
+   工具樣式 (Utilities)
 =========================== */
 
 /* 用於首行縮排兩個字 */
 .indent-first-line {
-  text-indent: 2em; /* 2em (約 36px) */
+  text-indent: 2em; /* 2em (約 36px) */
 }
 
 /* ===========================
-   響應式設計 (RWD)
+   響應式設計 (RWD)
 =========================== */
 @media (max-width: 760px) {
-  header {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  header h1 {
-    margin-bottom: 1rem;
-  }
+  header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  header h1 {
+    margin-bottom: 1rem;
+  }
 
-  nav a {
-    display: block;
-    margin: 10px 0;
-    text-align: center;
-  }
+  nav a {
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+  }
 
-  main {
-    padding: 0 0.5rem;
-    margin-top: 1rem;
-  }
+  main {
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+  }
 
-  .content-card {
-    padding: 1.5rem;
-  }
+  .content-card {
+    padding: 1.5rem;
+  }
 
-  .faculty-member {
-    flex: 0 1 100%;
-  }
+  .faculty-member {
+    flex: 0 1 100%;
+  }
 
-  .faculty-member img {
-    width: 130px; 
-    height: 195px;
-  }
+  .faculty-member img {
+    width: 130px; 
+    height: 195px;
+  }
 }
