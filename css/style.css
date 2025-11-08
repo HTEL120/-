@@ -577,62 +577,71 @@ footer p {
 =========================== */
 .hero-section {
   width: 100%;
-  height: 400px; /* 橫幅高度 (您可以自行調整，400px 或 450px 都不錯) */
-  position: relative; /* 用於文字疊加定位 */
+
+  /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
+  height: 550px; /* 您可以改成 500px, 600px 等您喜歡的高度 */
+
+  position: relative; 
   display: flex;
-  align-items: center; /* 垂直置中文字區塊 */
+  align-items: center; 
 
-  /* --- 關鍵修改：
-     1. 加入 40% 透明度的黑色漸層，疊在圖片上 (使其變暗)
-     2. 設定背景圖片
-  --- */
+  /* --- 調整 (2/4): 新增此行，讓內容水平置中 --- */
+  justify-content: center; 
+
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
-
   background-size: cover; 
-  background-position: center 70%; /* 圖片顯示的中心點 (70% 表示偏下，可看見 "中大") */
+
+  /* --- 調整 (3/4): 圖片對齊方式改回 "center center" --- */
+  background-position: center center; /* (原 70%) 這樣才能顯示較多圖片內容 */
 }
 
 /* 文字內容的容器 */
 .hero-content {
   width: 90%;
   max-width: 550px; /* 限制文字區塊的最大寬度 */
-  margin-left: 10%; /* 讓文字區塊靠左 (可調整 10%) */
 
-  /* --- 關鍵修改：移除所有背景和陰影 --- */
-  background-color: transparent; /* 移除白色背景 */
+  /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
+  margin-left: 0; 
+
+  background-color: transparent; 
   @supports (backdrop-filter: blur(5px)) {
-    backdrop-filter: none; /* 移除毛玻璃效果 */
+    backdrop-filter: none; 
   }
-  box-shadow: none; /* 移除陰影 */
-  padding: 0; /* 移除內邊距 */
-
-  /* --- 關鍵修改：設定文字顏色為白色 --- */
+  box-shadow: none; 
+  padding: 0; 
   color: #ffffff;
+
+  /* --- 新增：讓 h2 標題和其底線一起置中 --- */
+  text-align: center; 
 }
 
 /* 調整 Hero 區塊內的標題 */
 .hero-content h2 {
   font-size: 2.2rem; 
-  color: #ffffff; /* 修改為白色 */
+  color: #ffffff; 
   margin-top: 0;
-
-  /* --- 關鍵修改：模仿 E-DReM 的白色底線 --- */
   border-bottom: 3px solid #ffffff; 
-  padding-bottom: 1rem; /* 底線和內文的間距 */
-  margin-bottom: 1.5rem; /* 標題和內文的間距 */
+  padding-bottom: 1rem; 
+  margin-bottom: 1.5rem; 
+
+  /* --- 新增：讓底線只跟文字一樣寬 --- */
+  display: inline-block; 
 }
 
 /* 調整 Hero 區塊內的文字 */
 .hero-content p {
   text-indent: 0; 
-  text-align: justify;
-  color: #f0f0f0; /* 使用微灰色(f0f0f0)，比純白更易讀 */
+
+  /* --- 關鍵：覆蓋掉父層的 text-align: center --- */
+  text-align: justify; 
+
+  color: #f0f0f0; 
   margin-bottom: 1rem;
-  line-height: 1.8; /* 增加行高 */
-  font-size: 1.1rem; /* 稍微放大文字，使其更像範例 */
+  line-height: 1.8; 
+  font-size: 1.1rem; 
 }
 
-/*
+/* (這段請保留)
   確保 <main> 內容 (最新消息卡片) 和橫幅有間距 
 */
 main {
@@ -644,20 +653,23 @@ main {
 =========================== */
 @media (max-width: 760px) {
   .hero-section {
-    height: 350px; 
-    justify-content: center; /* 手機版文字置中 */
+    /* --- 調整：手機版橫幅也加高 (原 350px) --- */
+    height: 450px; 
+    justify-content: center; 
   }
   .hero-content {
-    margin-left: 0; /* 移除左邊距 */
+    margin-left: 0; 
     width: 90%;
     max-width: 90%;
-    padding: 0; /* 移除內邊距 */
+    padding: 0; 
+    text-align: center; /* 確保手機版也置中 */
   }
   .hero-content h2 {
-    font-size: 1.8rem; /* 手機版標題縮小 */
+    font-size: 1.8rem; 
   }
   .hero-content p {
     font-size: 0.9rem;
+    text-align: justify; /* 確保手機版也是左右對齊 */
   }
 }
 
