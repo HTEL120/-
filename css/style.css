@@ -36,11 +36,23 @@ header {
 header h1 {
   margin: 0;
   /* 關鍵修改：顯著放大網站標題
-    (原 1.75rem)
+     (原 2.1rem)
   */
   font-size: 2.1rem; 
   font-weight: 700; /* 加粗 */
   color: #1e3a8a;
+
+  /* --- 新增：讓 Logo 和文字對齊 --- */
+  display: flex;
+  align-items: center;
+  line-height: 1; /* 確保垂直對齊 */
+}
+
+/* --- 控制 Logo 圖片的大小 --- */
+.ncu-logo {
+  height: 45px; /* 您可以調整這個高度，45px 應該很合適 */
+  width: auto;  /* 寬度自動縮放 */
+  margin-right: 15px; /* Logo 和文字之間的間距 */
 }
 
 /* ===========================
