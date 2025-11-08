@@ -23,6 +23,7 @@
         <img src="../images/劉正毓.jpeg" alt="劉正毓" style="width: 170px; height: 255px; object-fit: cover; border-radius: 8px; margin-right: 2rem; border: 1px solid #e0e0e0;">
         <div>
           <h2 style="border-bottom: none; margin-bottom: 0.5rem;">劉正毓 (Liu, Cheng-Yi)</h2>
+          <p style="font-size: 1.2rem; color: #555; margin-top: 0;">(職稱 待補上)</p>
         </div>
       </div>
 
@@ -36,8 +37,26 @@
       </ul>
 
       <h3>研究計畫</h3>
-      <p>(... 待補上 ...)</p>
+      <p>以下為主要研究方向：</p>
+      
+      <div class="list-container">
+        <ol id="projectList" style="padding-left: 2rem; line-height: 1.9;">
+          
+          <li>Thin-GaN LED 製程技術開發：包括磊晶、雷射剝離與金屬電鍍製程部份，接著再進行最後之LED之光學測量，得到發光效率。</li>
+          <li>發光二極體LED晶片覆晶封裝：以Flip-chip封裝的結構為目標，發展一良好的散熱系統，此一系統包含一散熱良好的基材及散熱途徑。</li>
+          <li>電鍍雙晶銅技術：藉由開發(111)奈米雙晶銅電鍍製程來製做奈米雙晶銅膜，因為內部高能量缺陷密度的降低，能有效降低電子散射及訊號傳導的阻礙，使電流及訊號更順利通過導體內部；在高頻低損、高機械強度、低電阻率、高電遷移抗性及良好的熱穩定性的同時，維持良好可靠度。</li>
+          <li>低溫銅-銅直接鍵合技術：藉由實驗室開發的多種銅微結構，可以製作出適合快速介面生長的銅晶粒，實現低溫低壓的銅-銅直接鍵合技術。</li>
+          <li>自組裝低溫銲錫銲球：本實驗室開發一款自組裝的銲錫，將其填充在晶片與基板之間，在加熱的過程中，晶片與基板的金屬接點間形成電性通路，導電通路外圍的錫液在加熱的過程中逐漸固化，最後完成底部充填保護銲點，經此一步驟完成一般覆晶封裝的流程。</li>
 
+          <li>覆晶凸塊的電致遷移 (Electromigration) 研究：經由適當的實驗設計，得到不同銅及鎳添加量下銅錫及鎳錫合金的Z*值，而這一步建立教學的模型。同時，建立測量介金屬化合物基本性質的設備及方法，針對介金屬本身抗電遷移能力以及與銲料的濕潤性做通盤的研究，並進行電遷移效應對於銲料與介金屬界面反應的研究。</li>
+          <li>高介電高份子/金屬粉粒複合介電材料：將高份子/金屬粉粒材料的k值提昇，並尋找最佳的金屬摻雜徑度及尺寸，以達成與PCB相容的高介電電容材料。在學術研究上我們必須探討因為金屬粉粒摻雜所提高介電常數的細部機制。</li>
+          <li>奈米金屬(合金)顆粒/粉末：藉由調整反應系統中材料種類、濃度、溫度、時間等，來調整物質的長寬比，使產物具有不同的物理性質。因為其一維特性，常與高分子混合燒結成網狀薄膜，形成的交聯網絡於拉伸後仍具有良好的導電性，高孔隙率使其擁有高光穿透率且利於物質傳遞，3D結構的薄膜可增加材料的附著性。</li>
+
+        </ol>
+      </div>
+
+      <div class="pagination-container" id="paginationControls">
+        </div>
       <h3>聯絡資訊</h3>
       <ul>
         <li>Email: ( 待補上 )</li>
@@ -50,9 +69,115 @@
 
   <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
   <footer> <p>&copy; 2025 熱管理技術研究中心</p> </footer>
+  
   <script>
     window.onscroll = () => { document.getElementById("scrollTopBtn").style.display = (document.documentElement.scrollTop > 200) ? "block" : "none"; };
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const rowsPerPage = 5; // *** 在這裡設定每頁顯示幾筆資料 ***
+      
+      // --- 修改：從 targeting "tbody" 改為 targeting "ol" ---
+      const listContainer = document.getElementById("projectList");
+      if (listContainer) { // 檢查列表是否存在
+        const allItems = listContainer.getElementsByTagName("li"); // 從 "tr" 改為 "li"
+        // --- 修改結束 ---
+
+        const totalRows = allItems.length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+        const paginationControls = document.getElementById("paginationControls");
+        let currentPage = 1;
+
+        // 顯示特定頁面的函式
+        function showPage(page) {
+          // 先隱藏所有資料列
+          for (let i = 0; i < totalRows; i++) {
+            allItems[i].style.display = "none";
+          }
+          
+          // 計算並顯示當前頁面的資料列
+          const startIndex = (page - 1) * rowsPerPage;
+          const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+          
+          for (let i = startIndex; i < endIndex; i++) {
+            allItems[i].style.display = "list-item"; // 從 "" 改為 "list-item"
+          }
+        }
+
+        // 建立分頁按鈕的函式
+        function setupPagination() {
+          // 清空現有按鈕
+          paginationControls.innerHTML = "";
+
+          // 建立 "上一頁" 按鈕
+          let prevButton = document.createElement("a");
+          prevButton.href = "#projectList"; // 點擊時跳轉到列表頂部
+          prevButton.innerText = "«";
+          prevButton.classList.add("pagination-btn");
+          if (currentPage === 1) {
+            prevButton.classList.add("disabled");
+          }
+          prevButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+              currentPage--;
+              showPage(currentPage);
+              setupPagination();
+            }
+          });
+          paginationControls.appendChild(prevButton);
+
+          // 建立數字按鈕
+          for (let i = 1; i <= totalPages; i++) {
+            let pageButton = document.createElement("a");
+            pageButton.href = "#projectList";
+            pageButton.innerText = i;
+            pageButton.classList.add("pagination-btn");
+            if (i === currentPage) {
+              pageButton.classList.add("active");
+            }
+            
+            pageButton.addEventListener("click", function(e) {
+              e.preventDefault();
+              currentPage = i;
+              showPage(currentPage);
+              setupPagination();
+            });
+            paginationControls.appendChild(pageButton);
+          }
+
+          // 建立 "下一頁" 按鈕
+          let nextButton = document.createElement("a");
+          nextButton.href = "#projectList";
+          nextButton.innerText = "»";
+          nextButton.classList.add("pagination-btn");
+          if (currentPage === totalPages) {
+            nextButton.classList.add("disabled");
+          }
+          nextButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+              currentPage++;
+              showPage(currentPage);
+              setupPagination();
+            }
+          });
+          paginationControls.appendChild(nextButton);
+        }
+
+        // 初始化：顯示第一頁並建立按鈕
+        if (totalRows > 0) {
+          showPage(currentPage);
+          setupPagination();
+        } else {
+           // 如果沒有資料，顯示提示
+           listContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
+           if(paginationControls) paginationControls.style.display = 'none';
+        }
+      }
+    });
   </script>
 </body>
 </html>
