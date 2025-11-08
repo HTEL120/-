@@ -363,6 +363,107 @@ footer p {
 }
 
 /* ===========================
+   研究計畫表格 (Research Table)
+=========================== */
+
+/* 表格容器，使其可以水平捲動 */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* 在小螢幕上啟用水平捲動 */
+  margin-top: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+/* 基礎表格樣式 */
+.research-table {
+  width: 100%;
+  border-collapse: collapse; /* 邊框合併 */
+  min-width: 800px; /* 最小寬度，確保在大螢幕上能正常顯示 */
+}
+
+/* 表頭 (th) 和儲存格 (td) 樣式 */
+.research-table th,
+.research-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+/* 表頭 (th) 特定樣式 */
+.research-table th {
+  background-color: #f9f9f9;
+  font-weight: 700;
+  color: #333;
+}
+
+/* 儲存格 (td) 樣式 */
+.research-table td {
+  color: #555;
+}
+
+/* 讓表格有斑馬紋 (間隔色) */
+.research-table tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+/* 金額欄位靠右對齊 */
+.research-table .col-amount {
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap; /* 讓金額不換行 */
+}
+
+.research-table .col-date {
+  white-space: nowrap; /* 讓日期不換行 */
+}
+
+/* ===========================
+   分頁 (Pagination) 樣式
+=========================== */
+.pagination-container {
+  text-align: center;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.pagination-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  margin: 0 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #1e3a8a;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-btn:hover {
+  background-color: #f5f7fa;
+  border-color: #ccc;
+}
+
+/* 目前選中的頁碼按鈕 */
+.pagination-btn.active {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  color: #fff;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* 禁用按鈕 (例如 "上一頁" 在第一頁時) */
+.pagination-btn.disabled {
+  color: #aaa;
+  border-color: #eee;
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+}
+
+/* ===========================
    文章頁面 (Article Page)
 =========================== */
 .article-meta {
