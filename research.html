@@ -1,70 +1,193 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>研究項目</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中心簡介</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <header>
-    <h1>熱管理技術研究中心</h1>
-    <nav>
-      <a href="index.html">首頁</a>
-      <a href="about.html">研究項目</a>
-      <a href="members.html">中心成員</a>
-      <a href="news.html">最新消息</a>
-    </nav>
-  </header>
+  <header>
+    <h1>熱管理技術研究中心</h1>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="research.html">研究項目</a>
+      <a href="members.html">中心成員</a>
+      <a href="news.html">最新消息</a> 
+    </nav>
+  </header>
 
-  <main>
-    <section class="content-card about-content">
-      <h2>研究項目</h2>
-      <div>
-        <p>本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行：</p>
+  <main>
+    <section class="content-card about-content">
+      <h2>中心簡介</h2>
+      <div>
+        <p>本中心設有三個研究技術組，分別為元件及系統設計組、熱傳裝置製造組與熱傳材料技術組三大面向推動研究進行：</p>
 
-        <h3>一、元件及系統設計組</h3>
-        <p>本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
-        <ol>
-          <li>均溫板、冷板與散熱鰭片設計</li>
-          <li>晶片元件熱傳機制分析與溫度分布模擬</li>
-          <li>單相與兩相熱交換器設計</li>
-        </ol>
+        <h3>一、元件及系統設計組</h3>
+        <p>本組透過熱模擬與熱流分析技術，依照高功率晶片的實際需求設計最合適的散熱模組，滿足未來高速運算與AI晶片的熱管理挑戰。</p>
+        <ol>
+          <li>均溫板、冷板與散熱鰭片設計</li>
+          <li>晶片元件熱傳機制分析與溫度分布模擬</li>
+          <li>單相與兩相熱交換器設計</li>
+        </ol>
 
-        <h3>二、熱傳裝置製造組</h3>
-        <p>本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>
-        <ol>
-          <li>五軸銑削製程，金屬微結構加工</li>
-          <li>超快雷射加工（皮秒/飛秒），無接觸微加工技術</li>
-          <li>微流道與高密度散熱結構製程平台</li>
-        </ol>
+        <h3>二、熱傳裝置製造組</h3>
+        <p>本組藉由結合AI熱模擬與先進機台，打破傳統製程限制，開發適用於新世代高密度封裝的高性能散熱裝置。</p>
+        <ol>
+          <li>五軸銑削製程，金屬微結構加工</li>
+          <li>超快雷射加工（皮秒/飛秒），無接觸微加工技術</li>
+          <li>微流道與高密度散熱結構製程平台</li>
+        </ol>
 
-        <h3>三、熱傳材料技術組</h3>
-        <p>本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
-        <ol>
-          <li>液態金屬（如鎵銦錫合金）熱界面材料開發與改質</li>
-          <li>熱交換器材料（銅、鋁）之腐蝕與耐候性改善</li>
-          <li>填料設計與流變性調控，製作高κ值TIMs</li>
-        </ol>
-      </div>
-    </section>
-  </main>
+        <h3>三、熱傳材料技術組</h3>
+        <p>本組以材料創新為核心，開發符合未來高功率晶片應用的熱傳界面與結構材料，有效提升系統散熱效率與可靠性。</p>
+        <ol>
+          <li>液態金屬（如鎵銦錫合金）熱界面材料開發與改質</li>
+          <li>熱交換器材料（銅、鋁）之腐蝕與耐候性改善</li>
+          <li>填料設計與流變性調控，製作高κ值TIMs</li>
+        </ol>
+      </div>
+    </section>
+  </main>
 
-  <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
+  <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
 
-  <footer>
-    <p>&copy; 2025 熱管理技術研究中心</p>
-  </footer>
+  <footer>
+    <p>&copy; 2025 熱管理技術研究中心</p>
+  </footer>
 
-  <script>
-    window.onscroll = () => {
-      const btn = document.getElementById("scrollTopBtn");
-      btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
-    };
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+  <script>
+    window.onscroll = () => {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
+
+
+members.html:
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中心成員</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>熱管理技術研究中心</h1>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="about.html">簡介</a>
+      <a href="news.html">消息</a> 
+      <a href="members.html">中心成員</a>
+      <a href="services.html">服務項目</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content-card faculty">
+      <h2>中心成員</h2>
+
+      <div class="faculty-row">
+        <div class="faculty-member">
+          <img src="images/楊建裕.jpg" alt="楊建裕">
+          <div class="faculty-info">
+            <h4>楊建裕 (Yang, Chien-Yuh)</h4>
+            <p>學歷：Ph.D., Pennsylvania State University, USA</p>
+            <p>研究專業：熱交換器設計、熱管技術、熱傳增強技術微尺度熱流、電子熱備散熱、冷凍空調、太陽能</p>
+          </div>
+        </div>
+
+        <div class="faculty-member">
+          <img src="images/林景崎.jpg" alt="林景崎">
+          <div class="faculty-info">
+            <h4>林景崎 (Lin, Jing-Chie)</h4>
+            <p>學歷：Ph.D., Department of Materials Science and Engineering, National Tsing Hua University</p>
+            <p>研究專業：電池技術、奈微製程技術、材料腐蝕與防蝕、電極材料研發、電化學監測技術、材料製程、防蝕工程、薄膜製程、能源材料</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faculty-row">
+        <div class="faculty-member">
+          <img src="images/吳俊諆.jpg" alt="吳俊諆">
+          <div class="faculty-info">
+            <h4>吳俊諆 (Wu, Jiunn-Chi)</h4>
+            <p>學歷：Ph.D., School of Aerospace, Georgia Institute of Technology, USA</p>
+            <p>研究專業：電子散熱、計算流體力學、微尺度熱流、太陽能集光器、聚光型太陽能裝置、能源評估、風力渦輪機氣動力分析、風場模擬</p>
+          </div>
+        </div>
+
+        <div class="faculty-member">
+          <img src="images/劉正毓.jpeg" alt="劉正毓">
+          <div class="faculty-info">
+            <h4>劉正毓 (Liu, Cheng-Yi)</h4>
+            <p>學歷：Ph.D., Materials Science and Engineering, University of California-Los Angeles, USA</p>
+            <p>研究專業：自組裝低溫錫膠、先進封裝技術、金屬表面處理及無鉛銲料、電鍍雙晶銅技術、散熱材料開發、可靠度測試研究、發光二極體 (LED)、透明導電薄膜</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faculty-row">
+        <div class="faculty-member">
+          <img src="images/何正榮.jpg" alt="何正榮">
+          <div class="faculty-info">
+            <h4>何正榮 (Ho, Jeng-Rong)</h4>
+            <p>學歷：Ph.D., Department of Mechanical Engineering, University of California, USA</p>
+            <p>研究專業：熱傳流體力學、雷射精密製程與材料處理、透明硬脆材料加工成型、雷射3D列印、薄膜製程與圖案技術、Micro-LED光轉製、有機軟性電子與光電元件製程</p>
+          </div>
+        </div>
+
+        <div class="faculty-member">
+          <img src="images/曹嘉文.jpg" alt="曹嘉文">
+          <div class="faculty-info">
+            <h4>曹嘉文 (Tsao, Chia-Wen)</h4>
+            <p>學歷：Ph.D., Mechanical Engineering, University of Maryland, USA</p>
+            <p>研究專業：微流體、質譜分析技術、納米系質譜分析技術、微流體生物反應器設計、微奈米製造 & 微奈米技術、塑膠微加工技術、生物晶片、生物感測技術、微流體強化石油開採技術、微機電系統</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faculty-row">
+        <div class="faculty-member">
+          <img src="images/陳冠廷.jpg" alt="陳冠廷">
+          <div class="faculty-info">
+            <h4>陳冠廷 (Chen, Kuan-Ting)</h4>
+            <p>學歷：Ph.D., Department of Aeronautics and Astronautics, Kyushu University, Japan</p>
+            <p>研究專業：微尺度熱流、二維材料上流體流動性質分析、奈微尺度流動、冷凍空調、電子設備散熱</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  
+  <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
+
+  <footer>
+    <p>&copy; 2025 熱管理技術研究中心</p>
+  </footer>
+
+  <script>
+    window.onscroll = function() { scrollFunction() };
+    function scrollFunction() {
+      const btn = document.getElementById("scrollTopBtn");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
