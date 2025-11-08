@@ -577,45 +577,49 @@ footer p {
 =========================== */
 .hero-section {
   width: 100%;
-
-  /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
-  height: 600px; /* 可以改成 500px, 600px 等高度 */
-
+  height: 75vh; /* 佔據 75% 視窗高度 */
   position: relative; 
   display: flex;
   align-items: center; 
-
-  /* --- 調整 (2/4): 新增此行，讓內容水平置中 --- */
   justify-content: center; 
 
+  /* 我們在圖片上疊加 40% 的黑色漸層
+    (您可以調整 0.4 來改變圖片暗度) 
+  */
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
   background-size: cover; 
-
-  /* --- 調整 (3/4): 圖片對齊方式改回 "center center" --- */
-  background-position: center center; /* (原 70%) 這樣才能顯示較多圖片內容 */
+  background-position: center 80%; /* 顯示圖片 80% 高度 (偏底部) */
 }
 
 /* 文字內容的容器 */
 .hero-content {
   width: 90%;
-  max-width: 550px; /* 限制文字區塊的最大寬度 */
-
-  /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
+  max-width: 550px; 
   margin-left: 0; 
 
-  background-color: transparent; 
-  @supports (backdrop-filter: blur(5px)) {
-    backdrop-filter: none; 
-  }
-  box-shadow: none; 
-  padding: 0; 
-  color: #ffffff;
+  /* --- 關鍵修改：加入透明灰色方框 --- */
+  /* 這是一個 20% 透明度的"黑色" (rgba(0,0,0,0.2))
+    疊加在變暗的背景上，就會產生 "透明深灰" 的效果。
+    您可以調整 0.2 來改變透明度 (例如 0.1 或 0.3)
+  */
+  background-color: rgba(0, 0, 0, 0.2);
 
-  /* --- 新增：讓 h2 標題和其底線一起置中 --- */
+  /* 重新加回 "毛玻璃" 效果 */
+  @supports (backdrop-filter: blur(5px)) {
+    background-color: rgba(0, 0, 0, 0.15); /* 毛玻璃時可以更透明一點 */
+    backdrop-filter: blur(5px);
+  }
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* 保持一點陰影 */
+  padding: 2rem 2.5rem; /* 重新加回內邊距 */
+  border-radius: 8px; /* 加上圓角 */
+  /* --- 修改結束 --- */
+
+  color: #ffffff;
   text-align: center; 
 }
 
-/* 調整 Hero 區塊內的標題 */
+/* 標題 (這部分不變) */
 .hero-content h2 {
   font-size: 2.2rem; 
   color: #ffffff; 
@@ -623,27 +627,20 @@ footer p {
   border-bottom: 3px solid #ffffff; 
   padding-bottom: 1rem; 
   margin-bottom: 1.5rem; 
-
-  /* --- 新增：讓底線只跟文字一樣寬 --- */
   display: inline-block; 
 }
 
-/* 調整 Hero 區塊內的文字 */
+/* 內文 (這部分不變) */
 .hero-content p {
   text-indent: 0; 
-
-  /* --- 關鍵：覆蓋掉父層的 text-align: center --- */
   text-align: justify; 
-
   color: #f0f0f0; 
   margin-bottom: 1rem;
   line-height: 1.8; 
   font-size: 1.1rem; 
 }
 
-/* (這段請保留)
-  確保 <main> 內容 (最新消息卡片) 和橫幅有間距 
-*/
+/* (這段不變) */
 main {
    margin-top: 2rem;
 }
@@ -653,23 +650,26 @@ main {
 =========================== */
 @media (max-width: 760px) {
   .hero-section {
-    /* --- 調整：手機版橫幅也加高 (原 350px) --- */
-    height: 450px; 
+    height: 60vh; 
     justify-content: center; 
+    background-position: center 80%;
   }
   .hero-content {
     margin-left: 0; 
     width: 90%;
     max-width: 90%;
-    padding: 0; 
-    text-align: center; /* 確保手機版也置中 */
+
+    /* --- 關鍵修改：RWD 也加上內邊距 --- */
+    padding: 1.5rem; 
+
+    text-align: center; 
   }
   .hero-content h2 {
     font-size: 1.8rem; 
   }
   .hero-content p {
     font-size: 0.9rem;
-    text-align: justify; /* 確保手機版也是左右對齊 */
+    text-align: justify; 
   }
 }
 
