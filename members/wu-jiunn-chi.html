@@ -23,6 +23,7 @@
         <img src="../images/吳俊諆.jpg" alt="吳俊諆" style="width: 170px; height: 255px; object-fit: cover; border-radius: 8px; margin-right: 2rem; border: 1px solid #e0e0e0;">
         <div>
           <h2 style="border-bottom: none; margin-bottom: 0.5rem;">吳俊諆 (Wu, Jiunn-Chi)</h2>
+          <p style="font-size: 1.2rem; color: #555; margin-top: 0;">(職稱 待補上)</p>
         </div>
       </div>
 
@@ -36,8 +37,92 @@
       </ul>
 
       <h3>研究計畫</h3>
-      <p>(... 待補上 ...)</p>
+      
+      <div class="table-container">
+        <table class="research-table" id="projectTable">
+          <thead>
+            <tr>
+              <th>工作類別</th>
+              <th>姓名</th>
+              <th>計畫名稱</th>
+              <th>執行期限</th>
+              <th>補助單位</th>
+              <th>金額</th>
+            </tr>
+          </thead>
+          <tbody id="projectTableBody">
+            
+            <tr>
+              <td>共同主持人</td>
+              <td>吳俊諆</td>
+              <td>電池模組熱分析...</td>
+              <td class="col-date">2009-11-01 ~ 2010-11-30</td>
+              <td>新普科技公司</td>
+              <td class="col-amount">500,000</td>
+            </tr>
+            <tr>
+              <td>共同主持人</td>
+              <td>吳俊諆</td>
+              <td>冷凍空調用板式熱...(1/3)</td>
+              <td class="col-date">2009-09-01 ~ 2010-08-31</td>
+              <td>國科會</td>
+              <td class="col-amount">3,265,000</td>
+            </tr>
+            <tr>
+              <td>共同主持人</td>
+              <td>吳俊諆</td>
+              <td>節能減碳的社會性... - 教育情境的實踐(1/2)</td>
+              <td class="col-date">2009-07-01 ~ 2010-08-31</td>
+              <td>國科會</td>
+              <td class="col-amount">4,153,000</td>
+            </tr>
+            <tr>
+              <td>共同主持人</td>
+              <td>吳俊諆</td>
+              <td>聚光型太陽能熱電...</td>
+              <td class="col-date">2009-06-01 ~ 2010-05-31</td>
+              <td>經濟部</td>
+              <td class="col-amount">13,000,000</td>
+            </tr>
+            <tr>
+              <td>主持人</td>
+              <td>吳俊諆</td>
+              <td>太陽追蹤器的追蹤...</td>
+              <td class="col-date">2009-01-31 ~ 2009-12-31</td>
+              <td>教育部</td>
+              <td class="col-amount">583,699</td>
+            </tr>
 
+            <tr>
+              <td>共同主持人</td>
+              <td>吳俊諆</td>
+              <td>探空酬載回收艙...</td>
+              <td class="col-date">2007-12-01 ~ 2009-05-31</td>
+              <td>國家太空中心</td>
+              <td class="col-amount">5,490,000</td>
+            </tr>
+            <tr>
+              <td>共同主持人</td>
+              <td>吳俊諆</td>
+              <td>「跨領域-綠色科技」人才培育先導型計畫...</td>
+              <td class="col-date">2009-01-01 ~ 2008-12-31</td> <td>教育部</td>
+              <td class="col-amount">854,000</td>
+            </tr>
+            <tr>
+              <td>主持人</td>
+              <td>吳俊諆</td>
+              <td>聚光太陽技術的研... 追蹤器與熱能應用</td>
+              <td class="col-date">2008-01-31 ~ 2008-12-31</td>
+              <td>教育部</td>
+              <td class="col-amount">812,000</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-container" id="paginationControls">
+        </div>
       <h3>聯絡資訊</h3>
       <ul>
         <li>Email: ( 待補上 )</li>
@@ -50,9 +135,111 @@
 
   <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
   <footer> <p>&copy; 2025 熱管理技術研究中心</p> </footer>
+  
   <script>
     window.onscroll = () => { document.getElementById("scrollTopBtn").style.display = (document.documentElement.scrollTop > 200) ? "block" : "none"; };
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const rowsPerPage = 5; // *** 在這裡設定每頁顯示幾筆資料 ***
+      const tableBody = document.getElementById("projectTableBody");
+      const allRows = tableBody.getElementsByTagName("tr");
+      const totalRows = allRows.length;
+      const totalPages = Math.ceil(totalRows / rowsPerPage);
+      const paginationControls = document.getElementById("paginationControls");
+      let currentPage = 1;
+
+      // 顯示特定頁面的函式
+      function showPage(page) {
+        // 先隱藏所有資料列
+        for (let i = 0; i < totalRows; i++) {
+          allRows[i].style.display = "none";
+        }
+        
+        // 計算並顯示當前頁面的資料列
+        const startIndex = (page - 1) * rowsPerPage;
+        const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+        
+        for (let i = startIndex; i < endIndex; i++) {
+          allRows[i].style.display = ""; // 恢復為表格預設 display (通常是 "table-row")
+        }
+      }
+
+      // 建立分頁按鈕的函式
+      function setupPagination() {
+        // 清空現有按鈕
+        paginationControls.innerHTML = "";
+
+        // 建立 "上一頁" 按鈕
+        let prevButton = document.createElement("a");
+        prevButton.href = "#projectTable"; // 點擊時跳轉到表格頂部
+        prevButton.innerText = "«";
+        prevButton.classList.add("pagination-btn");
+        if (currentPage === 1) {
+          prevButton.classList.add("disabled");
+        }
+        prevButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+            setupPagination();
+          }
+        });
+        paginationControls.appendChild(prevButton);
+
+        // 建立數字按鈕
+        for (let i = 1; i <= totalPages; i++) {
+          let pageButton = document.createElement("a");
+          pageButton.href = "#projectTable";
+          pageButton.innerText = i;
+          pageButton.classList.add("pagination-btn");
+          if (i === currentPage) {
+            pageButton.classList.add("active");
+          }
+          
+          pageButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            currentPage = i;
+            showPage(currentPage);
+            setupPagination();
+          });
+          paginationControls.appendChild(pageButton);
+        }
+
+        // 建立 "下一頁" 按鈕
+        let nextButton = document.createElement("a");
+        nextButton.href = "#projectTable";
+        nextButton.innerText = "»";
+        nextButton.classList.add("pagination-btn");
+        if (currentPage === totalPages) {
+          nextButton.classList.add("disabled");
+        }
+        nextButton.addEventListener("click", function(e) {
+          e.preventDefault();
+          if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+            setupPagination();
+          }
+        });
+        paginationControls.appendChild(nextButton);
+      }
+
+      // 初始化：顯示第一頁並建立按鈕
+      if (totalRows > 0) {
+        showPage(currentPage);
+        setupPagination();
+      } else {
+         // 如果沒有資料，顯示提示
+         const tableContainer = document.querySelector(".table-container");
+         if(tableContainer) {
+            tableContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
+         }
+      }
+    });
   </script>
 </body>
 </html>
