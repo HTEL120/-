@@ -604,7 +604,7 @@ footer p {
   margin-left: 0; 
    
   /* --- 修改：加入 "非常透明" 的灰色方框 (15% 透明度) --- */
-  background-color: rgba(0, 0, 0, 0.12); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
+  background-color: rgba(0, 0, 0, 0.1); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
