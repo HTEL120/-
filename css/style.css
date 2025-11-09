@@ -579,7 +579,7 @@ footer p {
   width: 100%;
 
   /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
-  height: 600px; /* 可以改成 500px, 600px 等高度 */
+  height: 650px; /* 可以改成 500px, 600px 等高度 */
 
   position: relative; 
   display: flex;
@@ -604,7 +604,7 @@ footer p {
   margin-left: 0; 
    
   /* --- 修改：加入 "非常透明" 的灰色方框 (15% 透明度) --- */
-  background-color: rgba(0, 0, 0, 0.15); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
+  background-color: rgba(0, 0, 0, 0.1); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
