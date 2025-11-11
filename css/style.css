@@ -496,7 +496,7 @@ footer p {
   /* --- 調整 (2/4): 內容水平置中 --- */
   justify-content: center; 
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/ncu_campus.jpg');
   background-size: cover; 
 
   /* --- 調整 (3/4): 圖片對齊方式 "center center" --- */
