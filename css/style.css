@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css (最終整合版) */
 
 /* ===========================
    基本設定
@@ -10,7 +10,10 @@ html {
 
 body {
   font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
-  background-color: #f5f7fa; 
+  
+  /* --- 新增：使用柔和的淺灰背景 --- */
+  background-color: #f2f4f8; 
+  
   color: #333;
   margin: 0;
   padding: 0;
@@ -27,7 +30,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+  /* --- 修改：使用更柔和的陰影 --- */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  
   position: sticky; 
   top: 0;
   z-index: 100;
@@ -35,29 +41,19 @@ header {
 
 header h1 {
   margin: 0;
-  /* 關鍵修改：顯著放大網站標題
-     (原 2.1rem)
-  */
+  /* --- 恢復：您原始的 2.1rem 標題大小 --- */
   font-size: 2.1rem; 
-  font-weight: 700; /* 加粗 */
+  font-weight: 700;
   color: #1e3a8a;
-
-  /* --- 新增：讓 Logo 和文字對齊 --- */
   display: flex;
   align-items: center;
-  line-height: 1; /* 確保垂直對齊 */
+  line-height: 1;
 }
 
-/* --- 控制 Logo 圖片的大小並微調垂直對齊 --- */
 .ncu-logo {
-  height: 60px; /* 可調整這個高度 */
-  width: auto;  /* 寬度自動縮放 */
-  margin-right: 15px; /* Logo 和文字之間的間距 */
-  
-  /* --- 關鍵修改：向下微調 Logo 位置 --- */
-  /* -2px 表示向上移動 2px， +2px 表示向下移動 2px   */
-  /* 可根據實際效果，將 px 調整成其他負值（如 -1px, -3px）*/
-  /* 或正值（如 1px, 2px）來達到最佳視覺對齊效果。    */
+  height: 60px; /* 您原始的 Logo 大小 */
+  width: auto;
+  margin-right: 15px;
   transform: translateY(0px); 
 }
 
@@ -75,13 +71,26 @@ nav a {
   margin: 0 0.75rem;
   text-decoration: none;
   font-weight: 500; 
-  transition: 0.3s;
-  font-size: 1rem; /* (等於 18px) */
+  font-size: 1rem;
+  position: relative; /* 為了底線動畫 */
+  padding-bottom: 5px; /* 為了底線動畫 */
 }
-
 nav a:hover {
   color: #3b5dc9;
-  text-decoration: none;
+}
+/* --- 新增：導覽列 Hover 底線動畫 (參考大學網站) --- */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b5dc9;
+  transition: width 0.3s ease;
+}
+nav a:hover::after {
+  width: 100%;
 }
 
 /* ===========================
@@ -89,7 +98,8 @@ nav a:hover {
 =========================== */
 main {
   max-width: 1100px;
-  margin: 2rem auto;
+  /* --- 關鍵：Hero 橫幅版面需要的 margin --- */
+  margin: 2rem auto; 
   padding: 0 1rem;
 }
 
@@ -97,28 +107,35 @@ main {
 .content-card {
   background: #ffffff;
   padding: 2rem 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* --- 您的 "Point 4"：加大圓角，陰影更柔和 --- */
+  border-radius: 12px; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
+  
   margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.content-card:hover {
+  /* --- 您的 "Point 4"：上浮效果 --- */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
 }
 
-/* 關鍵修改：
-  統一並「顯著放大」所有 h2 和 h3 標題
+/* --- 恢復：您原始的 H2 和 H3 標題樣式 ---
 */
 h2 {
   font-size: 1.9rem; /* (約 34px) */
   font-weight: 700;
   color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe;
+  border-bottom: 3px solid #e0f2fe; /* 淺藍色底線 */
   padding-bottom: 10px;
   margin-top: 0;
 }
-
 h3 {
   font-size: 1.6rem; /* (約 29px) */
   font-weight: 700;
   color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe;
+  border-bottom: 3px solid #e0f2fe; /* 淺藍色底線 */
   padding-bottom: 10px;
   margin-top: 0;
 }
@@ -126,44 +143,17 @@ h3 {
 /* ===========================
    首頁 (Index Page)
 =========================== */
-/* --- 將校園照片用於獨立的頁面橫幅 --- */
-.hero-banner-image {
-  display: block;
-  width: 100%; /* 100% 填滿 main 區域的寬度 */
-  height: auto;
-  max-height: 400px; /* 限制最大高度 */
-  object-fit: cover;
-  border-radius: 8px; /* 保持圓角 */
 
-  /* --- 關鍵修改：
-     移除 margin-bottom: 2rem; (因為卡片自己有 margin-top) 
-     並新增 box-shadow 讓它獨立浮起
-  --- */
-  margin-bottom: 0; 
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); 
-}
+/* --- 刪除了 .hero-image-in-card 樣式 --- */
 
-/* --- 關鍵修改：
-   讓第一張卡片和上方的橫幅照片之間有距離 
---- */
-main > .content-card:first-child {
-    margin-top: 2rem;
-}
-
-/* ---
-   我們也需要修改 content-card 的 hover 效果
-   避免它和橫幅照片的陰影打架
---- */
-.content-card:hover {
-  transform: translateY(-5px);
-  /* --- 修改：陰影稍微調淡一點 --- */
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-}
 /* 段落格式 */
 p {
   text-indent: 0;
   text-align: justify;
   margin-bottom: 1.25rem;
+}
+.indent-first-line {
+  text-indent: 2em; 
 }
 
 /* 聯絡資訊 */
@@ -178,46 +168,42 @@ p {
 /* ===========================
    最新消息 (News Section)
 =========================== */
+/* --- 恢復：您原始的最新消息樣式 ---
+*/
 .news ul {
   list-style-type: none;
   padding-left: 0;
 }
-
 .news li {
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px dashed #ddd;
+  border-bottom: 1px dashed #ddd; /* 虛線底線 */
 }
-
 .news li::before {
-  content: "»"; 
+  content: "»"; /* "»" 符號 */
   color: #3b5dc9;
   font-weight: bold;
   display: inline-block;
   width: 1.5em;
   margin-left: -1em;
 }
-
 .news li a {
   text-decoration: none; 
-  color: #333; 
+  color: #333; /* 恢復原始顏色 */
   transition: color 0.3s;
 }
-
 .news li a:hover {
   color: #3b5dc9; 
   text-decoration: underline; 
 }
-
 .view-all-container {
   text-align: right; 
   margin-top: 1.5rem;
 }
-
 .view-all-link {
   display: inline-block;
   text-decoration: none;
-  background-color: #f5f7fa; 
+  background-color: #f2f4f8; /* 配合 body 背景色 */ 
   color: #1e3a8a; 
   padding: 8px 16px;
   border-radius: 5px;
@@ -225,20 +211,16 @@ p {
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
 }
-
 .view-all-link:hover {
   background-color: #1e3a8a;
   color: #ffffff;
 }
-
-/* 標題附註 (h2-note) */
 .h2-note {
-  font-size: 1rem; /* (18px * 0.75 = 13.5px) */
+  font-size: 1rem; 
   color: #888; 
   font-weight: 500; 
   margin-left: 10px; 
 }
-
 
 /* ===========================
    成員介紹 (Faculty Section)
@@ -253,21 +235,26 @@ p {
 
 .faculty-member {
   flex: 0 1 48%;
-  background-color: #fdfdfd;
+  
+  /* --- 您的 "Point 3"：讓卡片在卡片中獨立出來 --- */
+  background-color: #fcfdff; /* 淡淡的背景色 */
+  border: 1px solid #e8eef8; /* 淡淡的邊框 */
+  
   padding: 20px;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* 陰影淡一點 */
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   margin-bottom: 20px;
   text-align: center;
+  position: relative; 
+  padding-bottom: 80px; /* 為膠囊按鈕增加空間 */
 }
-
 .faculty-member:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  border-color: #dbe4f9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
 }
-
 .faculty-member img {
   display: block;
   width: 170px; 
@@ -277,56 +264,51 @@ p {
   object-position: center top; 
   border-radius: 8px;
   border: 1px solid #e0e0e0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
 .faculty-info {
   margin-top: 10px;
   text-align: center;
 }
 .faculty-info h4 {
   margin-bottom: 10px;
-  /* 關鍵修改：顯著放大成員姓名
-    (原 1.2rem)
-  */
-  font-size: 1.4rem; /* (約 25px) */
+  font-size: 1.4rem; 
   color: #1e3a8a;
   font-weight: 700;
 }
 .faculty-info p {
   text-align: left;
-  font-size: 0.9rem; /* (約 16.2px) */
+  font-size: 0.9rem; 
   line-height: 1.6;
 }
 
-/* 新增成員介紹頁面的 "More" 按鈕樣式在右下角 */
-.faculty-member {
-  position: relative; /* 設置相對定位，讓內部絕對定位的按鈕可以參考 */
-  padding-bottom: 70px; /* 為按鈕留出空間，避免內容重疊 */
-}
-
-/* "More" 按鈕樣式 - 置中 */
+/* --- 您的 "Point 3"：現代藍色膠囊按鈕 --- */
 .btn-more {
-  position: absolute; /* 絕對定位 */
-  bottom: 20px; /* 距離底部 20px */
-  left: 50%; /* 將按鈕左邊緣移到中心 */
-  transform: translateX(-50%); /* 將按鈕向左移動自身寬度的一半，使其水平置中 */
+  position: absolute; 
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%);
   display: inline-block;
   text-decoration: none;
-  background-color: #1e3a8a; /* 主要佈景顏色 */
+  
+  background-color: #1e3a8a; 
   color: #ffffff;
-  padding: 6px 15px; /* 縮小按鈕的 padding */
-  border-radius: 5px;
+  
+  /* --- 膠囊樣式 --- */
+  padding: 8px 24px; /* 調整 padding */
+  border-radius: 20px; /* 膠囊圓角 */
   font-weight: bold;
-  font-size: 0.85rem; /* 進一步縮小字體大小 */
-  transition: background-color 0.3s, transform 0.3s;
-  z-index: 10; /* 確保按鈕在其他內容之上 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 增加輕微陰影，使其更突出 */
+  font-size: 0.9rem; 
+  
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  z-index: 10; 
+  
+  /* --- 藍色陰影 --- */
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
 }
-
 .btn-more:hover {
-  background-color: #3b5dc9; /* 滑鼠懸停時的顏色 */
-  transform: translateX(-50%) translateY(-2px); /* 合併 transform 效果 (水平置中 + 向上移動) */
+  background-color: #3b5dc9; 
+  transform: translateX(-50%) translateY(-2px); /* 保持置中並上浮 */
+  box-shadow: 0 6px 15px rgba(30, 58, 138, 0.4);
   color: #ffffff;
 }
 
@@ -334,16 +316,12 @@ p {
    研究項目
 =========================== */
 .about-content h3 {
-  /* 關鍵修改：
-    使用我們新的 h3 基礎大小 (1.6rem)
-    並覆蓋掉底線
-  */
+  /* --- 恢復：您原始的 h3 樣式 (但移除底線) --- */
   font-size: 1.6rem; 
   color: #3b5dc9;
   border-bottom: none;
   margin-top: 2rem;
 }
-
 .about-content ol {
   padding-left: 2rem;
   line-height: 1.9;
@@ -351,17 +329,14 @@ p {
 .about-content ol li {
   margin-bottom: 0.5rem;
 }
-
-/* 讓研究項目的連結看起來像一般文字 */
 .about-content ol li a {
-  text-decoration: none; /* 移除底線 */
-  color: #333; /* 設置為預設文字顏色 */
+  text-decoration: none;
+  color: #333;
   transition: color 0.3s;
 }
-
 .about-content ol li a:hover {
-  color: #3b5dc9; /* 滑鼠懸停時的顏色 (同導覽列) */
-  text-decoration: underline; /* 滑鼠懸停時顯示底線 */
+  color: #3b5dc9;
+  text-decoration: underline;
 }
 
 /* ===========================
@@ -385,7 +360,6 @@ p {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, transform 0.3s;
 }
-
 #scrollTopBtn:hover {
   background-color: #3b5dc9;
   transform: translateY(-3px);
@@ -395,12 +369,14 @@ p {
    頁尾 (Footer)
 =========================== */
 footer {
-  background-color: #333;
-  color: #ccc;
+  /* --- 新增：使用主題藍色 (參考大學網站) --- */
+  background-color: #1e3a8a; 
+  color: #e0f2fe; 
+  
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   margin-top: 3rem;
-  font-size: 0.9rem; /* (約 16.2px) */
+  font-size: 0.9rem; 
 }
 footer p {
   margin: 0;
@@ -408,121 +384,57 @@ footer p {
 }
 
 /* ===========================
-   研究計畫表格 (Research Table)
+   研究計畫表格與分頁 (Table & Pagination)
 =========================== */
-
-/* 表格容器，使其可以水平捲動 */
+/* (這整段保持不變) */
 .table-container {
   width: 100%;
-  overflow-x: auto; /* 在小螢幕上啟用水平捲動 */
+  overflow-x: auto;
   margin-top: 1.5rem;
   border: 1px solid #eee;
   border-radius: 8px;
 }
-
-/* 基礎表格樣式 */
 .research-table {
   width: 100%;
-  border-collapse: collapse; /* 邊框合併 */
-  min-width: 800px; /* 最小寬度，確保在大螢幕上能正常顯示 */
+  border-collapse: collapse;
+  min-width: 800px;
 }
-
-/* 表頭 (th) 和儲存格 (td) 樣式 */
-.research-table th,
-.research-table td {
+.research-table th, .research-table td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #eee;
   vertical-align: top;
 }
-
-/* 表頭 (th) 特定樣式 */
 .research-table th {
   background-color: #f9f9f9;
   font-weight: 700;
   color: #333;
 }
+.research-table td { color: #555; }
+.research-table tr:nth-child(even) { background-color: #fdfdfd; }
+.research-table .col-amount { text-align: right; font-weight: 600; white-space: nowrap; }
+.research-table .col-date { white-space: nowrap; }
+.research-table td .keywords { display: block; margin-top: 8px; font-size: 0.85rem; color: #777; line-height: 1.6; }
+.pagination-container { text-align: center; margin-top: 2rem; padding-bottom: 1rem; }
+.pagination-btn { display: inline-block; padding: 8px 14px; margin: 0 4px; border: 1px solid #ddd; background-color: #fff; color: #1e3a8a; text-decoration: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+.pagination-btn:hover { background-color: #f5f7fa; border-color: #ccc; }
+.pagination-btn.active { background-color: #1e3a8a; border-color: #1e3a8a; color: #fff; font-weight: bold; cursor: default; }
+.pagination-btn.disabled { color: #aaa; border-color: #eee; background-color: #f9f9f9; cursor: not-allowed; }
 
-/* 儲存格 (td) 樣式 */
-.research-table td {
-  color: #555;
-}
-
-/* 讓表格有斑馬紋 (間隔色) */
-.research-table tr:nth-child(even) {
-  background-color: #fdfdfd;
-}
-
-/* 金額欄位靠右對齊 */
-.research-table .col-amount {
-  text-align: right;
-  font-weight: 600;
-  white-space: nowrap; /* 讓金額不換行 */
-}
-
-.research-table .col-date {
-  white-space: nowrap; /* 讓日期不換行 */
-}
-
-/* ===========================
-   分頁 (Pagination) 樣式
-=========================== */
-.pagination-container {
-  text-align: center;
-  margin-top: 2rem;
-  padding-bottom: 1rem;
-}
-
-.pagination-btn {
-  display: inline-block;
-  padding: 8px 14px;
-  margin: 0 4px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  color: #1e3a8a;
-  text-decoration: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination-btn:hover {
-  background-color: #f5f7fa;
-  border-color: #ccc;
-}
-
-/* 目前選中的頁碼按鈕 */
-.pagination-btn.active {
-  background-color: #1e3a8a;
-  border-color: #1e3a8a;
-  color: #fff;
-  font-weight: bold;
-  cursor: default;
-}
-
-/* 禁用按鈕 (例如 "上一頁" 在第一頁時) */
-.pagination-btn.disabled {
-  color: #aaa;
-  border-color: #eee;
-  background-color: #f9f9f9;
-  cursor: not-allowed;
-}
 
 /* ===========================
    文章頁面 (Article Page)
 =========================== */
 .article-meta {
-  font-size: 0.9rem; /* (約 16.2px) */
+  font-size: 0.9rem; 
   color: #777;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #eee;
 }
-
 .article-content {
   line-height: 1.9;
 }
-
 .article-content img {
   max-width: 100%; 
   height: auto;
@@ -530,11 +442,8 @@ footer p {
   margin: 1rem 0 1.5rem 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
-
 .article-content h3 {
-  /* 關鍵修改：
-    使用我們新的 h3 基礎大小 (1.6rem)
-  */
+  /* --- 恢復：您原始的文章頁 h3 樣式 --- */
   font-size: 1.6rem; 
   color: #3b5dc9;
   margin-top: 2.5rem;
@@ -542,13 +451,11 @@ footer p {
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 5px;
 }
-
 .article-content ul,
 .article-content ol {
   padding-left: 2.5rem;
   margin-bottom: 1.5rem;
 }
-
 .back-link {
   display: inline-block;
   margin-top: 2rem;
@@ -557,7 +464,6 @@ footer p {
   color: #1e3a8a;
   transition: transform 0.2s;
 }
-
 .back-link:hover {
   color: #3b5dc9;
   transform: translateX(-5px);
@@ -566,131 +472,94 @@ footer p {
 /* ===========================
    工具樣式 (Utilities)
 =========================== */
-
-/* 用於首行縮排兩個字 */
 .indent-first-line {
-  text-indent: 2em; /* 2em (約 36px) */
+  text-indent: 2em; 
 }
 
 /* ===========================
-   首頁 Hero 橫幅
+   首頁 Hero 橫幅 (您喜歡的樣式)
 =========================== */
 .hero-section {
   width: 100%;
-
-  /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
-  height: 670px; /* 可以改成 500px, 600px 等高度 */
-
+  height: 670px; /* 您設定的高度 */
   position: relative; 
   display: flex;
   align-items: center; 
-
-  /* --- 調整 (2/4): 新增此行，讓內容水平置中 --- */
   justify-content: center; 
-
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
   background-size: cover; 
-
-  /* --- 調整 (3/4): 圖片對齊方式改回 "center center" --- */
-  background-position: center center; /* (原 70%) 這樣才能顯示較多圖片內容 */
+  background-position: center 80%; /* 您設定的錨點 */
 }
-
-/* 文字內容的容器 */
 .hero-content {
   width: 90%;
-  max-width: 550px; /* 限制文字區塊的最大寬度 */
-
-  /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
+  max-width: 550px; 
   margin-left: 0; 
-   
-  /* --- 修改：加入 "非常透明" 的灰色方框 (15% 透明度) --- */
-  background-color: rgba(0, 0, 0, 0.1); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
+  background-color: rgba(0, 0, 0, 0.1); /* 您設定的透明灰框 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
-   
-  /* --- 加一點陰影和圓角，讓方框更精緻 --- */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
-  /* --- 加內邊距，文字才不會黏在邊緣 --- */
-  padding: 2rem 2.5rem;
-   
+  padding: 2rem 2.5rem; 
   color: #ffffff;
-
-  /* --- 新增：讓 h2 標題和其底線一起置中 --- */
   text-align: center; 
 }
-
-/* 調整 Hero 區塊內的標題 */
 .hero-content h2 {
+  /* --- 關鍵：Hero 區塊內的 H2 不套用淺藍底線 --- */
   font-size: 2.2rem; 
   color: #ffffff; 
   margin-top: 0;
-  border-bottom: 3px solid #ffffff; 
+  border-bottom: 3px solid #ffffff; /* 而是用白色底線 */
   padding-bottom: 1rem; 
   margin-bottom: 1.5rem; 
-
-  /* --- 新增：讓底線只跟文字一樣寬 --- */
   display: inline-block; 
 }
-
-/* 調整 Hero 區塊內的文字 */
 .hero-content p {
   text-indent: 0; 
-
-  /* --- 關鍵：覆蓋掉父層的 text-align: center --- */
   text-align: justify; 
-
   color: #f0f0f0; 
   margin-bottom: 1rem;
   line-height: 1.8; 
   font-size: 1.1rem; 
 }
 
-/* 
-  確保 <main> 內容 (最新消息卡片) 和橫幅有間距 
-*/
-main {
-   margin-top: 2rem;
-}
 
 /* ===========================
-   Hero 響應式設計 (RWD)
+   響應式設計 (RWD)
 =========================== */
 @media (max-width: 760px) {
+  /* --- 這是 Hero 橫幅的 RWD --- */
   .hero-section {
-    /* --- 調整：手機版橫幅也加高 (原 350px) --- */
-    height: 450px; 
+    height: 550px; 
     justify-content: center; 
+    background-position: center 80%; 
   }
   .hero-content {
     margin-left: 0; 
     width: 90%;
     max-width: 90%;
-    padding: 1.5rem; /* --- 手機版也加內邊距 --- */
-    text-align: center; /* 確保手機版也置中 */
+    padding: 1.5rem; 
+    text-align: center; 
   }
   .hero-content h2 {
     font-size: 1.8rem; 
   }
   .hero-content p {
     font-size: 0.9rem;
-    text-align: justify; /* 確保手機版也是左右對齊 */
+    text-align: justify; 
   }
-}
 
-/* ===========================
-   響應式設計 (RWD)
-=========================== */
-@media (max-width: 760px) {
+  /* --- 這是通用的 RWD --- */
   header {
     flex-direction: column;
     padding: 1rem;
   }
-  
   header h1 {
     margin-bottom: 1rem;
+    font-size: 1.5rem; /* RWD 標題縮小 */
+  }
+  .ncu-logo {
+      height: 40px; /* RWD Logo 縮小 */
   }
 
   nav a {
@@ -699,32 +568,34 @@ main {
     text-align: center;
   }
 
+  /* --- 恢復：RWD main 的 margin-top --- */
   main {
     padding: 0 0.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem; /* 保持與電腦版一致的間距 */
   }
 
   .content-card {
     padding: 1.5rem;
   }
+  
+  /* --- 刪除 .hero-image-in-card RWD (因為不需要) --- */
 
   .faculty-member {
     flex: 0 1 100%;
-    padding-bottom: 70px; /* 為按鈕預留空間 */
+    padding-bottom: 80px; /* 為膠囊按鈕預留空間 */
   }
 
   .faculty-member img {
     width: 130px; 
     height: 195px;
+    align-self: center; /* 手機版垂直排列時，圖片置中 */
   }
   
   .btn-more {
-    bottom: 15px; /* 在小螢幕下按鈕離底部可以近一點 */
-    
-    left: 50%; /* 確保 RWD 也是置中 */
-    transform: translateX(-50%); /* 確保 RWD 也是置中 */
-
-    padding: 5px 12px; /* 小螢幕下按鈕再縮小一點 */
-    font-size: 0.8rem; /* 小螢幕下字體再縮小一點 */
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    padding: 8px 24px;
+    font-size: 0.9rem;
   }
 }
