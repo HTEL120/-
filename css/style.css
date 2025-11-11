@@ -486,20 +486,20 @@ footer p {
 .hero-section {
   width: 100%;
 
-  /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
+  /* --- 調整 (1/4): 橫幅高度 --- */
   height: 670px; /* 可以改成 500px, 600px 等高度 */
 
   position: relative; 
   display: flex;
   align-items: center; 
 
-  /* --- 調整 (2/4): 新增此行，讓內容水平置中 --- */
+  /* --- 調整 (2/4): 內容水平置中 --- */
   justify-content: center; 
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
   background-size: cover; 
 
-  /* --- 調整 (3/4): 圖片對齊方式改回 "center center" --- */
+  /* --- 調整 (3/4): 圖片對齊方式 "center center" --- */
   background-position: center center; /* (原 70%) 這樣才能顯示較多圖片內容 */
 }
 
@@ -511,8 +511,8 @@ footer p {
   /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
   margin-left: 0; 
    
-  /* --- 修改：加入 "非常透明" 的灰色方框 (15% 透明度) --- */
-  background-color: rgba(0, 0, 0, 0.2); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
+  /* --- 修改：加入 "非常透明" 的灰色方框 (% 透明度) --- */
+  background-color: rgba(0, 0, 0, 0.17); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
