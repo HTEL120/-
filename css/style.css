@@ -496,7 +496,7 @@ footer p {
   /* --- 調整 (2/4): 內容水平置中 --- */
   justify-content: center; 
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/ncu_campus.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/ncu_campus.jpg');
   background-size: cover; 
 
   /* --- 調整 (3/4): 圖片對齊方式 "center center" --- */
@@ -512,7 +512,7 @@ footer p {
   margin-left: 0; 
    
   /* --- 修改：加入 "非常透明" 的灰色方框 (% 透明度) --- */
-  background-color: rgba(0, 0, 0, 0.2); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
+  background-color: rgba(0, 0, 0, 0.25); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
