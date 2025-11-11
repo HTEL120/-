@@ -545,15 +545,13 @@ footer p {
 
 /* 調整 Hero 區塊內的文字 */
 .hero-content p {
-  text-indent: 0; 
-
-  /* --- 關鍵：覆蓋掉父層的 text-align: center --- */
-  text-align: justify; 
-
   color: #f0f0f0; 
   margin-bottom: 1rem;
   line-height: 1.8; 
   font-size: 1.1rem; 
+  /* 將 text-align: justify; 移到這裡 */
+  /* 這樣它才能被 .indent-first-line 繼承 */
+  text-align: justify;
 }
 
 /* 
