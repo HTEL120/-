@@ -472,47 +472,83 @@ footer p {
 =========================== */
 .hero-section {
   width: 100%;
-  height: 670px; /* 高度 */
+
+  /* --- 調整 (1/4): 增加橫幅高度 (原 400px) --- */
+  height: 670px; /* 可以改成 500px, 600px 等高度 */
+
   position: relative; 
   display: flex;
   align-items: center; 
+
+  /* --- 調整 (2/4): 新增此行，讓內容水平置中 --- */
   justify-content: center; 
+
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
   background-size: cover; 
-  background-position: center 80%; /* 錨點 */
+
+  /* --- 調整 (3/4): 圖片對齊方式改回 "center center" --- */
+  background-position: center center; /* (原 70%) 這樣才能顯示較多圖片內容 */
 }
+
+/* 文字內容的容器 */
 .hero-content {
   width: 90%;
-  max-width: 550px; 
+  max-width: 550px; /* 限制文字區塊的最大寬度 */
+
+  /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
   margin-left: 0; 
-  background-color: rgba(0, 0, 0, 0.07); /* 透明灰框 */
+   
+  /* --- 修改：加入 "非常透明" 的灰色方框 (15% 透明度) --- */
+  background-color: rgba(0, 0, 0, 0.1); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
+   
+  /* --- 加一點陰影和圓角，讓方框更精緻 --- */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 2rem 2.5rem; 
+
+  /* --- 加內邊距，文字才不會黏在邊緣 --- */
+  padding: 2rem 2.5rem;
+   
   color: #ffffff;
+
+  /* --- 新增：讓 h2 標題和其底線一起置中 --- */
   text-align: center; 
 }
+
+/* 調整 Hero 區塊內的標題 */
 .hero-content h2 {
   font-size: 2.2rem; 
   color: #ffffff; 
   margin-top: 0;
-  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff; 
   padding-bottom: 1rem; 
   margin-bottom: 1.5rem; 
+
+  /* --- 新增：讓底線只跟文字一樣寬 --- */
   display: inline-block; 
 }
+
+/* 調整 Hero 區塊內的文字 */
 .hero-content p {
   text-indent: 0; 
+
+  /* --- 關鍵：覆蓋掉父層的 text-align: center --- */
   text-align: justify; 
+
   color: #f0f0f0; 
   margin-bottom: 1rem;
   line-height: 1.8; 
   font-size: 1.1rem; 
 }
 
+/* 
+  確保 <main> 內容 (最新消息卡片) 和橫幅有間距 
+*/
+main {
+   margin-top: 2rem;
+}
 
 /* ===========================
    響應式設計 (RWD)
