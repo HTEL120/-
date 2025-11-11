@@ -163,37 +163,48 @@ p {
 /* ===========================
    最新消息 (News Section)
 =========================== */
-
-.news ul {
-  list-style-type: none;
-  padding-left: 0;
+.news ul,
+ul.news {
+  list-style-type: none; /* 這一行現在會移除 • 圓點 */
+  padding-left: 1.5em; /* 統一左邊距 */
+  margin-left: 0; /* 移除瀏覽器預設 margin */
 }
-.news li {
+
+.news li,
+ul.news li {
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px dashed #ddd; /* 虛線底線 */
 }
-.news li::before {
+
+.news li::before,
+ul.news li::before {
   content: "»"; /* "»" 符號 */
   color: #3b5dc9;
   font-weight: bold;
   display: inline-block;
   width: 1.5em;
-  margin-left: -1em;
+  margin-left: -1.5em; /* 將 "»" 移入左邊距的空間 */
 }
-.news li a {
+
+.news li a,
+ul.news li a {
   text-decoration: none; 
-  color: #333; /* 恢復原始顏色 */
+  color: #333; 
   transition: color 0.3s;
 }
-.news li a:hover {
+
+.news li a:hover,
+ul.news li a:hover {
   color: #3b5dc9; 
   text-decoration: underline; 
 }
+
 .view-all-container {
   text-align: right; 
   margin-top: 1.5rem;
 }
+
 .view-all-link {
   display: inline-block;
   text-decoration: none;
@@ -205,10 +216,12 @@ p {
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
 }
+
 .view-all-link:hover {
   background-color: #1e3a8a;
   color: #ffffff;
 }
+
 .h2-note {
   font-size: 1rem; 
   color: #888; 
