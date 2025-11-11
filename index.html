@@ -1,601 +1,74 @@
-/* style.css (最終整合版) */
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>熱管理技術研究中心</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+  <header>
+    <h1>
+      <img src="images/ncu_logo.png" alt="國立中央大學" class="ncu-logo"> 
+      熱管理技術研究中心
+    </h1>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="research.html">研究項目</a>
+      <a href="members.html">中心成員</a>
+      <a href="news.html">最新消息</a> 
+    </nav>
+  </header>
 
-/* ===========================
-   基本設定
-=========================== */
-html {
-  scroll-behavior: smooth;
-  font-size: 18px; 
-}
+  <section class="hero-section">
+    <div class="hero-content">
+      <h2>歡迎來到熱管理技術研究中心</h2>
+      <p class="indent-first-line">本中心隸屬於國立中央大學工學院，熱管理技術研究中心旨在整合校內外熱流、製造與材料等領域的研發技術，聚焦於電子元件及設備的高效散熱技術。隨著AI與高運算設備的快速發展，晶片功耗與發熱量急遽提升，熱管理已成為資訊與電子產業發展的關鍵挑戰。</p>
+      <p class="indent-first-line">本中心致力於技術整合與創新，提供晶片與系統等級的熱管理解決方案，並培育熱管理跨領域人才，支援國內外產業應對未來高效能散熱的挑戰。</p>
+    </div>
+  </section>
 
-body {
-  font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
-  
-  /* --- 新增：使用柔和的淺灰背景 --- */
-  background-color: #f2f4f8; 
-  
-  color: #333;
-  margin: 0;
-  padding: 0;
-  line-height: 1.8;
-}
+  <main>
+    <section class="content-card news">
+      <h2>最新消息 <span class="h2-note">(以AI虛構，用於測試版面配置)</span></h2>
+      <ul>
+        <li><a href="news/news-article-1.html">[公告] 2025年秋季熱管理技術研討會開放報名</a></li>
+        <li><a href="#">[賀] 本中心獲得計畫補助</a></li>
+        <li><a href="#">[演講] </a></li>
+      </ul>
+      <div class="view-all-container">
+        <a href="news.html" class="view-all-link">
+          觀看所有最新消息 &raquo;
+        </a>
+      </div>
+    </section>
 
-/* ===========================
-   標頭區 (Header)
-=========================== */
-header {
-  background-color: #ffffff;
-  color: #333; 
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-  /* --- 修改：使用更柔和的陰影 --- */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-  
-  position: sticky; 
-  top: 0;
-  z-index: 100;
-}
+    <section class="content-card contact-info">
+      <h3>聯絡資訊</h3>
+      <ul>
+        <li>Email: generallab120@gmail.com</li>
+        <li>地址: 桃園市中壢區中大路300號機械系</li>
+        <li>電話: 03-4267358 #34358</li>
+      </ul>
+    </section>
 
-header h1 {
-  margin: 0;
-  /* --- 恢復：您原始的 2.1rem 標題大小 --- */
-  font-size: 2.1rem; 
-  font-weight: 700;
-  color: #1e3a8a;
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
+  </main> 
+ 
+  <footer>
+    <p>&copy; 2025 熱管理技術研究中心</p>
+  </footer>
 
-.ncu-logo {
-  height: 60px; /* 您原始的 Logo 大小 */
-  width: auto;
-  margin-right: 15px;
-  transform: translateY(0px); 
-}
+  <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
+  <script>
+    window.onscroll = () => {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 
-/* ===========================
-   導覽列 (Navigation)
-=========================== */
-nav {
-  background-color: transparent; 
-  padding: 0;
-  text-align: right;
-}
-
-nav a {
-  color: #1e3a8a;
-  margin: 0 0.75rem;
-  text-decoration: none;
-  font-weight: 500; 
-  font-size: 1rem;
-  position: relative; /* 為了底線動畫 */
-  padding-bottom: 5px; /* 為了底線動畫 */
-}
-nav a:hover {
-  color: #3b5dc9;
-}
-/* --- 新增：導覽列 Hover 底線動畫 (參考大學網站) --- */
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #3b5dc9;
-  transition: width 0.3s ease;
-}
-nav a:hover::after {
-  width: 100%;
-}
-
-/* ===========================
-   主要內容區 (Main)
-=========================== */
-main {
-  max-width: 1100px;
-  /* --- 關鍵：Hero 橫幅版面需要的 margin --- */
-  margin: 2rem auto; 
-  padding: 0 1rem;
-}
-
-/* 內容卡片 */
-.content-card {
-  background: #ffffff;
-  padding: 2rem 2.5rem;
-  
-  /* --- 您的 "Point 4"：加大圓角，陰影更柔和 --- */
-  border-radius: 12px; 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
-  
-  margin-bottom: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.content-card:hover {
-  /* --- 您的 "Point 4"：上浮效果 --- */
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-}
-
-/* --- 恢復：您原始的 H2 和 H3 標題樣式 ---
-*/
-h2 {
-  font-size: 1.9rem; /* (約 34px) */
-  font-weight: 700;
-  color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe; /* 淺藍色底線 */
-  padding-bottom: 10px;
-  margin-top: 0;
-}
-h3 {
-  font-size: 1.6rem; /* (約 29px) */
-  font-weight: 700;
-  color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe; /* 淺藍色底線 */
-  padding-bottom: 10px;
-  margin-top: 0;
-}
-
-/* ===========================
-   首頁 (Index Page)
-=========================== */
-
-/* --- 刪除了 .hero-image-in-card 樣式 --- */
-
-/* 段落格式 */
-p {
-  text-indent: 0;
-  text-align: justify;
-  margin-bottom: 1.25rem;
-}
-.indent-first-line {
-  text-indent: 2em; 
-}
-
-/* 聯絡資訊 */
-.contact-info ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-.contact-info li {
-  margin-bottom: 0.5rem;
-}
-
-/* ===========================
-   最新消息 (News Section)
-=========================== */
-/* --- 恢復：您原始的最新消息樣式 ---
-*/
-.news ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-.news li {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dashed #ddd; /* 虛線底線 */
-}
-.news li::before {
-  content: "»"; /* "»" 符號 */
-  color: #3b5dc9;
-  font-weight: bold;
-  display: inline-block;
-  width: 1.5em;
-  margin-left: -1em;
-}
-.news li a {
-  text-decoration: none; 
-  color: #333; /* 恢復原始顏色 */
-  transition: color 0.3s;
-}
-.news li a:hover {
-  color: #3b5dc9; 
-  text-decoration: underline; 
-}
-.view-all-container {
-  text-align: right; 
-  margin-top: 1.5rem;
-}
-.view-all-link {
-  display: inline-block;
-  text-decoration: none;
-  background-color: #f2f4f8; /* 配合 body 背景色 */ 
-  color: #1e3a8a; 
-  padding: 8px 16px;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
-}
-.view-all-link:hover {
-  background-color: #1e3a8a;
-  color: #ffffff;
-}
-.h2-note {
-  font-size: 1rem; 
-  color: #888; 
-  font-weight: 500; 
-  margin-left: 10px; 
-}
-
-/* ===========================
-   成員介紹 (Faculty Section)
-=========================== */
-.faculty-row {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-  gap: 2%;
-}
-
-.faculty-member {
-  flex: 0 1 48%;
-  
-  /* --- 您的 "Point 3"：讓卡片在卡片中獨立出來 --- */
-  background-color: #fcfdff; /* 淡淡的背景色 */
-  border: 1px solid #e8eef8; /* 淡淡的邊框 */
-  
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* 陰影淡一點 */
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative; 
-  padding-bottom: 80px; /* 為膠囊按鈕增加空間 */
-}
-.faculty-member:hover {
-  transform: translateY(-5px);
-  border-color: #dbe4f9;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
-}
-.faculty-member img {
-  display: block;
-  width: 170px; 
-  height: 255px; 
-  margin: 0 auto 1rem auto;
-  object-fit: cover; 
-  object-position: center top; 
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-}
-.faculty-info {
-  margin-top: 10px;
-  text-align: center;
-}
-.faculty-info h4 {
-  margin-bottom: 10px;
-  font-size: 1.4rem; 
-  color: #1e3a8a;
-  font-weight: 700;
-}
-.faculty-info p {
-  text-align: left;
-  font-size: 0.9rem; 
-  line-height: 1.6;
-}
-
-/* --- 您的 "Point 3"：現代藍色膠囊按鈕 --- */
-.btn-more {
-  position: absolute; 
-  bottom: 20px; 
-  left: 50%; 
-  transform: translateX(-50%);
-  display: inline-block;
-  text-decoration: none;
-  
-  background-color: #1e3a8a; 
-  color: #ffffff;
-  
-  /* --- 膠囊樣式 --- */
-  padding: 8px 24px; /* 調整 padding */
-  border-radius: 20px; /* 膠囊圓角 */
-  font-weight: bold;
-  font-size: 0.9rem; 
-  
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  z-index: 10; 
-  
-  /* --- 藍色陰影 --- */
-  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
-}
-.btn-more:hover {
-  background-color: #3b5dc9; 
-  transform: translateX(-50%) translateY(-2px); /* 保持置中並上浮 */
-  box-shadow: 0 6px 15px rgba(30, 58, 138, 0.4);
-  color: #ffffff;
-}
-
-/* ===========================
-   研究項目
-=========================== */
-.about-content h3 {
-  /* --- 恢復：您原始的 h3 樣式 (但移除底線) --- */
-  font-size: 1.6rem; 
-  color: #3b5dc9;
-  border-bottom: none;
-  margin-top: 2rem;
-}
-.about-content ol {
-  padding-left: 2rem;
-  line-height: 1.9;
-}
-.about-content ol li {
-  margin-bottom: 0.5rem;
-}
-.about-content ol li a {
-  text-decoration: none;
-  color: #333;
-  transition: color 0.3s;
-}
-.about-content ol li a:hover {
-  color: #3b5dc9;
-  text-decoration: underline;
-}
-
-/* ===========================
-   回到頂部按鈕
-=========================== */
-#scrollTopBtn {
-  background-color: #1e3a8a;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  padding: 0;
-  cursor: pointer;
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.3s;
-}
-#scrollTopBtn:hover {
-  background-color: #3b5dc9;
-  transform: translateY(-3px);
-}
-
-/* ===========================
-   頁尾 (Footer)
-=========================== */
-footer {
-  /* --- 新增：使用主題藍色 (參考大學網站) --- */
-  background-color: #1e3a8a; 
-  color: #e0f2fe; 
-  
-  text-align: center;
-  padding: 2.5rem 1rem;
-  margin-top: 3rem;
-  font-size: 0.9rem; 
-}
-footer p {
-  margin: 0;
-  text-align: center;
-}
-
-/* ===========================
-   研究計畫表格與分頁 (Table & Pagination)
-=========================== */
-/* (這整段保持不變) */
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  margin-top: 1.5rem;
-  border: 1px solid #eee;
-  border-radius: 8px;
-}
-.research-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 800px;
-}
-.research-table th, .research-table td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-  vertical-align: top;
-}
-.research-table th {
-  background-color: #f9f9f9;
-  font-weight: 700;
-  color: #333;
-}
-.research-table td { color: #555; }
-.research-table tr:nth-child(even) { background-color: #fdfdfd; }
-.research-table .col-amount { text-align: right; font-weight: 600; white-space: nowrap; }
-.research-table .col-date { white-space: nowrap; }
-.research-table td .keywords { display: block; margin-top: 8px; font-size: 0.85rem; color: #777; line-height: 1.6; }
-.pagination-container { text-align: center; margin-top: 2rem; padding-bottom: 1rem; }
-.pagination-btn { display: inline-block; padding: 8px 14px; margin: 0 4px; border: 1px solid #ddd; background-color: #fff; color: #1e3a8a; text-decoration: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
-.pagination-btn:hover { background-color: #f5f7fa; border-color: #ccc; }
-.pagination-btn.active { background-color: #1e3a8a; border-color: #1e3a8a; color: #fff; font-weight: bold; cursor: default; }
-.pagination-btn.disabled { color: #aaa; border-color: #eee; background-color: #f9f9f9; cursor: not-allowed; }
-
-
-/* ===========================
-   文章頁面 (Article Page)
-=========================== */
-.article-meta {
-  font-size: 0.9rem; 
-  color: #777;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eee;
-}
-.article-content {
-  line-height: 1.9;
-}
-.article-content img {
-  max-width: 100%; 
-  height: auto;
-  border-radius: 8px;
-  margin: 1rem 0 1.5rem 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-.article-content h3 {
-  /* --- 恢復：您原始的文章頁 h3 樣式 --- */
-  font-size: 1.6rem; 
-  color: #3b5dc9;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 5px;
-}
-.article-content ul,
-.article-content ol {
-  padding-left: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-.back-link {
-  display: inline-block;
-  margin-top: 2rem;
-  text-decoration: none;
-  font-weight: bold;
-  color: #1e3a8a;
-  transition: transform 0.2s;
-}
-.back-link:hover {
-  color: #3b5dc9;
-  transform: translateX(-5px);
-}
-
-/* ===========================
-   工具樣式 (Utilities)
-=========================== */
-.indent-first-line {
-  text-indent: 2em; 
-}
-
-/* ===========================
-   首頁 Hero 橫幅 (您喜歡的樣式)
-=========================== */
-.hero-section {
-  width: 100%;
-  height: 670px; /* 您設定的高度 */
-  position: relative; 
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
-  background-size: cover; 
-  background-position: center 80%; /* 您設定的錨點 */
-}
-.hero-content {
-  width: 90%;
-  max-width: 550px; 
-  margin-left: 0; 
-  background-color: rgba(0, 0, 0, 0.1); /* 您設定的透明灰框 */
-  @supports (backdrop-filter: blur(5px)) {
-    backdrop-filter: none; 
-  }
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 2rem 2.5rem; 
-  color: #ffffff;
-  text-align: center; 
-}
-.hero-content h2 {
-  /* --- 關鍵：Hero 區塊內的 H2 不套用淺藍底線 --- */
-  font-size: 2.2rem; 
-  color: #ffffff; 
-  margin-top: 0;
-  border-bottom: 3px solid #ffffff; /* 而是用白色底線 */
-  padding-bottom: 1rem; 
-  margin-bottom: 1.5rem; 
-  display: inline-block; 
-}
-.hero-content p {
-  text-indent: 0; 
-  text-align: justify; 
-  color: #f0f0f0; 
-  margin-bottom: 1rem;
-  line-height: 1.8; 
-  font-size: 1.1rem; 
-}
-
-
-/* ===========================
-   響應式設計 (RWD)
-=========================== */
-@media (max-width: 760px) {
-  /* --- 這是 Hero 橫幅的 RWD --- */
-  .hero-section {
-    height: 550px; 
-    justify-content: center; 
-    background-position: center 80%; 
-  }
-  .hero-content {
-    margin-left: 0; 
-    width: 90%;
-    max-width: 90%;
-    padding: 1.5rem; 
-    text-align: center; 
-  }
-  .hero-content h2 {
-    font-size: 1.8rem; 
-  }
-  .hero-content p {
-    font-size: 0.9rem;
-    text-align: justify; 
-  }
-
-  /* --- 這是通用的 RWD --- */
-  header {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  header h1 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem; /* RWD 標題縮小 */
-  }
-  .ncu-logo {
-      height: 40px; /* RWD Logo 縮小 */
-  }
-
-  nav a {
-    display: block;
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  /* --- 恢復：RWD main 的 margin-top --- */
-  main {
-    padding: 0 0.5rem;
-    margin-top: 2rem; /* 保持與電腦版一致的間距 */
-  }
-
-  .content-card {
-    padding: 1.5rem;
-  }
-  
-  /* --- 刪除 .hero-image-in-card RWD (因為不需要) --- */
-
-  .faculty-member {
-    flex: 0 1 100%;
-    padding-bottom: 80px; /* 為膠囊按鈕預留空間 */
-  }
-
-  .faculty-member img {
-    width: 130px; 
-    height: 195px;
-    align-self: center; /* 手機版垂直排列時，圖片置中 */
-  }
-  
-  .btn-more {
-    bottom: 20px; 
-    left: 50%; 
-    transform: translateX(-50%);
-    padding: 8px 24px;
-    font-size: 0.9rem;
-  }
-}
+</body>
+</html>
