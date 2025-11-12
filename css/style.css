@@ -511,8 +511,8 @@ footer p {
   /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
   margin-left: 0; 
    
-  /* --- 修改：加入 "非常透明" 的灰色方框 (% 透明度) --- */
-  background-color: rgba(0, 0, 0, 0.5); /* 可調整 0.15 (例如 0.1) 來改變透明度 */
+  /* --- 加入透明的灰色方框 (% 透明度) --- */
+  background-color: rgba(100, 100, 100, 0.5); /* 基底色改為灰色 (100,100,100)，可調整 0.15 (例如 0.1) 來改變透明度 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
