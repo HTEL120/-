@@ -96,8 +96,8 @@ nav a:hover::after {
    主要內容區 (Main)
 =========================== */
 main {
-  max-width: 1100px;
-  /* --- 關鍵：Hero 橫幅版面需要的 margin --- */
+  /* --- 修改點：移除 max-width，讓橫幅可以滿版 --- */
+  max-width: 1100px; /* 這是針對內容卡片，但橫幅需要滿版 */
   margin: 2rem auto; 
   padding: 0 1rem;
 }
@@ -107,32 +107,34 @@ main {
   background: #ffffff;
   padding: 2rem 2.5rem;
   
-  /* --- 您的 "Point 4"：加大圓角，陰影更柔和 --- */
   border-radius: 12px; 
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
   
   margin-bottom: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* --- 新增：確保內容卡片在 main 滿版後，仍然有置中效果 --- */
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .content-card:hover {
-  /* --- "Point 4"：上浮效果 --- */
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
 }
 
 h2 {
-  font-size: 1.9rem; /* (約 34px) */
+  font-size: 1.9rem; 
   font-weight: 700;
   color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe; /* 淺藍色底線 */
+  border-bottom: 3px solid #e0f2fe; 
   padding-bottom: 10px;
   margin-top: 0;
 }
 h3 {
-  font-size: 1.6rem; /* (約 29px) */
+  font-size: 1.6rem; 
   font-weight: 700;
   color: #1e3a8a;
-  border-bottom: 3px solid #e0f2fe; /* 淺藍色底線 */
+  border-bottom: 3px solid #e0f2fe; 
   padding-bottom: 10px;
   margin-top: 0;
 }
@@ -165,26 +167,26 @@ p {
 =========================== */
 .news ul,
 ul.news {
-  list-style-type: none; /* 這一行現在會移除 • 圓點 */
-  padding-left: 1.5em; /* 統一左邊距 */
-  margin-left: 0; /* 移除瀏覽器預設 margin */
+  list-style-type: none; 
+  padding-left: 1.5em; 
+  margin-left: 0; 
 }
 
 .news li,
 ul.news li {
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px dashed #ddd; /* 虛線底線 */
+  border-bottom: 1px dashed #ddd; 
 }
 
 .news li::before,
 ul.news li::before {
-  content: "»"; /* "»" 符號 */
+  content: "»"; 
   color: #3b5dc9;
   font-weight: bold;
   display: inline-block;
   width: 1.5em;
-  margin-left: -1.5em; /* 將 "»" 移入左邊距的空間 */
+  margin-left: -1.5em; 
 }
 
 .news li a,
@@ -208,7 +210,7 @@ ul.news li a:hover {
 .view-all-link {
   display: inline-block;
   text-decoration: none;
-  background-color: #f2f4f8; /* 配合 body 背景色 */ 
+  background-color: #f2f4f8; 
   color: #1e3a8a; 
   padding: 8px 16px;
   border-radius: 5px;
@@ -243,19 +245,18 @@ ul.news li a:hover {
 .faculty-member {
   flex: 0 1 48%;
   
-  /* --- "Point 3"：讓卡片在卡片中獨立出來 --- */
-  background-color: #fcfdff; /* 淡淡的背景色 */
-  border: 1px solid #e8eef8; /* 淡淡的邊框 */
+  background-color: #fcfdff; 
+  border: 1px solid #e8eef8; 
   
   padding: 20px;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* 陰影淡一點 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); 
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   margin-bottom: 20px;
   text-align: center;
   position: relative; 
-  padding-bottom: 80px; /* 為膠囊按鈕增加空間 */
+  padding-bottom: 80px; 
 }
 .faculty-member:hover {
   transform: translateY(-5px);
@@ -288,7 +289,6 @@ ul.news li a:hover {
   line-height: 1.6;
 }
 
-/* --- 您的 "Point 3"：現代藍色膠囊按鈕 --- */
 .btn-more {
   position: absolute; 
   bottom: 20px; 
@@ -300,21 +300,19 @@ ul.news li a:hover {
   background-color: #1e3a8a; 
   color: #ffffff;
   
-  /* --- 膠囊樣式 --- */
-  padding: 8px 24px; /* 調整 padding */
-  border-radius: 20px; /* 膠囊圓角 */
+  padding: 8px 24px; 
+  border-radius: 20px; 
   font-weight: bold;
   font-size: 0.9rem; 
   
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   z-index: 10; 
   
-  /* --- 藍色陰影 --- */
   box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
 }
 .btn-more:hover {
   background-color: #3b5dc9; 
-  transform: translateX(-50%) translateY(-2px); /* 保持置中並上浮 */
+  transform: translateX(-50%) translateY(-2px); 
   box-shadow: 0 6px 15px rgba(30, 58, 138, 0.4);
   color: #ffffff;
 }
@@ -375,7 +373,6 @@ ul.news li a:hover {
    頁尾 (Footer)
 =========================== */
 footer {
-  /* --- 新增：使用主題藍色 (參考大學網站) --- */
   background-color: #1e3a8a; 
   color: #e0f2fe; 
   
@@ -490,7 +487,8 @@ footer p {
   display: flex;
   align-items: center; 
   justify-content: center; 
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/ncu_campus.jpg');
+  /* 背景遮罩透明度 (0.0 表示完全透明，0.5 表示半透明) */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_campus.jpg');
   background-size: cover; 
   background-position: center center; 
 }
@@ -500,7 +498,7 @@ footer p {
   width: 90%;
   max-width: 550px; 
   margin-left: 0; 
-  background-color: rgba(10, 10, 10, 0.5); 
+  background-color: rgba(10, 10, 10, 0.5); /* 半透明灰色方框 */
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
@@ -532,28 +530,31 @@ footer p {
 }
 
 /* ===========================
-   各頁面標題橫幅 (Page Title Hero - 新增)
+   各頁面標題橫幅 (Page Title Hero)
 =========================== */
 .page-hero-title-section {
   width: 100%;
-  height: 250px; /* 高度可調 */
+  height: 250px; 
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 使用半透明遮罩讓文字更清楚 */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
+  /* --- 修改點：調整遮罩透明度與首頁一致 --- */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_campus.jpg');
   background-size: cover;
   background-position: center center;
-  margin-bottom: 2rem; /* 與下方內容的間距 */
-  border-radius: 12px; /* 因為在 main 內，給予圓角讓視覺更像卡片/區塊 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+  /* --- 修改點：移除圓角和陰影，使其與首頁 Hero 區塊保持一致的滿版方塊設計 --- */
+  margin-bottom: 2rem; 
+  /* border-radius: 0; */ /* 移除或設置為 0 */
+  /* box-shadow: none; */ /* 移除或設置為 none */
 }
 
 .page-hero-title-content {
-  width: 80%;
-  max-width: 600px;
-  background-color: rgba(10, 10, 10, 0.5); /* 半透明灰底 */
+  /* --- 修改點：調整 max-width 與首頁 Hero 的文字方框一致 --- */
+  width: 90%; /* 與首頁 Hero 的文字方框一致 */
+  max-width: 550px; /* 與首頁 Hero 的文字方框一致 */
+  /* --- 修改點：調整背景透明度，與首頁 Hero 的文字方框一致 --- */
+  background-color: rgba(10, 10, 10, 0.5); /* 與首頁 Hero 的文字方框一致 */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 1.5rem 2rem;
@@ -568,7 +569,17 @@ footer p {
   border-bottom: 3px solid #ffffff;
   padding-bottom: 0.75rem;
   margin-bottom: 0;
-  display: inline-block; /* 讓底線跟文字一樣寬 */
+  display: inline-block; 
+}
+
+/* 確保 <main> 內容 (最新消息卡片) 和橫幅有間距 */
+main {
+  /* --- 修改點：將 main 的 max-width 設為 none，padding 設為 0，
+     以便 page-hero-title-section 能夠滿版。
+     內容卡片的 max-width 和 margin-left/right 會負責置中。 --- */
+  max-width: none; /* 移除 max-width 限制 */
+  margin-top: 0;   /* 移除預設的 main-top，讓橫幅頂部緊貼 header */
+  padding: 0;      /* 移除 main 預設的左右 padding */
 }
 
 /* ===========================
@@ -596,9 +607,9 @@ footer p {
     text-align: justify; 
   }
 
-  /* --- 各頁面標題橫幅的 RWD (新增) --- */
+  /* --- 各頁面標題橫幅的 RWD --- */
   .page-hero-title-section {
-    height: 180px; /* 手機版高度縮小 */
+    height: 180px; 
     background-position: center 70%;
   }
   .page-hero-title-content {
@@ -606,7 +617,7 @@ footer p {
     padding: 1rem 1.5rem;
   }
   .page-hero-title-content h2 {
-    font-size: 1.6rem; /* 手機版字體縮小 */
+    font-size: 1.6rem; 
   }
 
   /* --- 通用的 RWD --- */
@@ -616,10 +627,10 @@ footer p {
   }
   header h1 {
     margin-bottom: 1rem;
-    font-size: 1.5rem; /* RWD 標題縮小 */
+    font-size: 1.5rem; 
   }
   .ncu-logo {
-      height: 40px; /* RWD Logo 縮小 */
+      height: 40px; 
   }
 
   nav a {
@@ -630,23 +641,24 @@ footer p {
 
   /* --- RWD main 的 margin-top --- */
   main {
-    padding: 0 0.5rem;
-    margin-top: 2rem; /* 保持與電腦版一致的間距 */
+    padding: 0; /* 移除手機版 main 的 padding，交給 content-card 自己處理 */
+    margin-top: 0; /* 確保 main 沒有上邊距 */
   }
 
+  /* --- 修改點：確保內容卡片在手機版也有左右 padding --- */
   .content-card {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem; /* 手機版左右 padding */
   }
 
   .faculty-member {
     flex: 0 1 100%;
-    padding-bottom: 80px; /* 為膠囊按鈕預留空間 */
+    padding-bottom: 80px; 
   }
 
   .faculty-member img {
     width: 130px; 
     height: 195px;
-    align-self: center; /* 手機版垂直排列時，圖片置中 */
+    align-self: center; 
   }
   
   .btn-more {
