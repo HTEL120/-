@@ -373,46 +373,91 @@ ul.news li a:hover {
    頁尾 (Footer)
 =========================== */
 footer {
-  background-color: #1e3a8a; 
+  background-color: #1e3a8a; /* 保持深藍色背景 */
   color: #e0f2fe; 
-  text-align: center; /* 關鍵：讓內部所有行內元素(文字、圖片)水平置中 */
-  padding: 1.5rem 1rem; /* 減少上下高度 (原 3rem -> 1.5rem) */
+  padding: 2.5rem 1rem; /* 適度留白 */
   margin-top: 3rem;
-  font-size: 0.9rem; 
+  font-size: 0.9rem;
+  /* 確保文字在容器內靠左對齊，與參考圖一致 */
+  text-align: left; 
 }
 
-/* 頁尾內的標題 (聯絡資訊) */
-footer h3 {
-  font-size: 1.2rem;
+/* 頁尾內容容器：使用 Flexbox 進行三欄排版 */
+.footer-container {
+  max-width: 1100px; /* 限制最大寬度，與網頁內容對齊 */
+  margin: 0 auto; /* 容器置中 */
+  display: flex;
+  justify-content: space-between; /* 欄位分散對齊 */
+  align-items: flex-start; /* 靠上對齊 */
+  flex-wrap: wrap; /* 手機版自動換行 */
+  gap: 2rem; /* 欄位間距 */
+}
+
+/* 通用欄位設定 */
+.footer-col {
+  flex: 1; /* 預設每個欄位均分寬度 */
+}
+
+/* 左側：標題區塊較寬 */
+.footer-left {
+  flex: 1.5; /* 讓左邊標題區塊寬一點 */
+}
+
+.footer-left h4 {
+  font-size: 1.3rem;
   color: #ffffff;
-  display: block;
-  margin-bottom: 0.8rem; /* 減少標題與內容的間距 */
-  margin-top: 0;
+  margin: 0 0 0.5rem 0;
   font-weight: bold;
+  line-height: 1.4;
 }
 
-/* 頁尾內的列表 (包含 Email, 地址, 電話) */
-footer ul {
-  list-style-type: none; /* 移除白點 */
-  padding: 0;
-  margin: 0; /* 移除不必要的外邊距 */
+.footer-left .en-title {
+  font-size: 0.8rem;
+  color: #cbd5e1; /* 淺灰色英文 */
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase; /* 強制大寫 */
 }
 
-footer li {
-  margin-bottom: 0.3rem; /* 大幅減少列與列之間的距離 (原 0.8rem -> 0.3rem) */
-  font-size: 0.95rem;
-  opacity: 0.9;
+/* 中間與右側設定 */
+.footer-center,
+.footer-right {
+  flex: 1;
 }
 
-/* 版權文字 */
-footer p.copyright {
-  margin-top: 1.2rem; /* 設定版權文字與上方列表的距離 */
-  margin-bottom: 0;
-  font-size: 0.85rem;
+.footer-col p {
+  margin: 0 0 0.4rem 0; /* 每一行的間距 */
+  line-height: 1.6;
+}
+
+/* 右側版權宣告 */
+.footer-right .copyright {
+  margin-top: 1rem; /* 與上方地址拉開一點距離 */
+  font-size: 0.8rem;
   opacity: 0.7;
-  width: 100%; /* 確保寬度佔滿父容器 */
-  text-align: center; /* 強制文字置中 */
-  display: block;
+}
+
+/* ===========================
+   頁尾 RWD (手機版調整)
+=========================== */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* 手機版改為垂直排列 */
+    gap: 1.5rem;
+  }
+  
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    flex: auto;
+    width: 100%; /* 佔滿寬度 */
+  }
+  
+  /* 手機版讓聯絡資訊容易閱讀，稍微加大間距 */
+  .footer-col p {
+    margin-bottom: 0.2rem;
+  }
 }
 
 /* ===========================
