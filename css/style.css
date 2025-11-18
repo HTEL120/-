@@ -375,15 +375,45 @@ ul.news li a:hover {
 footer {
   background-color: #1e3a8a; 
   color: #e0f2fe; 
-  
   text-align: center;
-  padding: 2.5rem 1rem;
+  padding: 3rem 1rem; /* 增加一點內距 */
   margin-top: 3rem;
-  font-size: 0.9rem; 
+  font-size: 0.95rem; 
 }
-footer p {
+
+/* 頁尾內的標題 */
+footer h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* 改用半透明白色底線 */
+  display: inline-block; /* 讓底線只跟文字一樣寬 */
+  padding-bottom: 10px;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+/* 頁尾內的列表 */
+footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 2rem 0; /* 下方留白給版權文字 */
+}
+
+footer li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* 版權文字 */
+footer p.copyright {
   margin: 0;
-  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* 上方加一條淡淡的分隔線 */
+  padding-top: 1.5rem;
+  display: inline-block;
+  width: 80%; /* 分隔線寬度 */
 }
 
 /* ===========================
