@@ -12,7 +12,7 @@ body {
   font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
   
   /* --- 使用"更深"的藍灰色背景 --- */
-  background-color: #e2e8f0; /* (原 #f2f4f8 或我搞錯的 #eaf0f9) */
+  background-color: #e2e8f0; 
   
   color: #333;
   margin: 0;
@@ -50,7 +50,7 @@ header h1 {
 }
 
 .ncu-logo {
-  height: 60px; /* 您原始的 Logo 大小 */
+  height: 60px; 
   width: auto;
   margin-right: 15px;
   transform: translateY(0px); 
@@ -481,52 +481,33 @@ footer p {
 }
 
 /* ===========================
-   首頁 Hero 橫幅
+   首頁 Hero 橫幅 (Index Page Hero)
 =========================== */
 .hero-section {
   width: 100%;
-
-  /* --- 調整 (1/4): 橫幅高度 --- */
-  height: 700px; /* 可以改成 500px, 600px 等高度 */
-
+  height: 700px; 
   position: relative; 
   display: flex;
   align-items: center; 
-
-  /* --- 調整 (2/4): 內容水平置中 --- */
   justify-content: center; 
-
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('../images/ncu_campus.jpg');
   background-size: cover; 
-
-  /* --- 調整 (3/4): 圖片對齊方式 "center center" --- */
-  background-position: center center; /* (原 70%) 這樣才能顯示較多圖片內容 */
+  background-position: center center; 
 }
 
 /* 文字內容的容器 */
 .hero-content {
   width: 90%;
-  max-width: 550px; /* 限制文字區塊的最大寬度 */
-
-  /* --- 調整 (4/4): 移除 margin-left: 10% (因為已由父層置中) --- */
+  max-width: 550px; 
   margin-left: 0; 
-   
-  /* --- 加入透明的灰色方框 (% 透明度) --- */
-  background-color: rgba(10, 10, 10, 0.5); /* 基底色改為灰色 (10, 10, 10)，可調整 0.15 (例如 0.1) 來改變透明度 */
+  background-color: rgba(10, 10, 10, 0.5); 
   @supports (backdrop-filter: blur(5px)) {
     backdrop-filter: none; 
   }
-   
-  /* --- 加一點陰影和圓角，讓方框更精緻 --- */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
-  /* --- 加內邊距，文字才不會黏在邊緣 --- */
   padding: 2rem 2.5rem;
-   
   color: #ffffff;
-
-  /* --- 新增：讓 h2 標題和其底線一起置中 --- */
   text-align: center; 
 }
 
@@ -538,8 +519,6 @@ footer p {
   border-bottom: 3px solid #ffffff; 
   padding-bottom: 1rem; 
   margin-bottom: 1.5rem; 
-
-  /* --- 新增：讓底線只跟文字一樣寬 --- */
   display: inline-block; 
 }
 
@@ -549,23 +528,54 @@ footer p {
   margin-bottom: 1rem;
   line-height: 1.8; 
   font-size: 1.1rem; 
-  /* 將 text-align: justify; 移到這裡 */
-  /* 這樣它才能被 .indent-first-line 繼承 */
   text-align: justify;
 }
 
-/* 
-  確保 <main> 內容 (最新消息卡片) 和橫幅有間距 
-*/
-main {
-   margin-top: 2rem;
+/* ===========================
+   各頁面標題橫幅 (Page Title Hero - 新增)
+=========================== */
+.page-hero-title-section {
+  width: 100%;
+  height: 250px; /* 高度可調 */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 使用半透明遮罩讓文字更清楚 */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/ncu_campus.jpg');
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 2rem; /* 與下方內容的間距 */
+  border-radius: 12px; /* 因為在 main 內，給予圓角讓視覺更像卡片/區塊 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+}
+
+.page-hero-title-content {
+  width: 80%;
+  max-width: 600px;
+  background-color: rgba(10, 10, 10, 0.5); /* 半透明灰底 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.page-hero-title-content h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 0;
+  border-bottom: 3px solid #ffffff;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0;
+  display: inline-block; /* 讓底線跟文字一樣寬 */
 }
 
 /* ===========================
    響應式設計 (RWD)
 =========================== */
 @media (max-width: 760px) {
-  /* --- 這是 Hero 橫幅的 RWD --- */
+  /* --- 首頁 Hero 橫幅的 RWD --- */
   .hero-section {
     height: 550px; 
     justify-content: center; 
@@ -586,7 +596,20 @@ main {
     text-align: justify; 
   }
 
-  /* --- 這是通用的 RWD --- */
+  /* --- 各頁面標題橫幅的 RWD (新增) --- */
+  .page-hero-title-section {
+    height: 180px; /* 手機版高度縮小 */
+    background-position: center 70%;
+  }
+  .page-hero-title-content {
+    width: 90%;
+    padding: 1rem 1.5rem;
+  }
+  .page-hero-title-content h2 {
+    font-size: 1.6rem; /* 手機版字體縮小 */
+  }
+
+  /* --- 通用的 RWD --- */
   header {
     flex-direction: column;
     padding: 1rem;
