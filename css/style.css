@@ -373,69 +373,67 @@ ul.news li a:hover {
    頁尾 (Footer)
 =========================== */
 footer {
-  background-color: #1e3a8a; /* 保持深藍色背景 */
+  background-color: #1e3a8a; 
   color: #e0f2fe; 
-  padding: 2.5rem 1rem; /* 適度留白 */
+  padding: 3rem 2rem; /* 增加一點左右內距讓兩側不要太貼邊 */
   margin-top: 3rem;
   font-size: 0.9rem;
-  /* 確保文字在容器內靠左對齊，與參考圖一致 */
   text-align: left; 
 }
 
-/* 頁尾內容容器：使用 Flexbox 進行三欄排版 */
+/* 頁尾內容容器 */
 .footer-container {
-  max-width: 1100px; /* 限制最大寬度，與網頁內容對齊 */
-  margin: 0 auto; /* 容器置中 */
+  max-width: 1100px; 
+  margin: 0 auto; 
   display: flex;
-  justify-content: space-between; /* 欄位分散對齊 */
-  align-items: flex-start; /* 靠上對齊 */
-  flex-wrap: wrap; /* 手機版自動換行 */
-  gap: 2rem; /* 欄位間距 */
+  justify-content: space-between; /* 左右推開 */
+  align-items: flex-start; 
+  flex-wrap: wrap; 
+  gap: 3rem; /* 左右欄位間距 */
 }
 
-/* 通用欄位設定 */
+/* 欄位設定 */
 .footer-col {
-  flex: 1; /* 預設每個欄位均分寬度 */
+  flex: 1; /* 左右欄位平均分配空間，或根據內容自動調整 */
+  min-width: 300px; /* 避免在縮放時變得太窄 */
 }
 
-/* 左側：標題區塊較寬 */
-.footer-left {
-  flex: 1.5; /* 讓左邊標題區塊寬一點 */
-}
-
+/* 左側樣式 */
 .footer-left h4 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #ffffff;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.8rem 0;
   font-weight: bold;
   line-height: 1.4;
 }
 
 .footer-left .en-title {
-  font-size: 0.8rem;
-  color: #cbd5e1; /* 淺灰色英文 */
+  font-size: 0.85rem;
+  color: #cbd5e1; 
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
   letter-spacing: 0.5px;
-  text-transform: uppercase; /* 強制大寫 */
+  text-transform: uppercase; 
 }
 
-/* 中間與右側設定 */
-.footer-center,
+/* 右側樣式 (聯絡資訊) */
 .footer-right {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直方向稍微置中一點，或維持 flex-start */
 }
 
-.footer-col p {
-  margin: 0 0 0.4rem 0; /* 每一行的間距 */
+.footer-right p {
+  margin: 0 0 0.5rem 0; /* 每一行的間距 */
   line-height: 1.6;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px; /* 增加一點字元間距提升易讀性 */
 }
 
-/* 右側版權宣告 */
 .footer-right .copyright {
-  margin-top: 1rem; /* 與上方地址拉開一點距離 */
+  margin-top: 1.5rem; /* 版權宣告與上方資訊拉開距離 */
   font-size: 0.8rem;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ===========================
@@ -443,20 +441,12 @@ footer {
 =========================== */
 @media (max-width: 768px) {
   .footer-container {
-    flex-direction: column; /* 手機版改為垂直排列 */
-    gap: 1.5rem;
+    flex-direction: column; /* 手機版垂直排列 */
+    gap: 2rem;
   }
   
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    flex: auto;
-    width: 100%; /* 佔滿寬度 */
-  }
-  
-  /* 手機版讓聯絡資訊容易閱讀，稍微加大間距 */
-  .footer-col p {
-    margin-bottom: 0.2rem;
+  .footer-col {
+    width: 100%;
   }
 }
 
