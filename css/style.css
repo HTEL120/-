@@ -375,8 +375,8 @@ ul.news li a:hover {
 footer {
   background-color: #1e3a8a; 
   color: #e0f2fe; 
-  text-align: center;
-  padding: 3rem 1rem; /* 增加一點內距 */
+  text-align: center; /* 所有內容置中 */
+  padding: 3rem 1rem; 
   margin-top: 3rem;
   font-size: 0.95rem; 
 }
@@ -385,35 +385,39 @@ footer {
 footer h3 {
   font-size: 1.3rem;
   color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* 改用半透明白色底線 */
-  display: inline-block; /* 讓底線只跟文字一樣寬 */
-  padding-bottom: 10px;
-  margin-bottom: 1.5rem;
+  /* 移除底線 */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.3); */ 
+  display: block; /* 讓 h3 佔滿一行，避免影響置中 */
+  padding-bottom: 0; /* 移除 padding */
+  margin-bottom: 1.5rem; /* 標題與列表間距 */
   margin-top: 0;
 }
 
 /* 頁尾內的列表 */
 footer ul {
-  list-style-type: none;
+  list-style-type: none; /* 移除白點 */
   padding: 0;
-  margin: 0 0 2rem 0; /* 下方留白給版權文字 */
+  margin: 0 auto 2rem auto; /* 列表置中 */
+  max-width: fit-content; /* 限制寬度讓 margin auto 能置中 */
 }
 
 footer li {
   margin-bottom: 0.8rem;
   font-size: 1rem;
   opacity: 0.9;
+  text-align: center; /* 確保列表項目文字置中 */
 }
 
 /* 版權文字 */
 footer p.copyright {
-  margin: 0;
+  margin: 0 auto; /* 置中 */
   font-size: 0.85rem;
   opacity: 0.7;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* 上方加一條淡淡的分隔線 */
+  /* 移除上方分隔線 */
+  /* border-top: 1px solid rgba(255, 255, 255, 0.1); */ 
   padding-top: 1.5rem;
-  display: inline-block;
-  width: 80%; /* 分隔線寬度 */
+  display: block; /* 讓版權文字佔滿一行，避免影響置中 */
+  width: 100%; /* 不再需要限制寬度來影響分隔線 */
 }
 
 /* ===========================
