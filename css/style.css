@@ -685,6 +685,28 @@ main {
 }
 
 /* ===========================
+   各頁面特定橫幅圖片設定
+=========================== */
+
+/* 研究項目頁面橫幅 */
+.hero-research {
+  /* 使用 EngineeringBuilding5.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/EngineeringBuilding5.jpg');
+}
+
+/* 中心成員頁面橫幅 */
+.hero-members {
+  /* 使用 SchoolGateNCU.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/SchoolGateNCU.jpg');
+}
+
+/* 最新消息頁面橫幅 */
+.hero-news {
+  /* 使用 NCUsakura.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/NCUsakura.jpg');
+}
+
+/* ===========================
    響應式設計 (RWD)
 =========================== */
 @media (max-width: 760px) {
