@@ -390,32 +390,31 @@ footer {
   /* 1. 左右推開 */
   justify-content: space-between; 
   
-  /* 2. 讓三個區塊高度延展 (以最高的那欄為準)，方便內部進行底部對齊 */
+  /* 2. 讓左右兩欄的高度強迫一致 (Stretch)，這樣右欄才能做底部對齊 */
   align-items: stretch; 
   
   flex-wrap: wrap; 
   gap: 2rem; 
 }
 
-/* --- 左側區塊 (標題) --- */
+/* --- 左側欄位 --- */
 .footer-left {
   display: flex;
   flex-direction: column;
-  /* 左側內容由上而下自然排列 */
-  justify-content: space-between; 
-  gap: 0.5rem; 
+  /* 讓中文與英文標題之間有一點自然間距 */
+  gap: 0.8rem; 
 }
 
-.zh-title-group h4 {
+.zh-title h4 {
   font-size: 1.3rem;
   color: #ffffff;
-  margin: 0;
+  margin: 0; 
   font-weight: bold;
   line-height: 1.4;
   white-space: nowrap;
 }
 
-.en-title-group p {
+.en-title p {
   font-size: 0.75rem;
   color: #cbd5e1; 
   margin: 0;
@@ -425,40 +424,38 @@ footer {
   white-space: nowrap;
 }
 
-/* --- 中間區塊 (聯絡資訊) --- */
-.footer-contact {
+/* --- 右側欄位 (關鍵排版) --- */
+.footer-right {
   display: flex;
   flex-direction: column;
   
-  /* 3. 修改重點：改為「強制底部對齊」 */
-  /* 這樣 ADD 行就會跟左側的 NATIONAL CENTRAL UNIVERSITY 底部切齊 */
-  justify-content: flex-end; 
+  /* 3. 關鍵：上下推開 (Contact黏頂，Copyright黏底) */
+  justify-content: space-between; 
   
-  gap: 0.5rem; /* 維持緊密的行距 */
+  /* 若右側內容較少，確保靠右對齊或靠左對齊 */
+  /* 根據您的文字需求，這裡設為靠左對齊(預設)，若想靠右可加 align-items: flex-end; */
 }
 
-.footer-contact p {
+/* 聯絡資訊區塊 */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 行距 */
+}
+
+.contact-info p {
   margin: 0; 
   line-height: 1.4; 
   font-size: 0.9rem;
   white-space: nowrap;
 }
 
-/* --- 右側區塊 (版權) --- */
-.footer-copyright {
-  display: flex;
-  flex-direction: column;
-  
-  /* 4. 版權也強制底部對齊 */
-  justify-content: flex-end; 
-}
-
-.footer-copyright p {
+/* 版權宣告區塊 */
+.copyright-info p {
   margin: 0;
-  font-size: 0.75rem; 
-  opacity: 0.6;
+  font-size: 0.9rem; /* 維持與聯絡資訊一樣的大小 */
+  opacity: 0.7; /* 稍微淡一點點，增加層次感，也可設為 1 */
   white-space: nowrap;
-  text-align: right; 
 }
 
 /* ===========================
@@ -467,33 +464,23 @@ footer {
 @media (max-width: 1000px) {
   .footer-container {
     flex-direction: column; 
-    gap: 1.5rem;
-    align-items: flex-start; /* 手機版取消 stretch，改為自然堆疊 */
+    gap: 2rem;
+    align-items: flex-start; /* 手機版改為自然堆疊 */
   }
   
-  .footer-contact {
-    gap: 0.5rem; 
-    justify-content: flex-start; /* 手機版改回靠上排列 */
-  }
-  
-  .footer-copyright {
-    width: 100%;
-  }
-  
-  .footer-copyright p {
-    text-align: left; /* 手機版靠左 */
-    margin-top: 0.5rem;
+  .footer-right {
+    gap: 1rem; /* 手機版右欄內容改為緊密排列 */
+    justify-content: flex-start;
   }
   
   /* 允許文字換行 */
-  .zh-title-group h4,
-  .en-title-group p,
-  .footer-contact p,
-  .footer-copyright p {
+  .zh-title h4,
+  .en-title p,
+  .contact-info p,
+  .copyright-info p {
     white-space: normal; 
   }
 }
-
 /* ===========================
    研究計畫表格與分頁 (Table & Pagination)
 =========================== */
