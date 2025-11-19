@@ -690,8 +690,8 @@ main {
 
 /* 研究項目頁面橫幅 */
 .hero-research {
-  /* 使用 EngineeringBuilding5.jpg */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../ncu_EngineeringBuilding5.jpg');
+  /* 使用 ncu_EngineeringBuilding5.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_EngineeringBuilding5.jpg');
 }
 
 /* 中心成員頁面橫幅 */
