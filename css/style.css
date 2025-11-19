@@ -390,7 +390,7 @@ footer {
   /* 1. 左右推開 */
   justify-content: space-between; 
   
-  /* 2. 讓三個區塊高度延展，以便控制版權在最下方 */
+  /* 2. 讓三個區塊高度延展 (以最高的那欄為準)，方便內部進行底部對齊 */
   align-items: stretch; 
   
   flex-wrap: wrap; 
@@ -401,8 +401,9 @@ footer {
 .footer-left {
   display: flex;
   flex-direction: column;
-  /* 讓中文標題與英文標題靠得近一點 */
-  gap: 0.6rem; 
+  /* 左側內容由上而下自然排列 */
+  justify-content: space-between; 
+  gap: 0.5rem; 
 }
 
 .zh-title-group h4 {
@@ -429,14 +430,16 @@ footer {
   display: flex;
   flex-direction: column;
   
-  /* 3. 修改重點：改為靠上排列，並設定較小的固定間距 */
-  justify-content: flex-start; 
-  gap: 0.6rem; /* 控制三行之間的距離，可依喜好調整 */
+  /* 3. 修改重點：改為「強制底部對齊」 */
+  /* 這樣 ADD 行就會跟左側的 NATIONAL CENTRAL UNIVERSITY 底部切齊 */
+  justify-content: flex-end; 
+  
+  gap: 0.5rem; /* 維持緊密的行距 */
 }
 
 .footer-contact p {
   margin: 0; 
-  line-height: 1.4; /* 行高稍微縮小 */
+  line-height: 1.4; 
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -445,16 +448,17 @@ footer {
 .footer-copyright {
   display: flex;
   flex-direction: column;
-  /* 4. 讓版權文字沉在最底部 */
+  
+  /* 4. 版權也強制底部對齊 */
   justify-content: flex-end; 
 }
 
 .footer-copyright p {
   margin: 0;
-  font-size: 0.75rem; /* 縮小字體 */
+  font-size: 0.75rem; 
   opacity: 0.6;
   white-space: nowrap;
-  text-align: right; /* 文字靠右 */
+  text-align: right; 
 }
 
 /* ===========================
@@ -464,11 +468,12 @@ footer {
   .footer-container {
     flex-direction: column; 
     gap: 1.5rem;
-    align-items: flex-start; /* 手機版取消 stretch */
+    align-items: flex-start; /* 手機版取消 stretch，改為自然堆疊 */
   }
   
   .footer-contact {
     gap: 0.5rem; 
+    justify-content: flex-start; /* 手機版改回靠上排列 */
   }
   
   .footer-copyright {
@@ -476,7 +481,7 @@ footer {
   }
   
   .footer-copyright p {
-    text-align: left; /* 手機版改為靠左，閱讀較順 */
+    text-align: left; /* 手機版靠左 */
     margin-top: 0.5rem;
   }
   
