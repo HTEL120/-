@@ -698,6 +698,13 @@ main {
 .hero-members {
   /* 使用 SchoolGateNCU.jpg */
   background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/SchoolGateNCU.jpg');
+  
+  /* --- 修改重點：調整圖片顯示位置 --- */
+  /* 格式：center (水平置中)  60% (垂直位置) */
+  /* 預設是 50% (正中間)。*/
+  /* 如果想讓畫面「往下移」(看到圖片更上面的天空)，請改小數字 (例如 40%, 30%) */
+  /* 如果想讓畫面「往上移」(看到圖片更下面的地板/校門)，請改大數字 (例如 60%, 70%) */
+  background-position: center 60%; 
 }
 
 /* 最新消息頁面橫幅 */
