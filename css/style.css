@@ -375,42 +375,39 @@ ul.news li a:hover {
 footer {
   background-color: #1e3a8a; 
   color: #e0f2fe; 
-  /* --- 修改 1：大幅減少上下內距 (原 3rem -> 1.5rem) --- */
-  padding: 1.5rem 2rem; 
+  padding: 2rem 2rem; /* 上下內距維持適中 */
   margin-top: 3rem;
   font-size: 0.9rem;
   text-align: left; 
 }
 
-/* 頁尾內容容器 */
+/* 頁尾總容器 */
 .footer-container {
   max-width: 1100px; 
   margin: 0 auto; 
   display: flex;
-  justify-content: space-between; 
-  align-items: flex-start; /* 靠上對齊，若想垂直置中可改 center */
+  justify-content: space-between; /* 左側標題 vs 右側資訊區 分開 */
+  align-items: flex-start; 
   flex-wrap: wrap; 
   gap: 2rem; 
 }
 
-/* 欄位設定 */
-.footer-col {
-  flex: 1; 
-  min-width: 300px; 
+/* --- 左側標題區 --- */
+.footer-left {
+  flex: 1;
+  min-width: 300px; /* 避免縮太小 */
 }
 
-/* 左側樣式 */
 .footer-left h4 {
-  font-size: 1.3rem; /* 字體稍微縮小一點點以節省空間 */
+  font-size: 1.3rem;
   color: #ffffff;
-  /* --- 修改 2：減少標題下方間距 --- */
-  margin: 0 0 0.4rem 0; 
+  margin: 0 0 0.5rem 0;
   font-weight: bold;
   line-height: 1.3;
 }
 
 .footer-left .en-title {
-  font-size: 0.75rem; /* 字體稍微縮小 */
+  font-size: 0.75rem;
   color: #cbd5e1; 
   margin: 0;
   line-height: 1.4;
@@ -418,39 +415,52 @@ footer {
   text-transform: uppercase; 
 }
 
-/* 右側樣式 (聯絡資訊) */
-.footer-right {
+/* --- 右側總區塊 (包含聯絡資訊 + 版權) --- */
+.footer-right-section {
+  display: flex;
+  gap: 2rem; /* 聯絡資訊 與 版權 之間的距離 */
+  align-items: flex-end; /* 關鍵！讓版權文字對齊底部的 ADD */
+}
+
+/* 聯絡資訊直排 */
+.contact-info {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
 }
 
-.footer-right p {
-  /* --- 修改 3：減少每一行之間的間距 (原 0.5rem -> 0.2rem) --- */
-  margin: 0 0 0.2rem 0; 
-  line-height: 1.5;
+.contact-info p {
+  margin: 0 0 0.3rem 0; /* 行距 */
+  line-height: 1.4;
   font-size: 0.9rem;
-  letter-spacing: 0.5px; 
 }
 
-.footer-right .copyright {
-  /* --- 修改 4：減少版權文字與上方的距離 (原 1.5rem -> 0.8rem) --- */
-  margin-top: 0.8rem; 
+/* 版權宣告 */
+.copyright-info p {
+  margin: 0 0 0.3rem 0; /* 確保與 ADD 的底部 margin 一致，才會水平對齊 */
   font-size: 0.8rem;
   opacity: 0.6;
+  white-space: nowrap; /* 不換行 */
 }
 
 /* ===========================
    頁尾 RWD (手機版調整)
 =========================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .footer-container {
     flex-direction: column; 
-    gap: 1.5rem; /* 手機版間距也縮小 */
+    gap: 2rem;
   }
   
-  .footer-col {
+  /* 手機版時，右側區域改為垂直排列 (版權移到最下方) */
+  .footer-right-section {
+    flex-direction: column;
+    align-items: flex-start; /* 靠左對齊 */
+    gap: 1rem;
     width: 100%;
+  }
+  
+  .copyright-info {
+    margin-top: 0.5rem;
   }
 }
 
