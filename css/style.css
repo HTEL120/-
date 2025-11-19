@@ -387,21 +387,25 @@ footer {
   margin: 0 auto; 
   display: flex;
   
-  /* 1. 左右推開 */
-  justify-content: space-between; 
+  /* 1. 修改重點：改用「置中」，讓內容集中在中間 */
+  justify-content: center; 
   
-  /* 2. 讓左右兩欄的高度強迫一致 (Stretch)，這樣右欄才能做底部對齊 */
+  /* 2. 修改重點：用 gap 控制左右兩欄的固定距離 */
+  /* 覺得太近改大 (例如 8rem)，覺得太遠改小 (例如 4rem) */
+  gap: 6rem; 
+  
+  /* 3. 維持高度拉伸，以確保底部對齊功能正常 */
   align-items: stretch; 
   
   flex-wrap: wrap; 
-  gap: 2rem; 
 }
 
 /* --- 左側欄位 --- */
 .footer-left {
   display: flex;
   flex-direction: column;
-  /* 讓中文與英文標題之間有一點自然間距 */
+  /* 限制寬度不要無限延伸 */
+  flex: 0 1 auto; 
   gap: 0.8rem; 
 }
 
@@ -424,23 +428,22 @@ footer {
   white-space: nowrap;
 }
 
-/* --- 右側欄位 (關鍵排版) --- */
+/* --- 右側欄位 --- */
 .footer-right {
   display: flex;
   flex-direction: column;
+  /* 限制寬度不要無限延伸 */
+  flex: 0 1 auto; 
   
-  /* 3. 關鍵：上下推開 (Contact黏頂，Copyright黏底) */
+  /* 上下撐開：TEL黏頂，Copyright黏底 */
   justify-content: space-between; 
-  
-  /* 若右側內容較少，確保靠右對齊或靠左對齊 */
-  /* 根據您的文字需求，這裡設為靠左對齊(預設)，若想靠右可加 align-items: flex-end; */
 }
 
-/* 聯絡資訊區塊 */
+/* 聯絡資訊 */
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* 行距 */
+  gap: 0.5rem; 
 }
 
 .contact-info p {
@@ -450,12 +453,14 @@ footer {
   white-space: nowrap;
 }
 
-/* 版權宣告區塊 */
+/* 版權宣告 */
 .copyright-info p {
   margin: 0;
-  font-size: 0.9rem; /* 維持與聯絡資訊一樣的大小 */
-  opacity: 0.7; /* 稍微淡一點點，增加層次感，也可設為 1 */
+  font-size: 0.9rem; 
+  opacity: 0.7; 
   white-space: nowrap;
+  /* 讓版權文字靠左對齊 (與上面的 ADD 對齊) */
+  text-align: left; 
 }
 
 /* ===========================
@@ -465,11 +470,11 @@ footer {
   .footer-container {
     flex-direction: column; 
     gap: 2rem;
-    align-items: flex-start; /* 手機版改為自然堆疊 */
+    align-items: flex-start; 
   }
   
   .footer-right {
-    gap: 1rem; /* 手機版右欄內容改為緊密排列 */
+    gap: 1rem; 
     justify-content: flex-start;
   }
   
@@ -481,6 +486,7 @@ footer {
     white-space: normal; 
   }
 }
+
 /* ===========================
    研究計畫表格與分頁 (Table & Pagination)
 =========================== */
