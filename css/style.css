@@ -390,7 +390,7 @@ footer {
   /* 1. 左右推開 */
   justify-content: space-between; 
   
-  /* 2. 關鍵：讓左欄與中欄的高度強迫一致 (Stretch) */
+  /* 2. 讓三個區塊高度延展，以便控制版權在最下方 */
   align-items: stretch; 
   
   flex-wrap: wrap; 
@@ -401,15 +401,14 @@ footer {
 .footer-left {
   display: flex;
   flex-direction: column;
-  /* 讓中文在上面，英文在下面，中間自動留白(如果有多的高度) */
-  justify-content: space-between; 
-  gap: 1rem; /* 中英文之間的最小間距 */
+  /* 讓中文標題與英文標題靠得近一點 */
+  gap: 0.6rem; 
 }
 
 .zh-title-group h4 {
   font-size: 1.3rem;
   color: #ffffff;
-  margin: 0; /* 移除預設間距，緊密排列 */
+  margin: 0;
   font-weight: bold;
   line-height: 1.4;
   white-space: nowrap;
@@ -430,13 +429,14 @@ footer {
   display: flex;
   flex-direction: column;
   
-  /* 3. 關鍵：內容分散對齊，TEL貼頂，ADD貼底 */
-  justify-content: space-between; 
+  /* 3. 修改重點：改為靠上排列，並設定較小的固定間距 */
+  justify-content: flex-start; 
+  gap: 0.6rem; /* 控制三行之間的距離，可依喜好調整 */
 }
 
 .footer-contact p {
   margin: 0; 
-  line-height: 1.5;
+  line-height: 1.4; /* 行高稍微縮小 */
   font-size: 0.9rem;
   white-space: nowrap;
 }
@@ -444,8 +444,9 @@ footer {
 /* --- 右側區塊 (版權) --- */
 .footer-copyright {
   display: flex;
-  /* 讓它沉在最下面 */
-  align-items: flex-end; 
+  flex-direction: column;
+  /* 4. 讓版權文字沉在最底部 */
+  justify-content: flex-end; 
 }
 
 .footer-copyright p {
@@ -453,6 +454,7 @@ footer {
   font-size: 0.75rem; /* 縮小字體 */
   opacity: 0.6;
   white-space: nowrap;
+  text-align: right; /* 文字靠右 */
 }
 
 /* ===========================
@@ -461,13 +463,21 @@ footer {
 @media (max-width: 1000px) {
   .footer-container {
     flex-direction: column; 
-    gap: 2rem;
-    align-items: flex-start; /* 手機版取消 stretch，改為自然高度 */
+    gap: 1.5rem;
+    align-items: flex-start; /* 手機版取消 stretch */
   }
   
   .footer-contact {
-    gap: 0.5rem; /* 手機版改為緊密排列，不需要分散 */
-    justify-content: flex-start;
+    gap: 0.5rem; 
+  }
+  
+  .footer-copyright {
+    width: 100%;
+  }
+  
+  .footer-copyright p {
+    text-align: left; /* 手機版改為靠左，閱讀較順 */
+    margin-top: 0.5rem;
   }
   
   /* 允許文字換行 */
