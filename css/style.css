@@ -375,7 +375,7 @@ ul.news li a:hover {
 footer {
   background-color: #1e3a8a; 
   color: #e0f2fe; 
-  padding: 2rem 2rem; /* 上下內距維持適中 */
+  padding: 2rem 3rem; /* 左右增加內距，讓版面看起來寬敞 */
   margin-top: 3rem;
   font-size: 0.9rem;
   text-align: left; 
@@ -383,19 +383,19 @@ footer {
 
 /* 頁尾總容器 */
 .footer-container {
-  max-width: 1100px; 
+  max-width: 1200px; /* 稍微放寬最大寬度，容納橫向排版 */
   margin: 0 auto; 
   display: flex;
-  justify-content: space-between; /* 左側標題 vs 右側資訊區 分開 */
+  /* --- 控制距離 1：左側標題 與 右側資訊群組 之間的距離 --- */
+  justify-content: space-between; /* 讓兩邊撐開到最邊緣 */
   align-items: flex-start; 
   flex-wrap: wrap; 
   gap: 2rem; 
 }
 
-/* --- 左側標題區 --- */
+/* --- 左側標題區 (區塊 1) --- */
 .footer-left {
-  flex: 1;
-  min-width: 300px; /* 避免縮太小 */
+  flex-shrink: 0; /* 防止標題被壓縮 */
 }
 
 .footer-left h4 {
@@ -415,46 +415,49 @@ footer {
   text-transform: uppercase; 
 }
 
-/* --- 右側總區塊 (包含聯絡資訊 + 版權) --- */
-.footer-right-section {
+/* --- 右側總群組 (包含區塊 2 與 區塊 3) --- */
+.footer-right-group {
   display: flex;
-  gap: 2rem; /* 聯絡資訊 與 版權 之間的距離 */
-  align-items: flex-end; /* 關鍵！讓版權文字對齊底部的 ADD */
+  align-items: flex-end; /* 關鍵：讓「版權」對齊「ADD」的底部 */
+  
+  /* --- 控制距離 2：聯絡資訊(ADD) 與 版權宣告(Copyright) 之間的距離 --- */
+  gap: 5rem; /* 這裡設定 5rem，您可以改成 4rem 或 6rem 來調整遠近 */
 }
 
-/* 聯絡資訊直排 */
+/* 聯絡資訊 (區塊 2) */
 .contact-info {
   display: flex;
   flex-direction: column;
 }
 
 .contact-info p {
-  margin: 0 0 0.3rem 0; /* 行距 */
+  margin: 0 0 0.3rem 0; 
   line-height: 1.4;
   font-size: 0.9rem;
+  white-space: nowrap; /* 保持資訊不換行 */
 }
 
-/* 版權宣告 */
+/* 版權宣告 (區塊 3) */
 .copyright-info p {
-  margin: 0 0 0.3rem 0; /* 確保與 ADD 的底部 margin 一致，才會水平對齊 */
+  margin: 0 0 0.3rem 0; /* 確保底部 margin 與 ADD 一致 */
   font-size: 0.8rem;
   opacity: 0.6;
-  white-space: nowrap; /* 不換行 */
+  white-space: nowrap; /* 保持不換行 */
 }
 
 /* ===========================
-   頁尾 RWD (手機版調整)
+   頁尾 RWD (手機/平板調整)
 =========================== */
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .footer-container {
     flex-direction: column; 
     gap: 2rem;
   }
   
-  /* 手機版時，右側區域改為垂直排列 (版權移到最下方) */
-  .footer-right-section {
+  /* 螢幕變窄時，右側群組改為垂直排列，避免擁擠 */
+  .footer-right-group {
     flex-direction: column;
-    align-items: flex-start; /* 靠左對齊 */
+    align-items: flex-start; 
     gap: 1rem;
     width: 100%;
   }
