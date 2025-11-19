@@ -592,6 +592,7 @@ footer {
   background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_campus.jpg');
   background-size: cover; 
   background-position: center center; 
+  margin-bottom: 3rem; /* 您可以調整這個數字 (例如 2rem 或 4rem) 來改變距離大小 */
 }
 
 /* 文字內容的容器 */
