@@ -715,10 +715,48 @@ main {
 }
 
 /* ===========================
-   響應式設計 (RWD)
+   響應式設計 (RWD) - 手機版優化
 =========================== */
 @media (max-width: 760px) {
-  /* --- 首頁 Hero 橫幅的 RWD --- */
+  
+  /* --- 1. Header 瘦身 (讓導覽列變橫向) --- */
+  header {
+    flex-direction: column;
+    padding: 0.5rem 0; /* 縮小上下留白 */
+  }
+
+  header h1 {
+    font-size: 1.3rem; /* 標題改小 */
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ncu-logo {
+      height: 35px; /* Logo 改小 */
+      margin-right: 8px;
+  }
+
+  /* 關鍵：導覽列改為橫向排列，節省空間 */
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 0;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0;
+    padding: 2px 5px;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  /* --- 2. Hero 橫幅調整 --- */
   .hero-section {
     height: 550px; 
     justify-content: center; 
@@ -739,7 +777,7 @@ main {
     text-align: justify; 
   }
 
-  /* --- 各頁面標題橫幅的 RWD --- */
+  /* --- 3. 各頁面標題橫幅的 RWD --- */
   .page-hero-title-section {
     height: 180px; 
     background-position: center 70%;
@@ -752,47 +790,44 @@ main {
     font-size: 1.6rem; 
   }
 
-  /* --- 通用的 RWD --- */
-  header {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  header h1 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem; 
-  }
-  .ncu-logo {
-      height: 40px; 
-  }
-
-  nav a {
-    display: block;
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  /* --- RWD main 的 margin-top --- */
+  /* --- 4. Main 與 卡片調整 --- */
   main {
-    padding: 0; /* 移除手機版 main 的 padding，交給 content-card 自己處理 */
-    margin-top: 0; /* 確保 main 沒有上邊距 */
+    padding: 0; 
+    margin-top: 0; 
   }
 
-  /* --- 修改點：確保內容卡片在手機版也有左右 padding --- */
   .content-card {
     padding: 1.5rem 1rem; /* 手機版左右 padding */
   }
+  
+  /* --- 5. 表格手機版修正 (防止擠壓) --- */
+  .table-container {
+    display: block;
+    width: 100%;
+    overflow-x: auto; /* 開啟橫向滑動 */
+    -webkit-overflow-scrolling: touch;
+  }
+  .research-table th, 
+  .research-table td {
+    white-space: nowrap; /* 強制不換行 */
+    padding: 10px;
+  }
+  /* 讓計畫名稱可以換行，避免太長 */
+  .research-table td:nth-child(3) {
+     white-space: normal;
+     min-width: 200px;
+  }
 
+  /* --- 6. 成員介紹修正 --- */
   .faculty-member {
     flex: 0 1 100%;
     padding-bottom: 80px; 
   }
-
   .faculty-member img {
     width: 130px; 
     height: 195px;
     align-self: center; 
   }
-  
   .btn-more {
     bottom: 20px; 
     left: 50%; 
