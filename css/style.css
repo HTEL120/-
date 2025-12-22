@@ -96,10 +96,14 @@ nav a:hover::after {
    主要內容區 (Main)
 =========================== */
 main {
-  /* --- 修改點：移除 max-width，讓橫幅可以滿版 --- */
   max-width: 1100px; /* 這是針對內容卡片，但橫幅需要滿版 */
   margin: 2rem auto; 
   padding: 0 1rem;
+}
+
+/* --- 針對沒有橫幅(Banner)的頁面，手動補回上方間距 --- */
+.no-banner-main {
+  margin-top: 2rem; 
 }
 
 /* 內容卡片 */
