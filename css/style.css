@@ -77,3 +77,20 @@ ro-section {
     font-size: 0.9rem;
   }
 }
+
+/* ===========================
+   特定頁面專用間距調整 (Research Topics & Members)
+   只用於 topic-01~09 與 members 頁面
+=========================== */
+
+/* 1. 電腦版設定：拉大距離 */
+.extra-top-margin {
+    margin-top: 5rem !important; /* 約 80-90px，您可以依需求改成 4rem 或 6rem */
+}
+
+/* 2. 手機版設定：距離稍微縮小，避免手機畫面留白太多 */
+@media (max-width: 760px) {
+    .extra-top-margin {
+        margin-top: 2rem !important; /* 手機上改成約 32px 比較剛好 */
+    }
+}
