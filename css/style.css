@@ -646,9 +646,7 @@ footer {
   background-size: cover;
   background-position: center center;
   /* --- 修改點：移除圓角和陰影，使其與首頁 Hero 區塊保持一致的滿版方塊設計 --- */
-  margin-bottom: 2rem; 
-  /* border-radius: 0; */ /* 移除或設置為 0 */
-  /* box-shadow: none; */ /* 移除或設置為 none */
+  margin-bottom: 5rem;
 }
 
 .page-hero-title-content {
