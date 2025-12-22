@@ -1,4 +1,763 @@
-ro-section {
+/* style.css */
+
+/* ===========================
+   基本設定
+=========================== */
+html {
+  scroll-behavior: smooth;
+  font-size: 18px; 
+}
+
+body {
+  font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
+  
+  /* --- 使用"更深"的藍灰色背景 --- */
+  background-color: #e2e8f0; 
+  
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+/* ===========================
+   標頭區 (Header)
+=========================== */
+header {
+  background-color: #ffffff;
+  color: #333; 
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* --- 使用更柔和的陰影 --- */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  
+  position: sticky; 
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.1rem; 
+  font-weight: 700;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.ncu-logo {
+  height: 60px; 
+  width: auto;
+  margin-right: 15px;
+  transform: translateY(0px); 
+}
+
+/* ===========================
+   導覽列 (Navigation)
+=========================== */
+nav {
+  background-color: transparent; 
+  padding: 0;
+  text-align: right;
+}
+
+nav a {
+  color: #1e3a8a;
+  margin: 0 0.75rem;
+  text-decoration: none;
+  font-weight: 500; 
+  font-size: 1rem;
+  position: relative; /* 為了底線動畫 */
+  padding-bottom: 5px; /* 為了底線動畫 */
+}
+nav a:hover {
+  color: #3b5dc9;
+}
+/* --- 導覽列 Hover 底線動畫 --- */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b5dc9;
+  transition: width 0.3s ease;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   主要內容區 (Main)
+=========================== */
+main {
+  /* --- 修改點：移除 max-width，讓橫幅可以滿版 --- */
+  max-width: 1100px; /* 這是針對內容卡片，但橫幅需要滿版 */
+  margin: 2rem auto; 
+  padding: 0 1rem;
+}
+
+/* 內容卡片 */
+.content-card {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  
+  border-radius: 12px; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); 
+  
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* --- 新增：確保內容卡片在 main 滿版後，仍然有置中效果 --- */
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+h2 {
+  font-size: 1.9rem; 
+  font-weight: 700;
+  color: #1e3a8a;
+  border-bottom: 3px solid #e0f2fe; 
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+h3 {
+  font-size: 1.6rem; 
+  font-weight: 700;
+  color: #1e3a8a;
+  border-bottom: 3px solid #e0f2fe; 
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+/* ===========================
+   首頁 (Index Page)
+=========================== */
+
+/* 段落格式 */
+p {
+  text-indent: 0;
+  text-align: justify;
+  margin-bottom: 1.25rem;
+}
+.indent-first-line {
+  text-indent: 2em; 
+}
+
+/* 聯絡資訊 */
+.contact-info ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.contact-info li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   最新消息 (News Section)
+=========================== */
+.news ul,
+ul.news {
+  list-style-type: none; 
+  padding-left: 1.5em; 
+  margin-left: 0; 
+}
+
+.news li,
+ul.news li {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #ddd; 
+}
+
+.news li::before,
+ul.news li::before {
+  content: "»"; 
+  color: #3b5dc9;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1.5em; 
+}
+
+.news li a,
+ul.news li a {
+  text-decoration: none; 
+  color: #333; 
+  transition: color 0.3s;
+}
+
+.news li a:hover,
+ul.news li a:hover {
+  color: #3b5dc9; 
+  text-decoration: underline; 
+}
+
+.view-all-container {
+  text-align: right; 
+  margin-top: 1.5rem;
+}
+
+.view-all-link {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #f2f4f8; 
+  color: #1e3a8a; 
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.view-all-link:hover {
+  background-color: #1e3a8a;
+  color: #ffffff;
+}
+
+.h2-note {
+  font-size: 1rem; 
+  color: #888; 
+  font-weight: 500; 
+  margin-left: 10px; 
+}
+
+/* ===========================
+   成員介紹 (Faculty Section)
+=========================== */
+.faculty-row {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 2%;
+}
+
+.faculty-member {
+  flex: 0 1 48%;
+  
+  background-color: #fcfdff; 
+  border: 1px solid #e8eef8; 
+  
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); 
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative; 
+  padding-bottom: 80px; 
+}
+.faculty-member:hover {
+  transform: translateY(-5px);
+  border-color: #dbe4f9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07);
+}
+.faculty-member img {
+  display: block;
+  width: 170px; 
+  height: 255px; 
+  margin: 0 auto 1rem auto;
+  object-fit: cover; 
+  object-position: center top; 
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+.faculty-info {
+  margin-top: 10px;
+  text-align: center;
+}
+.faculty-info h4 {
+  margin-bottom: 10px;
+  font-size: 1.4rem; 
+  color: #1e3a8a;
+  font-weight: 700;
+}
+.faculty-info p {
+  text-align: left;
+  font-size: 0.9rem; 
+  line-height: 1.6;
+}
+
+.btn-more {
+  position: absolute; 
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  display: inline-block;
+  text-decoration: none;
+  
+  background-color: #1e3a8a; 
+  color: #ffffff;
+  
+  padding: 8px 24px; 
+  border-radius: 20px; 
+  font-weight: bold;
+  font-size: 0.9rem; 
+  
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  z-index: 10; 
+  
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+.btn-more:hover {
+  background-color: #3b5dc9; 
+  transform: translateX(-50%) translateY(-2px); 
+  box-shadow: 0 6px 15px rgba(30, 58, 138, 0.4);
+  color: #ffffff;
+}
+
+/* ===========================
+   研究項目
+=========================== */
+.about-content h3 {
+  font-size: 1.6rem; 
+  color: #3b5dc9;
+  border-bottom: none;
+  margin-top: 2rem;
+}
+.about-content ol {
+  padding-left: 2rem;
+  line-height: 1.9;
+}
+.about-content ol li {
+  margin-bottom: 0.5rem;
+}
+.about-content ol li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+.about-content ol li a:hover {
+  color: #3b5dc9;
+  text-decoration: underline;
+}
+
+/* ===========================
+   回到頂部按鈕
+=========================== */
+#scrollTopBtn {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  padding: 0;
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+#scrollTopBtn:hover {
+  background-color: #3b5dc9;
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   頁尾 (Footer)
+=========================== */
+footer {
+  background-color: #1e3a8a; 
+  color: #e0f2fe; 
+  padding: 2.5rem 3rem; 
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  text-align: left; 
+}
+
+/* 頁尾總容器 */
+.footer-container {
+  max-width: 1200px; 
+  margin: 0 auto; 
+  display: flex;
+  
+  /* 1. 修改重點：改用「置中」，讓內容集中在中間 */
+  justify-content: center; 
+  
+  /* 2. 修改重點：用 gap 控制左右兩欄的固定距離 */
+  /* 覺得太近改大 (例如 8rem)，覺得太遠改小 (例如 4rem) */
+  gap: 8rem; 
+  
+  /* 3. 維持高度拉伸，以確保底部對齊功能正常 */
+  align-items: stretch; 
+  
+  flex-wrap: wrap; 
+}
+
+/* --- 左側欄位 --- */
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  /* 限制寬度不要無限延伸 */
+  flex: 0 1 auto; 
+  gap: 0.8rem; 
+}
+
+.zh-title h4 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0; 
+  font-weight: bold;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.en-title p {
+  font-size: 0.75rem;
+  color: #cbd5e1; 
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase; 
+  white-space: nowrap;
+}
+
+/* --- 右側欄位 --- */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  /* 限制寬度不要無限延伸 */
+  flex: 0 1 auto; 
+  
+  /* 上下撐開：TEL黏頂，Copyright黏底 */
+  justify-content: space-between; 
+}
+
+/* 聯絡資訊 */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; 
+}
+
+.contact-info p {
+  margin: 0; 
+  line-height: 1.4; 
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* 版權宣告 */
+.copyright-info p {
+  margin: 0;
+  font-size: 0.9rem; 
+  opacity: 0.7; 
+  white-space: nowrap;
+  /* 讓版權文字靠左對齊 (與上面的 ADD 對齊) */
+  text-align: left; 
+}
+
+/* ===========================
+   頁尾 RWD (手機/平板調整)
+=========================== */
+@media (max-width: 1000px) {
+  .footer-container {
+    flex-direction: column; 
+    gap: 2rem;
+    align-items: flex-start; 
+  }
+  
+  .footer-right {
+    gap: 1rem; 
+    justify-content: flex-start;
+  }
+  
+  /* 允許文字換行 */
+  .zh-title h4,
+  .en-title p,
+  .contact-info p,
+  .copyright-info p {
+    white-space: normal; 
+  }
+}
+
+/* ===========================
+   研究計畫表格與分頁 (Table & Pagination)
+=========================== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+.research-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+.research-table th, .research-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+.research-table th {
+  background-color: #f9f9f9;
+  font-weight: 700;
+  color: #333;
+}
+.research-table td { color: #555; }
+.research-table tr:nth-child(even) { background-color: #fdfdfd; }
+.research-table .col-amount { text-align: right; font-weight: 600; white-space: nowrap; }
+.research-table .col-date { white-space: nowrap; }
+.research-table td .keywords { display: block; margin-top: 8px; font-size: 0.85rem; color: #777; line-height: 1.6; }
+.pagination-container { text-align: center; margin-top: 2rem; padding-bottom: 1rem; }
+.pagination-btn { display: inline-block; padding: 8px 14px; margin: 0 4px; border: 1px solid #ddd; background-color: #fff; color: #1e3a8a; text-decoration: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+.pagination-btn:hover { background-color: #f5f7fa; border-color: #ccc; }
+.pagination-btn.active { background-color: #1e3a8a; border-color: #1e3a8a; color: #fff; font-weight: bold; cursor: default; }
+.pagination-btn.disabled { color: #aaa; border-color: #eee; background-color: #f9f9f9; cursor: not-allowed; }
+
+
+/* ===========================
+   文章頁面 (Article Page)
+=========================== */
+.article-meta {
+  font-size: 0.9rem; 
+  color: #777;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+.article-content {
+  line-height: 1.9;
+}
+.article-content img {
+  max-width: 100%; 
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0 1.5rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.article-content h3 {
+  font-size: 1.6rem; 
+  color: #3b5dc9;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+.article-content ul,
+.article-content ol {
+  padding-left: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1e3a8a;
+  transition: transform 0.2s;
+}
+.back-link:hover {
+  color: #3b5dc9;
+  transform: translateX(-5px);
+}
+
+/* ===========================
+   工具樣式 (Utilities)
+=========================== */
+.indent-first-line {
+  text-indent: 2em; 
+}
+
+/* ===========================
+   首頁 Hero 橫幅 (Index Page Hero)
+=========================== */
+.hero-section {
+  width: 100%;
+  height: 700px; 
+  position: relative; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  /* 背景遮罩透明度 (0.0 表示完全透明，0.5 表示半透明) */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_campus.jpg');
+  background-size: cover; 
+  background-position: center center; 
+  margin-bottom: 3rem; /* 您可以調整這個數字 (例如 2rem 或 4rem) 來改變距離大小 */
+}
+
+/* 文字內容的容器 */
+.hero-content {
+  width: 90%;
+  max-width: 550px; 
+  margin-left: 0; 
+  background-color: rgba(10, 10, 10, 0.5); /* 半透明灰色方框 */
+  @supports (backdrop-filter: blur(5px)) {
+    backdrop-filter: none; 
+  }
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  color: #ffffff;
+  text-align: center; 
+}
+
+/* 調整 Hero 區塊內的標題 */
+.hero-content h2 {
+  font-size: 2.2rem; 
+  color: #ffffff; 
+  margin-top: 0;
+  border-bottom: 3px solid #ffffff; 
+  padding-bottom: 1rem; 
+  margin-bottom: 1.5rem; 
+  display: inline-block; 
+}
+
+/* 調整 Hero 區塊內的文字 */
+.hero-content p {
+  color: #f0f0f0; 
+  margin-bottom: 1rem;
+  line-height: 1.8; 
+  font-size: 1.1rem; 
+  text-align: justify;
+}
+
+/* ===========================
+   各頁面標題橫幅 (Page Title Hero)
+=========================== */
+.page-hero-title-section {
+  width: 100%;
+  height: 350px; 
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* --- 修改點：調整遮罩透明度與首頁一致 --- */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_campus.jpg');
+  background-size: cover;
+  background-position: center center;
+  /* --- 修改點：移除圓角和陰影，使其與首頁 Hero 區塊保持一致的滿版方塊設計 --- */
+  margin-bottom: 2rem; 
+  /* border-radius: 0; */ /* 移除或設置為 0 */
+  /* box-shadow: none; */ /* 移除或設置為 none */
+}
+
+.page-hero-title-content {
+  /* --- 修改點：調整 max-width 與首頁 Hero 的文字方框一致 --- */
+  width: 90%; /* 與首頁 Hero 的文字方框一致 */
+  max-width: 550px; /* 與首頁 Hero 的文字方框一致 */
+  /* --- 修改點：調整背景透明度，與首頁 Hero 的文字方框一致 --- */
+  background-color: rgba(10, 10, 10, 0.5); /* 與首頁 Hero 的文字方框一致 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.page-hero-title-content h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 0;
+  border-bottom: 3px solid #ffffff;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0;
+  display: inline-block; 
+}
+
+/* 確保 <main> 內容 (最新消息卡片) 和橫幅有間距 */
+main {
+  /* --- 修改點：將 main 的 max-width 設為 none，padding 設為 0，
+     以便 page-hero-title-section 能夠滿版。
+     內容卡片的 max-width 和 margin-left/right 會負責置中。 --- */
+  max-width: none; /* 移除 max-width 限制 */
+  margin-top: 0;   /* 移除預設的 main-top，讓橫幅頂部緊貼 header */
+  padding: 0;      /* 移除 main 預設的左右 padding */
+}
+
+/* ===========================
+   各頁面特定橫幅圖片設定
+=========================== */
+
+/* 研究項目頁面橫幅 */
+.hero-research {
+  /* 使用 ncu_engineeringbuilding.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/ncu_engineeringbuilding.jpg');
+     
+  /* --- 修改重點：調整圖片顯示位置 --- */
+  /* 格式：center (水平置中)  60% (垂直位置) */
+  /* 預設是 50% (正中間)。*/
+  /* 如果想讓畫面「往下移」(看到圖片更上面的天空)，請改小數字 (例如 40%, 30%) */
+  /* 如果想讓畫面「往上移」(看到圖片更下面的地板/校門)，請改大數字 (例如 60%, 70%) */
+  background-position: center 90%; 
+}
+
+/* 中心成員頁面橫幅 */
+.hero-members {
+  /* 使用 SchoolGateNCU.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/SchoolGateNCU.jpg');
+  background-position: center 45%; 
+}
+
+/* 最新消息頁面橫幅 */
+.hero-news {
+  /* 使用 NCUsakura.jpg */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../images/NCUsakura.jpg');
+}
+
+/* ===========================
+   響應式設計 (RWD) - 手機版優化
+=========================== */
+@media (max-width: 760px) {
+  
+  /* --- 1. Header 瘦身 (讓導覽列變橫向) --- */
+  header {
+    flex-direction: column;
+    padding: 0.5rem 0; /* 縮小上下留白 */
+  }
+
+  header h1 {
+    font-size: 1.3rem; /* 標題改小 */
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ncu-logo {
+      height: 35px; /* Logo 改小 */
+      margin-right: 8px;
+  }
+
+  /* 關鍵：導覽列改為橫向排列，節省空間 */
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 0;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0;
+    padding: 2px 5px;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  /* --- 2. Hero 橫幅調整 --- */
+  .hero-section {
     height: 550px; 
     justify-content: center; 
     background-position: center 80%; 
@@ -76,21 +835,4 @@ ro-section {
     padding: 8px 24px;
     font-size: 0.9rem;
   }
-}
-
-/* ===========================
-   特定頁面專用間距調整 (Research Topics & Members)
-   只用於 topic-01~09 與 members 頁面
-=========================== */
-
-/* 1. 電腦版設定：拉大距離 */
-.extra-top-margin {
-    margin-top: 5rem !important; /* 約 80-90px，您可以依需求改成 4rem 或 6rem */
-}
-
-/* 2. 手機版設定：距離稍微縮小，避免手機畫面留白太多 */
-@media (max-width: 760px) {
-    .extra-top-margin {
-        margin-top: 2rem !important; /* 手機上改成約 32px 比較剛好 */
-    }
 }
