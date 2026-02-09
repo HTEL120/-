@@ -6,13 +6,31 @@
   <title>林景崎 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* --- 新增修正樣式 --- */
-    
-    /* 強制第1欄(工作類別) 與 第2欄(姓名) 不換行 */
-    #projectTable th:nth-child(1), #projectTable td:nth-child(1),
-    #projectTable th:nth-child(2), #projectTable td:nth-child(2) {
-      white-space: nowrap; /* 禁止文字換行 */
-      width: 1%;           /* 讓欄位寬度盡量縮小，只佔用文字所需空間 */
+    /* --- 核心修正樣式 --- */
+
+    /* 1. 全域設定：讓表格內所有的 th (標題) 和 td (內容) 預設「不換行」 */
+    #projectTable th,
+    #projectTable td {
+      white-space: nowrap;  /* 關鍵語法：強制文字不換行 */
+      vertical-align: top;  /* 讓內容靠上對齊，當計畫名稱換行時比較美觀 */
+      padding: 12px 8px;    /* 調整間距 */
+    }
+
+    /* 2. 特例設定：只讓第 3 欄 (計畫名稱的內容 td) 可以換行 */
+    #projectTable td:nth-child(3) {
+      white-space: normal;  /* 允許換行 */
+      min-width: 350px;     /* 設定最小寬度，確保長標題有足夠空間顯示，不會擠成一條 */
+      line-height: 1.5;     /* 增加行高，提升長標題的可讀性 */
+    }
+
+    /* (選用) 為了確保標題列不會被內容擠壓，可以設定 width: 1% 讓它緊縮 */
+    #projectTable th:nth-child(1), #projectTable td:nth-child(1), /* 工作類別 */
+    #projectTable th:nth-child(2), #projectTable td:nth-child(2), /* 姓名 */
+    #projectTable th:nth-child(4), #projectTable td:nth-child(4), /* 執行期限 */
+    #projectTable th:nth-child(5), #projectTable td:nth-child(5), /* 補助單位 */
+    #projectTable th:nth-child(6), #projectTable td:nth-child(6)  /* 金額 */
+    {
+      width: 1%;
     }
   </style>
 </head>
