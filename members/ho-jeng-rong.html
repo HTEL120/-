@@ -6,10 +6,27 @@
   <title>何正榮 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* 強制工作類別與姓名不換行 */
-    .research-table th:nth-child(1), .research-table td:nth-child(1),
-    .research-table th:nth-child(2), .research-table td:nth-child(2) {
+    /* --- 表格樣式修正 --- */
+    
+    /* 1. 工作類別 (第1欄): 強制不換行 */
+    #projectTable th:nth-child(1),
+    #projectTable td:nth-child(1) {
       white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
+
+    /* 2. 姓名 (第2欄): 強制不換行 */
+    #projectTable th:nth-child(2),
+    #projectTable td:nth-child(2) {
+      white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
+
+    /* 3. 計畫名稱 (第3欄): 允許自然換行，但不要強制斷字 */
+    #projectTable td:nth-child(3) {
+      white-space: normal;
+      min-width: 280px; /* 給予適當寬度，避免太擠 */
+      line-height: 1.5;
     }
   </style>
 </head>
