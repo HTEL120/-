@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>林景崎 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
+  <style>
+    /* --- 新增修正樣式 --- */
+    
+    /* 強制第1欄(工作類別) 與 第2欄(姓名) 不換行 */
+    #projectTable th:nth-child(1), #projectTable td:nth-child(1),
+    #projectTable th:nth-child(2), #projectTable td:nth-child(2) {
+      white-space: nowrap; /* 禁止文字換行 */
+      width: 1%;           /* 讓欄位寬度盡量縮小，只佔用文字所需空間 */
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -158,6 +168,9 @@
       function setupPagination() {
         // 清空現有按鈕
         paginationControls.innerHTML = "";
+        
+        // 如果只有一頁或沒有資料，就不顯示分頁按鈕
+        if (totalPages <= 1) return;
 
         // 建立 "上一頁" 按鈕
         let prevButton = document.createElement("a");
