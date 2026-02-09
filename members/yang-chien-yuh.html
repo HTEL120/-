@@ -6,27 +6,49 @@
   <title>楊建裕 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* --- 表格樣式修正 --- */
+    /* --- 表格樣式優化 --- */
     
-    /* 1. 工作類別 (第1欄): 強制不換行 */
+    .research-table {
+      width: 100%;
+      border-collapse: collapse; /* 確保邊框合併 */
+    }
+
+    /* 針對所有儲存格的設定 */
+    .research-table th, 
+    .research-table td {
+      padding: 12px 8px;   /* 增加上下內距，讓文字不要太貼邊框 */
+      vertical-align: top; /* ★★★ 關鍵修正：強制內容靠上對齊，解決忽高忽低的問題 ★★★ */
+      border-bottom: 1px solid #eee; /* 增加分隔線讓閱讀更清楚 */
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    /* 1. 工作類別 (第1欄): 強制不換行且縮到最小寬度 */
     #projectTable th:nth-child(1),
     #projectTable td:nth-child(1) {
       white-space: nowrap;
-      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+      width: 1%; 
     }
 
     /* 2. 姓名 (第2欄): 強制不換行 */
     #projectTable th:nth-child(2),
     #projectTable td:nth-child(2) {
       white-space: nowrap;
-      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+      width: 1%; 
     }
 
-    /* 3. 計畫名稱 (第3欄): 允許自然換行，但不要強制斷字 */
+    /* 3. 計畫名稱 (第3欄): 允許自然換行 */
     #projectTable td:nth-child(3) {
       white-space: normal;
-      min-width: 280px; /* 給予適當寬度，避免太擠 */
-      line-height: 1.5;
+      min-width: 280px; /* 給予適當寬度 */
+      line-height: 1.6; /* 增加行距，閱讀多行文字時更舒適 */
+      text-align: left;
+    }
+
+    /* 4. 金額 (第6欄): 靠右對齊 (選用，數字靠右比較好讀) */
+    #projectTable td:nth-child(6) {
+      text-align: right;
+      font-family: Consolas, Monaco, monospace; /* 使用等寬字體讓數字對齊更漂亮 */
     }
   </style>
 </head>
@@ -96,10 +118,10 @@
   </main>
 
   <button id="scrollTopBtn" onclick="scrollToTop()">▲</button>
-  
+   
   <footer>
     <div class="footer-container">
-      
+       
       <div class="footer-left">
         <div class="zh-title">
           <h4>國立中央大學</h4>
@@ -127,7 +149,7 @@
 
     </div>
   </footer>
-  
+   
   <script>
     window.onscroll = () => { document.getElementById("scrollTopBtn").style.display = (document.documentElement.scrollTop > 200) ? "block" : "none"; };
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
