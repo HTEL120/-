@@ -6,7 +6,7 @@
   <title>何正榮 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* --- 表格樣式修正 (楊建裕版本樣式) --- */
+    /* --- 表格樣式修正 (楊建裕版本模式) --- */
     
     /* 1. 工作類別 (第1欄): 強制不換行 */
     #projectTable th:nth-child(1),
@@ -27,6 +27,13 @@
       white-space: normal;
       min-width: 280px;
       line-height: 1.5;
+    }
+
+    /* --- 新增設定 --- */
+    /* 5. 補助單位 (第5欄): 給予足夠寬度，讓長名稱最多只換一行 (變兩行) */
+    #projectTable th:nth-child(5),
+    #projectTable td:nth-child(5) {
+      min-width: 160px; /* 寬度增加，避免文字擠成直的 */
     }
   </style>
 </head>
@@ -131,7 +138,8 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. 定義計畫資料 (已篩選 2022 年後計畫，並合併多年期計畫)
+      // 1. 定義計畫資料 
+      // (已依據需求：保留2022年後計畫，並合併多年期計畫)
       const projectData = [
         { role: "主持人", name: "何正榮", title: "複合雷射圖案活化與無電鍍應用於藍寶石晶圓之微加工與金屬化特徵研究", date: "2024/08/01-2025/07/31", agency: "國科會", amount: "990,000" },
         { role: "主持人", name: "何正榮", title: "具人工智能安全與檢測感知能力之高功能基板精密複合加工系統研發", date: "2021/06/01-2025/05/31", agency: "國科會", amount: "32,092,000" },
