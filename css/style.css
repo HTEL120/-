@@ -529,36 +529,6 @@ footer {
 .pagination-btn.disabled { color: #aaa; border-color: #eee; background-color: #f9f9f9; cursor: not-allowed; }
 
 
-/* -----------------------------------------------------------
-   研究計畫表格欄位控制 (來自 style 設定)
------------------------------------------------------------ */
-
-/* 1. 全域設定：讓表格內所有的 th (標題) 和 td (內容) 預設「不換行」 */
-#projectTable th,
-#projectTable td {
-  white-space: nowrap;  /* 關鍵語法：強制文字不換行 */
-  vertical-align: top;  /* 讓內容靠上對齊 */
-  padding: 12px 8px;    /* 調整間距 */
-}
-
-/* 2. 特例設定：只讓第 3 欄 (計畫名稱的內容 td) 可以換行 */
-#projectTable td:nth-child(3) {
-  white-space: normal;  /* 允許換行 */
-  min-width: 350px;     /* 設定最小寬度，避免擠壓 */
-  line-height: 1.5;     /* 增加行高 */
-}
-
-/* 3. 欄位寬度緊縮設定 (讓這些欄位只佔用必要的寬度) */
-#projectTable th:nth-child(1), #projectTable td:nth-child(1), /* 工作類別 */
-#projectTable th:nth-child(2), #projectTable td:nth-child(2), /* 姓名 */
-#projectTable th:nth-child(4), #projectTable td:nth-child(4), /* 執行期限 */
-#projectTable th:nth-child(5), #projectTable td:nth-child(5), /* 補助單位 */
-#projectTable th:nth-child(6), #projectTable td:nth-child(6)  /* 金額 */
-{
-  width: 1%;
-}
-
-
 /* ===========================
    文章頁面 (Article Page)
 =========================== */
