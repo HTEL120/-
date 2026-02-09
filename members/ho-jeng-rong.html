@@ -67,20 +67,20 @@
               <td class="col-amount">990,000</td>
             </tr>
             <tr>
-              <td>共同主持人</td>
-              <td>何正榮</td>
-              <td>具人工智能安全與檢測感知能力之高功能基板精密複合加工系統研發</td>
-              <td class="col-date">2021/06/01 – 2025/05/31</td>
-              <td>國科會</td>
-              <td class="col-amount">32,092,000</td>
-            </tr>
-            <tr>
-              <td>共同主持人</td>
+              <td>主持人</td>
               <td>何正榮</td>
               <td>高精度、高頻石英振盪器設計與關鍵製程技術研發</td>
               <td class="col-date">2024/06/01 – 2025/05/31</td>
               <td>國科會、台灣晶技骨粉有限公司</td>
               <td class="col-amount">2,006,000</td>
+            </tr>
+            <tr>
+              <td>主持人</td>
+              <td>何正榮</td>
+              <td>具人工智能安全與檢測感知能力之高功能基板精密複合加工系統研發</td>
+              <td class="col-date">2021/06/01 – 2025/05/31</td>
+              <td>國科會</td>
+              <td class="col-amount">32,092,000</td>
             </tr>
             <tr>
               <td>主持人</td>
@@ -91,7 +91,7 @@
               <td class="col-amount">1,590,000</td>
             </tr>
             <tr>
-              <td>共同主持人</td>
+              <td>主持人</td>
               <td>何正榮</td>
               <td>石英振盪器先進製程關鍵技術研發</td>
               <td class="col-date">2022/06/01 – 2024/10/31</td>
@@ -107,7 +107,7 @@
               <td class="col-amount">11,000,000</td>
             </tr>
             <tr>
-              <td>共同主持人</td>
+              <td>主持人</td>
               <td>何正榮</td>
               <td>以貼片機平台架構為基礎之自動光學檢測與雷射除膠試量產機建置</td>
               <td class="col-date">2023/09/01 – 2024/05/31</td>
@@ -115,12 +115,28 @@
               <td class="col-amount">1,500,000</td>
             </tr>
             <tr>
-              <td>共同主持人</td>
+              <td>主持人</td>
               <td>何正榮</td>
               <td>SiC晶圓表面軟化改質技術與試量產設備開發/應用於研磨砂輪積屑移除之超音波輔助沖洗設備開發</td>
               <td class="col-date">2023/03/01 – 2024/04/30</td>
               <td>環球晶圓股份有限公司</td>
               <td class="col-amount">3,000,000</td>
+            </tr>
+            <tr>
+              <td>主持人</td>
+              <td>何正榮</td>
+              <td>微米發光元件自對準之雷射焊接技術</td>
+              <td class="col-date">2022/05/01 – 2023/04/30</td>
+              <td>飛傳科技股份有限公司</td>
+              <td class="col-amount">1,500,000</td>
+            </tr>
+            <tr>
+              <td>主持人</td>
+              <td>何正榮</td>
+              <td>智慧取放定位技術開發</td>
+              <td class="col-date">2022/07/01 – 2023/06/30</td>
+              <td>慶鴻機電工業股份有限公司</td>
+              <td class="col-amount">600,000</td>
             </tr>
             <tr>
               <td>共同主持人</td>
@@ -137,22 +153,6 @@
               <td class="col-date">2023/03/01 – 2024/02/29</td>
               <td>台灣積體電路製造股份有限公司</td>
               <td class="col-amount">1,000,000</td>
-            </tr>
-            <tr>
-              <td>主持人</td>
-              <td>何正榮</td>
-              <td>智慧取放定位技術開發</td>
-              <td class="col-date">2022/07/01 – 2023/06/30</td>
-              <td>慶鴻機電工業股份有限公司</td>
-              <td class="col-amount">600,000</td>
-            </tr>
-            <tr>
-              <td>主持人</td>
-              <td>何正榮</td>
-              <td>微米發光元件自對準之雷射焊接技術</td>
-              <td class="col-date">2022/05/01 – 2023/04/30</td>
-              <td>飛傳科技股份有限公司</td>
-              <td class="col-amount">1,500,000</td>
             </tr>
             <tr>
               <td>主持人</td>
@@ -245,13 +245,8 @@
   </footer>
    
   <script>
-    window.onscroll = () => { document.getElementById("scrollTopBtn").style.display = (document.documentElement.scrollTop > 200) ? "block" : "none"; };
-    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-  </script>
-
-  <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const rowsPerPage = 10; 
+      const rowsPerPage = 5; 
       const tableBody = document.getElementById("projectTableBody");
        
       if (tableBody) { 
@@ -404,6 +399,10 @@
         }
       }
     });
+
+    // Back to Top Button
+    window.onscroll = () => { document.getElementById("scrollTopBtn").style.display = (document.documentElement.scrollTop > 200) ? "block" : "none"; };
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   </script>
 </body>
 </html>
