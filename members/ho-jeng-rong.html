@@ -6,10 +6,14 @@
   <title>何正榮 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* 強制工作類別與姓名不換行 */
+    /* 強制工作類別與姓名不換行，但允許 <br> 標籤生效 */
     .research-table th:nth-child(1), .research-table td:nth-child(1),
     .research-table th:nth-child(2), .research-table td:nth-child(2) {
       white-space: nowrap;
+    }
+    /* 讓姓名的行高稍微寬一點，避免換行後擠在一起 */
+    .research-table td:nth-child(2) {
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -68,7 +72,7 @@
             </tr>
             <tr>
               <td>主持人</td>
-              <td>何正榮、董必正、林志光、吳曉光、李安謙</td>
+              <td>何正榮、董必正、<br>林志光、吳曉光、李安謙</td>
               <td>具人工智能安全與檢測感知能力之高功能基板精密複合加工系統研發</td>
               <td class="col-date">2021/06/01 – 2025/05/31</td>
               <td>國科會</td>
@@ -76,7 +80,7 @@
             </tr>
             <tr>
               <td>主持人</td>
-              <td>何正榮、董必正、黃以玫、崔海平、林志光、林錦德</td>
+              <td>何正榮、董必正、黃以玫、<br>崔海平、林志光、林錦德</td>
               <td>高精度、高頻石英振盪器設計與關鍵製程技術研發</td>
               <td class="col-date">2024/06/01 – 2025/05/31</td>
               <td>國科會、台灣晶技骨粉有限公司</td>
@@ -92,7 +96,7 @@
             </tr>
             <tr>
               <td>主持人</td>
-              <td>何正榮、董必正、黃以玫、崔海平、林志光、林錦德、顏炳華</td>
+              <td>何正榮、董必正、黃以玫、<br>崔海平、林志光、林錦德、顏炳華</td>
               <td>石英振盪器先進製程關鍵技術研發</td>
               <td class="col-date">2022/06/01 – 2024/10/31</td>
               <td>國科會/台灣晶技股份有限公司</td>
@@ -100,7 +104,7 @@
             </tr>
             <tr>
               <td>共同主持人</td>
-              <td>林志光、董必正、李朱育、何正榮、崔海平、吳曉光、陳彥文</td>
+              <td>林志光、董必正、李朱育、<br>何正榮、崔海平、吳曉光、陳彥文</td>
               <td>學門主題式計畫-5G智慧自動化工廠之實現-以藍寶石基板加工為例</td>
               <td class="col-date">2022/08/01 – 2024/07/31</td>
               <td>國科會</td>
@@ -188,7 +192,7 @@
             </tr>
             <tr>
               <td>主持人</td>
-              <td>何正榮、鍾志昂、鄭憲清、賴景義、鍾禎元、崔海平、林志光、李朱育</td>
+              <td>何正榮、鍾志昂、鄭憲清、賴景義、<br>鍾禎元、崔海平、林志光、李朱育</td>
               <td>雷射積層製造金屬射出成型 (MIM)異形水路模具及其鐵基金屬玻璃粉體開發 (IV)</td>
               <td class="col-date">2020/08/01 – 2021/06/30</td>
               <td>科技部</td>
@@ -251,7 +255,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const rowsPerPage = 5; 
+      const rowsPerPage = 10; 
       const tableBody = document.getElementById("projectTableBody");
        
       if (tableBody) { 
@@ -306,104 +310,3 @@
             e.preventDefault();
             if (currentPage > 1) {
               currentPage--;
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(prevButton);
-
-          // 數字按鈕
-          const maxPageButtons = 5; 
-          let startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
-          let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
-           
-          if (endPage - startPage + 1 < maxPageButtons) {
-            startPage = Math.max(1, endPage - maxPageButtons + 1);
-          }
-
-          if (startPage > 1) {
-             let dotsButton = document.createElement("span");
-             dotsButton.innerText = "...";
-             dotsButton.classList.add("pagination-btn");
-             dotsButton.classList.add("disabled");
-             paginationControls.appendChild(dotsButton);
-          }
-           
-          for (let i = startPage; i <= endPage; i++) {
-            let pageButton = document.createElement("a");
-            pageButton.href = "#projectTable";
-            pageButton.innerText = i;
-            pageButton.classList.add("pagination-btn");
-            if (i === currentPage) {
-              pageButton.classList.add("active");
-            }
-            
-            pageButton.addEventListener("click", function(e) {
-              e.preventDefault();
-              currentPage = i;
-              showPage(currentPage);
-              setupPagination();
-            });
-            paginationControls.appendChild(pageButton);
-          }
-
-          if (endPage < totalPages) {
-             let dotsButton = document.createElement("span");
-             dotsButton.innerText = "...";
-             dotsButton.classList.add("pagination-btn");
-             dotsButton.classList.add("disabled");
-             paginationControls.appendChild(dotsButton);
-          }
-
-          // 下一頁 (>)
-          let nextButton = document.createElement("a");
-          nextButton.href = "#projectTable";
-          nextButton.innerText = ">";
-          nextButton.classList.add("pagination-btn");
-          if (currentPage === totalPages) {
-            nextButton.classList.add("disabled");
-          }
-          nextButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (currentPage < totalPages) {
-              currentPage++;
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(nextButton);
-           
-          // 最後一頁 (>>)
-          let lastButton = document.createElement("a");
-          lastButton.href = "#projectTable"; 
-          lastButton.innerText = "»";
-          lastButton.classList.add("pagination-btn");
-          if (currentPage === totalPages) {
-            lastButton.classList.add("disabled");
-          }
-          lastButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (currentPage < totalPages) {
-              currentPage = totalPages;
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(lastButton);
-        }
-
-        if (totalRows > 0) {
-          showPage(currentPage);
-          setupPagination();
-        } else {
-           const tableContainer = document.querySelector(".table-container");
-           if(tableContainer) {
-             tableContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
-           }
-           if(paginationControls) paginationControls.style.display = 'none';
-        }
-      }
-    });
-  </script>
-</body>
-</html>
