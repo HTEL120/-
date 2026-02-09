@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>楊建裕 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
+  <style>
+    /* --- 表格樣式修正 --- */
+    
+    /* 1. 工作類別 (第1欄): 強制不換行 */
+    #projectTable th:nth-child(1),
+    #projectTable td:nth-child(1) {
+      white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
+
+    /* 2. 姓名 (第2欄): 強制不換行 */
+    #projectTable th:nth-child(2),
+    #projectTable td:nth-child(2) {
+      white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
+
+    /* 3. 計畫名稱 (第3欄): 允許自然換行，但不要強制斷字 */
+    #projectTable td:nth-child(3) {
+      white-space: normal;
+      min-width: 280px; /* 給予適當寬度，避免太擠 */
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -49,14 +73,6 @@
             </tr>
           </thead>
           <tbody id="projectTableBody">
-            <tr>
-              <td>主持人</td>
-              <td>楊建裕</td>
-              <td>兩相蒸發器性能增強研究</td>
-              <td class="col-date">20250301-20260228</td>
-              <td>產學合作</td>
-              <td class="col-amount">1,200,000</td>
-            </tr>
             </tbody>
         </table>
       </div>
@@ -114,7 +130,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. 定義計畫資料 (合併多年期後)
+      // 1. 定義計畫資料
       const projectData = [
         { role: "主持人", name: "楊建裕", title: "兩相蒸發器性能增強研究", date: "20250301-20260228", agency: "產學合作", amount: "1,200,000" },
         { role: "主持人", name: "楊建裕", title: "兩相冷板開發及性能測試研究計畫", date: "20250201-20260131", agency: "產學合作", amount: "1,450,000" },
@@ -140,7 +156,7 @@
         { role: "主持人", name: "楊建裕", title: "物聯網移動冷鏈解決方案", date: "20210601-20230531", agency: "產學合作", amount: "2,000,000" }
       ];
 
-      const rowsPerPage = 10; // *** 設定為每頁顯示 10 筆資料 ***
+      const rowsPerPage = 10;
       const tableBody = document.getElementById("projectTableBody");
       const paginationControls = document.getElementById("paginationControls");
       let currentPage = 1;
@@ -159,10 +175,14 @@
         }
 
         pageItems.forEach(item => {
+          // *** 處理計畫名稱：遇到括號時插入換行符號 ***
+          // 使用 Regex 尋找 '(' 或 '（'，並在前面加上 <br>
+          let displayTitle = item.title.replace(/([(（])/g, '<br>$1');
+
           const row = `<tr>
             <td>${item.role}</td>
             <td>${item.name}</td>
-            <td>${item.title}</td>
+            <td>${displayTitle}</td>
             <td class="col-date">${item.date}</td>
             <td>${item.agency}</td>
             <td class="col-amount">${item.amount}</td>
@@ -173,18 +193,14 @@
         setupPagination();
       }
 
-      // 建立分頁按鈕
+      // 建立分頁按鈕 (與之前相同)
       function setupPagination() {
         paginationControls.innerHTML = "";
         const totalRows = projectData.length;
         const totalPages = Math.ceil(totalRows / rowsPerPage);
 
-        // 只有超過一頁時，才顯示分頁按鈕
-        if (totalPages <= 1) {
-          return;
-        }
+        if (totalPages <= 1) return;
 
-        // 輔助函式：建立按鈕
         function createBtn(text, pageNum, isActive = false, isDisabled = false) {
           const btn = document.createElement("a");
           btn.href = "#projectTable";
@@ -192,7 +208,6 @@
           btn.classList.add("pagination-btn");
           if (isActive) btn.classList.add("active");
           if (isDisabled) btn.classList.add("disabled");
-
           if (!isDisabled) {
             btn.addEventListener("click", function(e) {
               e.preventDefault();
@@ -205,13 +220,9 @@
           return btn;
         }
 
-        // 1. "第一頁" (<<)
         paginationControls.appendChild(createBtn("«", 1, false, currentPage === 1));
-
-        // 2. "上一頁" (<)
         paginationControls.appendChild(createBtn("<", currentPage - 1, false, currentPage === 1));
 
-        // 3. 數字按鈕
         const maxPageButtons = 5;
         let startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
         let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
@@ -220,7 +231,6 @@
           startPage = Math.max(1, endPage - maxPageButtons + 1);
         }
 
-        // 前面的 ...
         if (startPage > 1) {
           const dots = document.createElement("span");
           dots.innerText = "...";
@@ -232,7 +242,6 @@
           paginationControls.appendChild(createBtn(i, i, i === currentPage, false));
         }
 
-        // 後面的 ...
         if (endPage < totalPages) {
           const dots = document.createElement("span");
           dots.innerText = "...";
@@ -240,10 +249,7 @@
           paginationControls.appendChild(dots);
         }
 
-        // 4. "下一頁" (>)
         paginationControls.appendChild(createBtn(">", currentPage + 1, false, currentPage === totalPages));
-
-        // 5. "最後一頁" (>>)
         paginationControls.appendChild(createBtn("»", totalPages, false, currentPage === totalPages));
       }
 
