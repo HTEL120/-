@@ -28,6 +28,13 @@
       min-width: 280px; /* 給予適當寬度，避免太擠 */
       line-height: 1.5;
     }
+
+     /* 4. 工作類別 (第5欄): 強制不換行 */
+    #projectTable th:nth-child(5),
+    #projectTable td:nth-child(5) {
+      white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
   </style>
 </head>
 <body>
