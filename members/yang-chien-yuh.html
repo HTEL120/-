@@ -6,69 +6,29 @@
   <title>楊建裕 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-  /* --- 表格樣式修復版 --- */
-  
-  .research-table {
-    width: 100%;
-    border-collapse: collapse; /* 邊框合併，避免雙線 */
-    table-layout: auto; /* 讓瀏覽器自動計算最佳寬度 */
-  }
+    /* --- 表格樣式修正 --- */
+    
+    /* 1. 工作類別 (第1欄): 強制不換行 */
+    #projectTable th:nth-child(1),
+    #projectTable td:nth-child(1) {
+      white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
 
-  /* --- 所有儲存格的共用設定 --- */
-  .research-table th, 
-  .research-table td {
-    padding: 12px 10px;      /* 增加內距，讓字不要擠在一起 */
-    border-bottom: 1px solid #eee; /* 淺灰底線 */
-    color: #333;
-    vertical-align: middle;  /* 垂直置中，看起來最平衡 */
-    font-size: 15px;         /* 設定字體大小，避免忽大忽小 */
-  }
+    /* 2. 姓名 (第2欄): 強制不換行 */
+    #projectTable th:nth-child(2),
+    #projectTable td:nth-child(2) {
+      white-space: nowrap;
+      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+    }
 
-  /* --- 表頭特別加強 --- */
-  .research-table th {
-    background-color: #f9f9f9;
-    font-weight: bold;
-    border-bottom: 2px solid #ddd;
-  }
-
-  /* --- 關鍵設定：除了「計畫名稱」外，其他所有欄位都「禁止換行」 --- */
-  /* 第1欄(類別), 第2欄(姓名), 第4欄(期限), 第5欄(單位), 第6欄(金額) */
-  .research-table th:nth-child(1), .research-table td:nth-child(1),
-  .research-table th:nth-child(2), .research-table td:nth-child(2),
-  .research-table th:nth-child(4), .research-table td:nth-child(4),
-  .research-table th:nth-child(5), .research-table td:nth-child(5),
-  .research-table th:nth-child(6), .research-table td:nth-child(6) {
-    white-space: nowrap;  /* ★絕對禁止換行，解決名字變直的問題★ */
-    width: 1%;            /* 讓欄位縮到剛好等於內容寬度，不佔用多餘空間 */
-  }
-
-  /* --- 第3欄：計畫名稱 (唯一允許換行的欄位) --- */
-  .research-table th:nth-child(3), 
-  .research-table td:nth-child(3) {
-    white-space: normal;  /* 允許換行 */
-    min-width: 350px;     /* ★強制給予最小寬度，避免被壓縮★ */
-    line-height: 1.6;     /* 增加行高，多行時比較好讀 */
-    font-weight: 500;     /* 稍微加粗標題 */
-  }
-
-  /* --- 第6欄：金額 (靠右對齊比較符合閱讀習慣) --- */
-  .research-table td:nth-child(6) {
-    text-align: right;
-    font-family: Consolas, Monaco, monospace; /* 用等寬字體顯示數字會更整齊 */
-  }
-  
-  /* --- 手機版響應式 (螢幕小於 768px 時) --- */
-  @media (max-width: 768px) {
-    .table-container {
-      overflow-x: auto; /* 允許左右滑動 */
-    }
-    /* 在手機上把最小寬度縮小一點，避免滑動範圍太大 */
-    .research-table th:nth-child(3), 
-    .research-table td:nth-child(3) {
-      min-width: 200px; 
-    }
-  }
-</style>
+    /* 3. 計畫名稱 (第3欄): 允許自然換行，但不要強制斷字 */
+    #projectTable td:nth-child(3) {
+      white-space: normal;
+      min-width: 280px; /* 給予適當寬度，避免太擠 */
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
   <header>
