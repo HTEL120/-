@@ -8,6 +8,13 @@
   <style>
     /* --- 表格樣式修正 (楊建裕版本模式) --- */
     
+    /* *** 新增：全域表格儲存格設定 (修正對齊問題) *** */
+    #projectTable td {
+      vertical-align: middle; /* 關鍵：強制垂直置中 */
+      padding-top: 10px;      /* 上下留白讓置中更明顯 */
+      padding-bottom: 10px;
+    }
+
     /* 1. 工作類別 (第1欄): 強制不換行 */
     #projectTable th:nth-child(1),
     #projectTable td:nth-child(1) {
@@ -29,11 +36,17 @@
       line-height: 1.5;
     }
 
-    /* --- 新增設定 --- */
-    /* 5. 補助單位 (第5欄): 給予足夠寬度，讓長名稱最多只換一行 (變兩行) */
+    /* 4. 執行期限 (第4欄): 避免換行，統一字體 */
+    #projectTable td:nth-child(4) {
+      white-space: nowrap;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 5. 補助單位 (第5欄): 給予足夠寬度，讓長名稱最多只換一行 */
     #projectTable th:nth-child(5),
     #projectTable td:nth-child(5) {
-      min-width: 160px; /* 寬度增加，避免文字擠成直的 */
+      min-width: 160px;
+      line-height: 1.4; /* 稍微縮小行距，讓換行後的公司名稱好看一點 */
     }
   </style>
 </head>
@@ -177,15 +190,18 @@
         }
 
         pageItems.forEach(item => {
-          // *** 處理計畫名稱：遇到括號時插入換行符號 ***
+          // 1. 處理計畫名稱：遇到括號時插入換行符號
           let displayTitle = item.title.replace(/([(（])/g, '<br>$1');
+
+          // 2. 處理補助單位：在 "股份有限公司" 前面強制換行 (與楊建裕版本保持一致)
+          let displayAgency = item.agency.replace(/(.+)(股份有限公司)/g, '$1<br>$2');
 
           const row = `<tr>
             <td>${item.role}</td>
             <td>${item.name}</td>
             <td>${displayTitle}</td>
             <td class="col-date">${item.date}</td>
-            <td>${item.agency}</td>
+            <td>${displayAgency}</td>
             <td class="col-amount">${item.amount}</td>
           </tr>`;
           tableBody.innerHTML += row;
