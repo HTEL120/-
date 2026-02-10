@@ -6,31 +6,47 @@
   <title>林景崎 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* --- 核心修正樣式 --- */
-
-    /* 1. 全域設定：讓表格內所有的 th (標題) 和 td (內容) 預設「不換行」 */
-    #projectTable th,
+    /* --- 表格樣式修正 (最新對齊模式) --- */
+    
+    /* *** 全域表格儲存格設定 (垂直置中) *** */
     #projectTable td {
-      white-space: nowrap;  /* 關鍵語法：強制文字不換行 */
-      vertical-align: top;  /* 讓內容靠上對齊，當計畫名稱換行時比較美觀 */
-      padding: 12px 8px;    /* 調整間距 */
+      vertical-align: middle; /* 關鍵：強制垂直置中 */
+      padding-top: 10px;      /* 上下留白 */
+      padding-bottom: 10px;
     }
 
-    /* 2. 特例設定：只讓第 3 欄 (計畫名稱的內容 td) 可以換行 */
-    #projectTable td:nth-child(3) {
-      white-space: normal;  /* 允許換行 */
-      min-width: 350px;     /* 設定最小寬度，確保長標題有足夠空間顯示，不會擠成一條 */
-      line-height: 1.5;     /* 增加行高，提升長標題的可讀性 */
-    }
-
-    /* (選用) 為了確保標題列不會被內容擠壓，可以設定 width: 1% 讓它緊縮 */
-    #projectTable th:nth-child(1), #projectTable td:nth-child(1), /* 工作類別 */
-    #projectTable th:nth-child(2), #projectTable td:nth-child(2), /* 姓名 */
-    #projectTable th:nth-child(4), #projectTable td:nth-child(4), /* 執行期限 */
-    #projectTable th:nth-child(5), #projectTable td:nth-child(5), /* 補助單位 */
-    #projectTable th:nth-child(6), #projectTable td:nth-child(6)  /* 金額 */
-    {
+    /* 1. 工作類別 (第1欄): 強制不換行 */
+    #projectTable th:nth-child(1),
+    #projectTable td:nth-child(1) {
+      white-space: nowrap;
       width: 1%;
+    }
+
+    /* 2. 姓名 (第2欄): 強制不換行 */
+    #projectTable th:nth-child(2),
+    #projectTable td:nth-child(2) {
+      white-space: nowrap;
+      width: 1%;
+    }
+
+    /* 3. 計畫名稱 (第3欄): 允許自然換行 */
+    #projectTable td:nth-child(3) {
+      white-space: normal;
+      min-width: 280px;
+      line-height: 1.5;
+    }
+
+    /* 4. 執行期限 (第4欄): 避免換行，統一字體 */
+    #projectTable td:nth-child(4) {
+      white-space: nowrap;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 5. 補助單位 (第5欄): 設定最小寬度 */
+    #projectTable th:nth-child(5),
+    #projectTable td:nth-child(5) {
+      min-width: 100px;
+      line-height: 1.4; 
     }
   </style>
 </head>
@@ -77,36 +93,12 @@
             </tr>
           </thead>
           <tbody id="projectTableBody">
-            <tr>
-              <td>主持人</td>
-              <td>林景崎</td>
-              <td>以微電鍍法製作1T相二硫化鉬/奈米碳管/鎳-鉬複合微柱並應用於鹼性水電解產氫</td>
-              <td class="col-date">20240801-20251031</td>
-              <td>國科會</td>
-              <td class="col-amount">1,500,000</td>
-            </tr>
-            <tr>
-              <td>主持人</td>
-              <td>林景崎</td>
-              <td>微電鍍製作鋅鎳/二硫化鉬複合電極及其電解產氫之催化活性研究</td>
-              <td class="col-date">20230801-20241031</td>
-              <td>科技部</td>
-              <td class="col-amount">1,389,000</td>
-            </tr>
-            <tr>
-              <td>主持人</td>
-              <td>林景崎</td>
-              <td>鎳鈷鐵合金微柱之電鍍研製及其在電解水析氧之研究</td>
-              <td class="col-date">20220801-20230731</td>
-              <td>國科會</td>
-              <td class="col-amount">1,400,000</td>
-            </tr>
-          </tbody>
+            </tbody>
         </table>
       </div>
 
       <div class="pagination-container" id="paginationControls">
-        </div>
+      </div>
       
       <h3>聯絡資訊</h3>
       <ul>
@@ -158,105 +150,112 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const rowsPerPage = 5; // *** 在這裡設定每頁顯示幾筆資料 ***
+      // 1. 定義計畫資料 (改用 JavaScript 陣列管理)
+      const projectData = [
+        { role: "主持人", name: "林景崎", title: "以微電鍍法製作1T相二硫化鉬/奈米碳管/鎳-鉬複合微柱並應用於鹼性水電解產氫", date: "2024/08/01-2025/10/31", agency: "國科會", amount: "1,500,000" },
+        { role: "主持人", name: "林景崎", title: "微電鍍製作鋅鎳/二硫化鉬複合電極及其電解產氫之催化活性研究", date: "2023/08/01-2024/10/31", agency: "科技部", amount: "1,389,000" },
+        { role: "主持人", name: "林景崎", title: "鎳鈷鐵合金微柱之電鍍研製及其在電解水析氧之研究", date: "2022/08/01-2023/07/31", agency: "國科會", amount: "1,400,000" }
+      ];
+
+      const rowsPerPage = 10;
       const tableBody = document.getElementById("projectTableBody");
-      const allRows = tableBody.getElementsByTagName("tr");
-      const totalRows = allRows.length;
-      const totalPages = Math.ceil(totalRows / rowsPerPage);
       const paginationControls = document.getElementById("paginationControls");
       let currentPage = 1;
 
-      // 顯示特定頁面的函式
-      function showPage(page) {
-        // 先隱藏所有資料列
-        for (let i = 0; i < totalRows; i++) {
-          allRows[i].style.display = "none";
-        }
-        
-        // 計算並顯示當前頁面的資料列
+      // 渲染表格資料
+      function renderTable(page) {
+        tableBody.innerHTML = ""; // 清空表格
+        const totalRows = projectData.length;
         const startIndex = (page - 1) * rowsPerPage;
         const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
-        
-        for (let i = startIndex; i < endIndex; i++) {
-          allRows[i].style.display = ""; // 恢復為表格預設 display (通常是 "table-row")
+        const pageItems = projectData.slice(startIndex, endIndex);
+
+        if (pageItems.length === 0) {
+          tableBody.innerHTML = "<tr><td colspan='6'>目前沒有研究計畫資料。</td></tr>";
+          return;
         }
+
+        pageItems.forEach(item => {
+          // *** 修改：直接顯示標題，不再進行括號換行處理 ***
+          // let displayTitle = item.title.replace(/([(（])/g, '<br>$1');  <-- 移除這行
+
+          const row = `<tr>
+            <td>${item.role}</td>
+            <td>${item.name}</td>
+            <td>${item.title}</td> 
+            <td class="col-date">${item.date}</td>
+            <td>${item.agency}</td>
+            <td class="col-amount">${item.amount}</td>
+          </tr>`;
+          tableBody.innerHTML += row;
+        });
+
+        setupPagination();
       }
 
-      // 建立分頁按鈕的函式
+      // 建立分頁按鈕
       function setupPagination() {
-        // 清空現有按鈕
         paginationControls.innerHTML = "";
-        
-        // 如果只有一頁或沒有資料，就不顯示分頁按鈕
+        const totalRows = projectData.length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        // 如果只有一頁或沒資料，不顯示分頁按鈕
         if (totalPages <= 1) return;
 
-        // 建立 "上一頁" 按鈕
-        let prevButton = document.createElement("a");
-        prevButton.href = "#projectTable"; // 點擊時跳轉到表格頂部
-        prevButton.innerText = "«";
-        prevButton.classList.add("pagination-btn");
-        if (currentPage === 1) {
-          prevButton.classList.add("disabled");
-        }
-        prevButton.addEventListener("click", function(e) {
-          e.preventDefault();
-          if (currentPage > 1) {
-            currentPage--;
-            showPage(currentPage);
-            setupPagination();
+        function createBtn(text, pageNum, isActive = false, isDisabled = false) {
+          const btn = document.createElement("a");
+          btn.href = "#projectTable";
+          btn.innerText = text;
+          btn.classList.add("pagination-btn");
+          if (isActive) btn.classList.add("active");
+          if (isDisabled) btn.classList.add("disabled");
+          if (!isDisabled) {
+            btn.addEventListener("click", function(e) {
+              e.preventDefault();
+              if (currentPage !== pageNum) {
+                currentPage = pageNum;
+                renderTable(currentPage);
+              }
+            });
           }
-        });
-        paginationControls.appendChild(prevButton);
-
-        // 建立數字按鈕
-        for (let i = 1; i <= totalPages; i++) {
-          let pageButton = document.createElement("a");
-          pageButton.href = "#projectTable";
-          pageButton.innerText = i;
-          pageButton.classList.add("pagination-btn");
-          if (i === currentPage) {
-            pageButton.classList.add("active");
-          }
-          
-          pageButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            currentPage = i;
-            showPage(currentPage);
-            setupPagination();
-          });
-          paginationControls.appendChild(pageButton);
+          return btn;
         }
 
-        // 建立 "下一頁" 按鈕
-        let nextButton = document.createElement("a");
-        nextButton.href = "#projectTable";
-        nextButton.innerText = "»";
-        nextButton.classList.add("pagination-btn");
-        if (currentPage === totalPages) {
-          nextButton.classList.add("disabled");
+        paginationControls.appendChild(createBtn("«", 1, false, currentPage === 1));
+        paginationControls.appendChild(createBtn("<", currentPage - 1, false, currentPage === 1));
+
+        const maxPageButtons = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
+        let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+
+        if (endPage - startPage + 1 < maxPageButtons) {
+          startPage = Math.max(1, endPage - maxPageButtons + 1);
         }
-        nextButton.addEventListener("click", function(e) {
-          e.preventDefault();
-          if (currentPage < totalPages) {
-            currentPage++;
-            showPage(currentPage);
-            setupPagination();
-          }
-        });
-        paginationControls.appendChild(nextButton);
+
+        if (startPage > 1) {
+          const dots = document.createElement("span");
+          dots.innerText = "...";
+          dots.classList.add("pagination-btn", "disabled");
+          paginationControls.appendChild(dots);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+          paginationControls.appendChild(createBtn(i, i, i === currentPage, false));
+        }
+
+        if (endPage < totalPages) {
+          const dots = document.createElement("span");
+          dots.innerText = "...";
+          dots.classList.add("pagination-btn", "disabled");
+          paginationControls.appendChild(dots);
+        }
+
+        paginationControls.appendChild(createBtn(">", currentPage + 1, false, currentPage === totalPages));
+        paginationControls.appendChild(createBtn("»", totalPages, false, currentPage === totalPages));
       }
 
-      // 初始化：顯示第一頁並建立按鈕
-      if (totalRows > 0) {
-        showPage(currentPage);
-        setupPagination();
-      } else {
-         // 如果沒有資料，顯示提示
-         const tableContainer = document.querySelector(".table-container");
-         if(tableContainer) {
-            tableContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
-         }
-      }
+      // 初始化
+      renderTable(currentPage);
     });
   </script>
 </body>
