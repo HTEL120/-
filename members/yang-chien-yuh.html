@@ -196,14 +196,11 @@
           return;
         }
 
-        pageItems.forEach(item => {
-          // *** 處理計畫名稱：遇到括號時插入換行符號 ***
-          let displayTitle = item.title.replace(/([(（])/g, '<br>$1');
-
+        pageItems.forEach(item => {     
           const row = `<tr>
             <td>${item.role}</td>
             <td>${item.name}</td>
-            <td>${displayTitle}</td>
+            <td>${item.title}</td>
             <td class="col-date">${item.date}</td>
             <td>${item.agency}</td>
             <td class="col-amount">${item.amount}</td>
