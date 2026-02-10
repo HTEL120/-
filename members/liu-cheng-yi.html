@@ -6,34 +6,47 @@
   <title>劉正毓 - 中心成員</title>
   <link rel="stylesheet" href="../css/style.css"> 
   <style>
-    /* --- 表格樣式修正 --- */
+    /* --- 表格樣式修正 (最新對齊模式) --- */
     
+    /* *** 全域表格儲存格設定 (垂直置中) *** */
+    #projectTable td {
+      vertical-align: middle; /* 關鍵：強制垂直置中 */
+      padding-top: 10px;      /* 上下留白 */
+      padding-bottom: 10px;
+    }
+
     /* 1. 工作類別 (第1欄): 強制不換行 */
     #projectTable th:nth-child(1),
     #projectTable td:nth-child(1) {
       white-space: nowrap;
-      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+      width: 1%;
     }
 
     /* 2. 姓名 (第2欄): 強制不換行 */
     #projectTable th:nth-child(2),
     #projectTable td:nth-child(2) {
       white-space: nowrap;
-      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+      width: 1%;
     }
 
-    /* 3. 計畫名稱 (第3欄): 允許自然換行，但不要強制斷字 */
+    /* 3. 計畫名稱 (第3欄): 允許自然換行 */
     #projectTable td:nth-child(3) {
       white-space: normal;
-      min-width: 280px; /* 給予適當寬度，避免太擠 */
+      min-width: 280px;
       line-height: 1.5;
     }
 
-     /* 4. 工作類別 (第5欄): 強制不換行 */
+    /* 4. 執行期限 (第4欄): 避免換行，統一字體 */
+    #projectTable td:nth-child(4) {
+      white-space: nowrap;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 5. 補助單位 (第5欄): 設定最小寬度 */
     #projectTable th:nth-child(5),
     #projectTable td:nth-child(5) {
-      white-space: nowrap;
-      width: 1%; /* 讓欄位寬度緊縮至內容大小 */
+      min-width: 100px;
+      line-height: 1.4; 
     }
   </style>
 </head>
@@ -80,36 +93,13 @@
             </tr>
           </thead>
           <tbody id="projectTableBody">
-            <tr>
-              <td>主持人</td>
-              <td>劉正毓</td>
-              <td>玻璃基板金屬化及低溫低壓銅-銅直接鍵合技術開發暨可靠度分析建模</td>
-              <td class="col-date">20250801-20260731</td>
-              <td>國科會</td>
-              <td class="col-amount">1,498,000</td>
-            </tr>
-            <tr>
-              <td>主持人</td>
-              <td>劉正毓</td>
-              <td>建構μ-銲錫合金接點之微結構控制模型及其與電遷移失效機制相關性研究</td>
-              <td class="col-date">20250801-20260731</td>
-              <td>國科會</td>
-              <td class="col-amount">1,617,000</td>
-            </tr>
-            <tr>
-              <td>主持人</td>
-              <td>劉正毓</td>
-              <td>開發製作具三維立體Cu6Sn5及(Cu,Ni)6Sn5化合物支架銲點的錫膏</td>
-              <td class="col-date">20220801-20250731</td>
-              <td>國科會</td>
-              <td class="col-amount">6,148,000</td>
-            </tr>
-          </tbody>
+            </tbody>
         </table>
       </div>
 
       <div class="pagination-container" id="paginationControls">
-        </div>
+      </div>
+
       <h3>聯絡資訊</h3>
       <ul>
         <li>Email: ( 待補上 )</li>
@@ -160,166 +150,112 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const rowsPerPage = 10; // *** 在這裡設定每頁顯示幾筆資料 ***
-      
+      // 1. 定義計畫資料 (改用 JavaScript 陣列管理)
+      const projectData = [
+        { role: "主持人", name: "劉正毓", title: "玻璃基板金屬化及低溫低壓銅-銅直接鍵合技術開發暨可靠度分析建模", date: "2025/08/01-2026/07/31", agency: "國科會", amount: "1,498,000" },
+        { role: "主持人", name: "劉正毓", title: "建構μ-銲錫合金接點之微結構控制模型及其與電遷移失效機制相關性研究", date: "2025/08/01-2026/07/31", agency: "國科會", amount: "1,617,000" },
+        { role: "主持人", name: "劉正毓", title: "開發製作具三維立體Cu6Sn5及(Cu,Ni)6Sn5化合物支架銲點的錫膏", date: "2022/08/01-2025/07/31", agency: "國科會", amount: "6,148,000" }
+      ];
+
+      const rowsPerPage = 10;
       const tableBody = document.getElementById("projectTableBody");
-      
-      if (tableBody) { // 檢查表格是否存在
-        const allRows = tableBody.getElementsByTagName("tr"); 
-        const totalRows = allRows.length;
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
-        const paginationControls = document.getElementById("paginationControls");
-        let currentPage = 1;
+      const paginationControls = document.getElementById("paginationControls");
+      let currentPage = 1;
 
-        // 顯示特定頁面的函式
-        function showPage(page) {
-          for (let i = 0; i < totalRows; i++) {
-            allRows[i].style.display = "none";
-          }
-          const startIndex = (page - 1) * rowsPerPage;
-          const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
-          for (let i = startIndex; i < endIndex; i++) {
-            allRows[i].style.display = ""; // 恢復表格預設
-          }
+      // 渲染表格資料
+      function renderTable(page) {
+        tableBody.innerHTML = ""; // 清空表格
+        const totalRows = projectData.length;
+        const startIndex = (page - 1) * rowsPerPage;
+        const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+        const pageItems = projectData.slice(startIndex, endIndex);
+
+        if (pageItems.length === 0) {
+          tableBody.innerHTML = "<tr><td colspan='6'>目前沒有研究計畫資料。</td></tr>";
+          return;
         }
 
-        // 建立分頁按鈕的函式
-        function setupPagination() {
-          paginationControls.innerHTML = "";
-          
-          if (totalPages <= 1) { // 如果只有一頁，不顯示按鈕
-            return; 
-          }
+        pageItems.forEach(item => {
+          // 1. 處理計畫名稱：遇到括號時插入換行符號 (雖然目前資料沒有括號，但保留邏輯以防未來新增)
+          let displayTitle = item.title.replace(/([(（])/g, '<br>$1');
 
-          // --- 1. "第一頁" (<<) 按鈕 ---
-          let firstButton = document.createElement("a");
-          firstButton.href = "#projectTable"; 
-          firstButton.innerText = "«";
-          firstButton.classList.add("pagination-btn");
-          if (currentPage === 1) {
-            firstButton.classList.add("disabled");
-          }
-          firstButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (currentPage > 1) {
-              currentPage = 1; // 跳至第一頁
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(firstButton);
+          const row = `<tr>
+            <td>${item.role}</td>
+            <td>${item.name}</td>
+            <td>${displayTitle}</td>
+            <td class="col-date">${item.date}</td>
+            <td>${item.agency}</td>
+            <td class="col-amount">${item.amount}</td>
+          </tr>`;
+          tableBody.innerHTML += row;
+        });
 
-          // --- 2. "上一頁" (<) 按鈕 ---
-          let prevButton = document.createElement("a");
-          prevButton.href = "#projectTable"; 
-          prevButton.innerText = "<"; // 修改符號
-          prevButton.classList.add("pagination-btn");
-          if (currentPage === 1) {
-            prevButton.classList.add("disabled");
-          }
-          prevButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (currentPage > 1) {
-              currentPage--; // 往前一頁
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(prevButton);
-
-          // --- 3. 數字按鈕 (智慧型) ---
-          const maxPageButtons = 5; 
-          let startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
-          let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
-          
-          if (endPage - startPage + 1 < maxPageButtons) {
-            startPage = Math.max(1, endPage - maxPageButtons + 1);
-          }
-
-          if (startPage > 1) {
-             let dotsButton = document.createElement("span");
-             dotsButton.innerText = "...";
-             dotsButton.classList.add("pagination-btn");
-             dotsButton.classList.add("disabled");
-             paginationControls.appendChild(dotsButton);
-          }
-          
-          for (let i = startPage; i <= endPage; i++) {
-            let pageButton = document.createElement("a");
-            pageButton.href = "#projectTable";
-            pageButton.innerText = i;
-            pageButton.classList.add("pagination-btn");
-            if (i === currentPage) {
-              pageButton.classList.add("active");
-            }
-            
-            pageButton.addEventListener("click", function(e) {
-              e.preventDefault();
-              currentPage = i;
-              showPage(currentPage);
-              setupPagination();
-            });
-            paginationControls.appendChild(pageButton);
-          }
-
-          if (endPage < totalPages) {
-             let dotsButton = document.createElement("span");
-             dotsButton.innerText = "...";
-             dotsButton.classList.add("pagination-btn");
-             dotsButton.classList.add("disabled");
-             paginationControls.appendChild(dotsButton);
-          }
-
-          // --- 4. "下一頁" (>) 按鈕 ---
-          let nextButton = document.createElement("a");
-          nextButton.href = "#projectTable";
-          nextButton.innerText = ">"; // 修改符號
-          nextButton.classList.add("pagination-btn");
-          if (currentPage === totalPages) {
-            nextButton.classList.add("disabled");
-          }
-          nextButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (currentPage < totalPages) {
-              currentPage++; // 往後一頁
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(nextButton);
-          
-          // --- 5. "最後一頁" (>>) 按鈕 ---
-          let lastButton = document.createElement("a");
-          lastButton.href = "#projectTable"; 
-          lastButton.innerText = "»";
-          lastButton.classList.add("pagination-btn");
-          if (currentPage === totalPages) {
-            lastButton.classList.add("disabled");
-          }
-          lastButton.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (currentPage < totalPages) {
-              currentPage = totalPages; // 跳至最後一頁
-              showPage(currentPage);
-              setupPagination();
-            }
-          });
-          paginationControls.appendChild(lastButton);
-        }
-        // --- 修改結束 ---
-
-        // 初始化
-        if (totalRows > 0) {
-          showPage(currentPage);
-          setupPagination();
-        } else {
-           const tableContainer = document.querySelector(".table-container");
-           if(tableContainer) {
-              tableContainer.innerHTML = "<p>目前沒有研究計畫資料。</p>";
-           }
-           if(paginationControls) paginationControls.style.display = 'none';
-        }
+        setupPagination();
       }
+
+      // 建立分頁按鈕
+      function setupPagination() {
+        paginationControls.innerHTML = "";
+        const totalRows = projectData.length;
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        // 如果只有一頁或沒資料，不顯示分頁按鈕
+        if (totalPages <= 1) return;
+
+        function createBtn(text, pageNum, isActive = false, isDisabled = false) {
+          const btn = document.createElement("a");
+          btn.href = "#projectTable";
+          btn.innerText = text;
+          btn.classList.add("pagination-btn");
+          if (isActive) btn.classList.add("active");
+          if (isDisabled) btn.classList.add("disabled");
+          if (!isDisabled) {
+            btn.addEventListener("click", function(e) {
+              e.preventDefault();
+              if (currentPage !== pageNum) {
+                currentPage = pageNum;
+                renderTable(currentPage);
+              }
+            });
+          }
+          return btn;
+        }
+
+        paginationControls.appendChild(createBtn("«", 1, false, currentPage === 1));
+        paginationControls.appendChild(createBtn("<", currentPage - 1, false, currentPage === 1));
+
+        const maxPageButtons = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
+        let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+
+        if (endPage - startPage + 1 < maxPageButtons) {
+          startPage = Math.max(1, endPage - maxPageButtons + 1);
+        }
+
+        if (startPage > 1) {
+          const dots = document.createElement("span");
+          dots.innerText = "...";
+          dots.classList.add("pagination-btn", "disabled");
+          paginationControls.appendChild(dots);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+          paginationControls.appendChild(createBtn(i, i, i === currentPage, false));
+        }
+
+        if (endPage < totalPages) {
+          const dots = document.createElement("span");
+          dots.innerText = "...";
+          dots.classList.add("pagination-btn", "disabled");
+          paginationControls.appendChild(dots);
+        }
+
+        paginationControls.appendChild(createBtn(">", currentPage + 1, false, currentPage === totalPages));
+        paginationControls.appendChild(createBtn("»", totalPages, false, currentPage === totalPages));
+      }
+
+      // 初始化
+      renderTable(currentPage);
     });
   </script>
 </body>
