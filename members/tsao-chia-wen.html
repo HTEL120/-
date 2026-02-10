@@ -42,10 +42,10 @@
       font-family: Arial, sans-serif;
     }
 
-    /* 5. 補助單位 (第5欄): 設定最小寬度 */
+    /* 5. 補助單位 (第5欄): 設定最小寬度 (曹老師資料較短，其實不設也沒關係，但為了統一性保留) */
     #projectTable th:nth-child(5),
     #projectTable td:nth-child(5) {
-      min-width: 160px;
+      min-width: 100px; /* 稍微縮小，因為多為"科技部"等短名 */
       line-height: 1.4; 
     }
   </style>
@@ -153,7 +153,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       // 1. 定義計畫資料 (僅保留 2022 年後執行之計畫)
       const projectData = [
-        { role: "共同主持人", name: "曹嘉文", title: "孔隙與達西尺度的非飽和層殘餘水-入滲水交互作用研究", date: "2022/08/01-2023/07/31", agency: "國家科學及技術委員會", amount: "1,042,000" },
+        { role: "共同主持人", name: "曹嘉文", title: "孔隙與達西尺度的非飽和層殘餘水-入滲水交互作用研究(1/3)", date: "2022/08/01-2023/07/31", agency: "國家科學及技術委員會", amount: "1,042,000" },
         { role: "主持人", name: "曹嘉文", title: "利用微液滴沉積法以及微液滴透鏡進行表面增強拉曼散射檢測之研究", date: "2022/08/01-2025/07/31", agency: "國家科學及技術委員會", amount: "2,714,000" },
         { role: "主持人", name: "曹嘉文", title: "微流晶片關鍵製程開發及其模組元件設計與製程網絡整合", date: "2021/08/01-2022/07/31", agency: "科技部", amount: "750,000" }
       ];
@@ -176,19 +176,13 @@
           return;
         }
 
-        pageItems.forEach(item => {
-          // 1. 處理計畫名稱：遇到括號時插入換行符號
-          let displayTitle = item.title.replace(/([(（])/g, '<br>$1');
-
-          // 2. 處理補助單位：在 "股份有限公司" 前面強制換行
-          let displayAgency = item.agency.replace(/(.+)(股份有限公司)/g, '$1<br>$2');
-
+        pageItems.forEach(item => {     
           const row = `<tr>
             <td>${item.role}</td>
             <td>${item.name}</td>
-            <td>${displayTitle}</td>
+            <td>${item.title}</td>
             <td class="col-date">${item.date}</td>
-            <td>${displayAgency}</td>
+            <td>${item.agency}</td>
             <td class="col-amount">${item.amount}</td>
           </tr>`;
           tableBody.innerHTML += row;
