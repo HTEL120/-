@@ -176,9 +176,6 @@
         }
 
         pageItems.forEach(item => {
-          // *** 修改：直接顯示標題，不再進行括號換行處理 ***
-          // let displayTitle = item.title.replace(/([(（])/g, '<br>$1');  <-- 移除這行
-
           const row = `<tr>
             <td>${item.role}</td>
             <td>${item.name}</td>
