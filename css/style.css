@@ -348,6 +348,139 @@ ul.news li a:hover {
 }
 
 /* ===========================
+   組織架構圖 (Org Chart)
+=========================== */
+.org-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+  width: 100%;
+  /* 移除原本的 font-family 設定，讓它自動繼承 body 的 Noto Sans TC */
+}
+
+/* 通用方框樣式 */
+.org-box {
+  border: 2px solid #333; /* 改為深灰色，比純黑柔和一點 */
+  background-color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 加上一點點陰影增加層次感 */
+}
+
+/* 主任與委員會的寬度設定 */
+.box-chief { min-width: 150px; font-size: 1.2rem; }
+.box-committee { min-width: 180px; font-size: 1.1rem; }
+
+/* 垂直連接線 */
+.org-line-vertical {
+  width: 2px;
+  height: 25px;
+  background-color: #333;
+}
+
+/* 下方三個組別的容器 */
+.org-groups-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  padding-top: 20px;
+}
+
+/* 橫向連接線 */
+.org-groups-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16.66%;
+  right: 16.66%;
+  height: 2px;
+  background-color: #333;
+}
+
+/* 連接總直線 */
+.org-groups-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: #333;
+  transform: translateX(-50%);
+}
+
+/* 個別組別欄位 */
+.group-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* 每個組別上方的小直線 */
+.group-col::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background-color: #333;
+}
+
+/* 組別方框的樣式 */
+.box-group {
+  border: 2px solid #333;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background: #fff;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.box-group h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #1e3a8a; /* 使用您網站的主色調藍色 */
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 5px;
+}
+
+.box-group p {
+  margin: 3px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left; /* 成員名單靠左對齊較整齊 */
+}
+
+/* 手機版響應式調整 */
+@media (max-width: 768px) {
+  .org-groups-wrapper {
+    flex-direction: column;
+  }
+  .org-groups-wrapper::before, .org-groups-wrapper::after, .group-col::before {
+    display: none;
+  }
+  .org-line-vertical { height: 15px; }
+  
+  /* 手機版將方框寬度設為 100% */
+  .box-chief, .box-committee { width: 100%; box-sizing: border-box; }
+}
+
+/* ===========================
    回到頂部按鈕
 =========================== */
 #scrollTopBtn {
