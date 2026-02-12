@@ -348,7 +348,7 @@ ul.news li a:hover {
 }
 
 /* ===========================
-   組織架構圖 (Org Chart) - 精修版
+   組織架構圖 (Org Chart) - 完美連接版
 =========================== */
 .org-chart-container {
   display: flex;
@@ -358,10 +358,10 @@ ul.news li a:hover {
   width: 100%;
 }
 
-/* --- 共用變數：統一線條顏色與粗細 --- */
+/* --- 共用變數 --- */
 :root {
   --org-line-color: #333; /* 線條顏色 */
-  --org-line-width: 2px;  /* 線條粗細 (統一設定) */
+  --org-line-width: 2px;  /* 線條粗細 */
 }
 
 /* 通用方框樣式 */
@@ -373,27 +373,24 @@ ul.news li a:hover {
   color: #333;
   font-weight: bold;
   position: relative;
-  z-index: 10; /* 確保方框蓋在線條上面 */
+  z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* 主任與委員會的寬度 */
 .box-chief { min-width: 150px; font-size: 1.2rem; }
 .box-committee { min-width: 180px; font-size: 1.1rem; }
 
-
-/* --- 第一段：主任下方的垂直線 --- */
+/* 第一段：主任下方的垂直線 */
 .org-line-vertical {
   width: var(--org-line-width);
   height: 25px;
   background-color: var(--org-line-color);
-  margin-bottom: -2px; /* 關鍵：稍微往下重疊，消除與下一段的間隙 */
+  margin-bottom: -2px;
   position: relative;
   z-index: 1;
 }
 
-
-/* --- 第二段：中間分支區塊 (執行委員會向左 + 垂直骨幹) --- */
+/* --- 中間分支區塊 --- */
 .org-middle-section {
   position: relative;
   width: 100%;
@@ -402,7 +399,6 @@ ul.news li a:hover {
   justify-content: center;
 }
 
-/* 中間的垂直主幹 (貫穿此區域) */
 .vertical-spine {
   width: var(--org-line-width);
   height: 100%;
@@ -411,68 +407,49 @@ ul.news li a:hover {
   z-index: 1;
 }
 
-/* 左側分支容器 (定位在中心線左邊) */
 .committee-branch {
   position: absolute;
-  /* 讓容器的最右邊剛好在畫面中心 */
   right: 50%; 
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
-  
-  /* 修正：讓橫線稍微「刺」進中間的垂直線裡，確保看起來像連在一起 */
   margin-right: -1px; 
-  z-index: 2; /* 確保橫線層級 */
+  z-index: 2;
 }
 
-/* 連接委員會的橫線 */
 .committee-connector {
   width: 40px;
   height: var(--org-line-width);
   background-color: var(--org-line-color);
 }
 
-
-/* --- 第三段：下方三個組別 --- */
+/* --- 下方三個組別容器 --- */
 .org-groups-wrapper {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  /* 這裡設定了間距，我們的線條計算會自動補足這個空隙 */
+  gap: 20px; 
   width: 100%;
   position: relative;
   padding-top: 20px;
-  margin-top: -2px; /* 關鍵：往上拉一點，銜接上方的垂直線 */
+  margin-top: -2px; 
 }
 
-/* 橫向長線 (貫穿三個組別上方) */
-.org-groups-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  /* 控制橫線長度：從左邊組別中間到右邊組別中間 */
-  left: 16.66%; 
-  right: 16.66%;
-  height: var(--org-line-width);
-  background-color: var(--org-line-color);
-  z-index: 1;
-}
-
-/* 從上方銜接下來的垂直小線段 (補足視覺連接) */
+/* 這是從上方(執行委員會)連接下來的垂直短線 */
 .org-groups-wrapper::after {
   content: '';
   position: absolute;
-  top: -5px; /* 稍微往上延伸，確保與 vertical-spine 重疊 */
+  top: -5px; 
   left: 50%;
   width: var(--org-line-width);
-  height: 25px; /* 連接到橫線 */
+  height: 25px; /* 連接到橫線位置 */
   background-color: var(--org-line-color);
   transform: translateX(-50%);
   z-index: 1;
 }
 
-
-/* --- 組別個別設定 --- */
+/* --- 組別個別設定 (關鍵修改) --- */
 .group-col {
   flex: 1;
   display: flex;
@@ -481,17 +458,46 @@ ul.news li a:hover {
   position: relative;
 }
 
-/* 每個組別上方連接到橫線的垂直線 */
+/* 1. 垂直連接線 (Vertical Stick) - 連接方框到橫線 */
 .group-col::before {
   content: '';
   position: absolute;
-  top: -20px; /* 往上連到橫線 */
+  top: -20px; 
   left: 50%;
   width: var(--org-line-width);
-  height: 22px; /* 多 2px 確保重疊 */
+  height: 22px; 
   background-color: var(--org-line-color);
   transform: translateX(-50%);
   z-index: 1;
+}
+
+/* 2. 橫向連接線 (Horizontal Beam) - 自動填滿間隙 */
+.group-col::after {
+  content: '';
+  position: absolute;
+  top: -20px; /* 與垂直線頂端對齊 */
+  height: var(--org-line-width);
+  background-color: var(--org-line-color);
+  z-index: 1;
+}
+
+/* 左邊的組別：線條從中心向右延伸 */
+.group-col:first-child::after {
+  left: 50%;
+  /* 寬度 = 自己的一半 + 間距的一半(多一點點確保重疊) */
+  width: calc(50% + 12px); 
+}
+
+/* 右邊的組別：線條從中心向左延伸 */
+.group-col:last-child::after {
+  right: 50%;
+  width: calc(50% + 12px);
+}
+
+/* 中間的組別：線條向左右兩邊延伸 (連接左右鄰居) */
+.group-col:not(:first-child):not(:last-child)::after {
+  left: -12px; /* 向左延伸蓋住間隙 */
+  width: calc(100% + 24px); /* 寬度 = 自己 + 左間隙 + 右間隙 */
 }
 
 /* 組別方框樣式 */
@@ -526,66 +532,54 @@ ul.news li a:hover {
   text-align: left;
 }
 
-
 /* --- 手機版響應式 (RWD) --- */
 @media (max-width: 768px) {
-  /* 中間層改回垂直堆疊 */
   .org-middle-section {
     height: auto;
     flex-direction: column;
     align-items: center;
   }
   
-  /* 垂直線長度調整 */
   .vertical-spine {
     height: 20px;
     width: var(--org-line-width);
   }
 
-  /* 委員會分支改為垂直排列 */
   .committee-branch {
     position: static;
     transform: none;
-    flex-direction: column-reverse; /* 線在下方 */
+    flex-direction: column-reverse;
     align-items: center;
     margin-right: 0;
     width: 100%;
   }
 
-  /* 橫線變直線 */
   .committee-connector {
     width: var(--org-line-width);
     height: 20px;
   }
 
-  /* 下方組別改為垂直堆疊 */
   .org-groups-wrapper {
     flex-direction: column;
     padding-top: 0;
     margin-top: 0;
   }
 
-  /* 隱藏電腦版的連接線 */
+  /* 手機版隱藏所有連接線，保持乾淨 */
   .org-groups-wrapper::before,
   .org-groups-wrapper::after,
-  .group-col::before {
+  .group-col::before,
+  .group-col::after { /* 記得把新加的 ::after 也隱藏 */
     display: none;
   }
   
-  /* 手機版方框滿版 */
   .box-chief, .box-committee {
     width: 100%;
     box-sizing: border-box;
   }
   
-  /* 組別之間增加間距 */
   .group-col {
     margin-bottom: 20px;
-  }
-  
-  /* 手機版補上組別之間的連接短線 (選用) */
-  .group-col::after {
-    display: none; /* 預設不顯示，保持乾淨 */
   }
 }
 
