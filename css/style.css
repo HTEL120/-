@@ -356,12 +356,11 @@ ul.news li a:hover {
   align-items: center;
   margin: 40px 0;
   width: 100%;
-  /* 移除原本的 font-family 設定，讓它自動繼承 body 的 Noto Sans TC */
 }
 
 /* 通用方框樣式 */
 .org-box {
-  border: 2px solid #333; /* 改為深灰色，比純黑柔和一點 */
+  border: 2px solid #333;
   background-color: #fff;
   padding: 10px 20px;
   text-align: center;
@@ -369,21 +368,63 @@ ul.news li a:hover {
   font-weight: bold;
   position: relative;
   z-index: 2;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 加上一點點陰影增加層次感 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 /* 主任與委員會的寬度設定 */
-.box-chief { min-width: 150px; font-size: 1.2rem; }
-.box-committee { min-width: 180px; font-size: 1.1rem; }
+.box-chief {
+  min-width: 150px;
+  font-size: 1.2rem;
+}
 
-/* 垂直連接線 */
+.box-committee {
+  min-width: 180px;
+  font-size: 1.1rem;
+}
+
+/* 上方垂直連接線 (主任下方) */
 .org-line-vertical {
   width: 2px;
   height: 25px;
   background-color: #333;
 }
 
-/* 下方三個組別的容器 */
+/* --- 中間分支區塊 (執行委員會向左) --- */
+.org-middle-section {
+  position: relative;
+  width: 100%;
+  height: 80px; /* 給予高度以容納左側分支 */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* 中間垂直骨幹 (貫穿這一層) */
+.vertical-spine {
+  width: 2px;
+  background-color: #333;
+  height: 100%;
+}
+
+/* 左側分支容器 */
+.committee-branch {
+  position: absolute;
+  right: 50%; /* 定位在中心線左側 */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding-right: 0;
+}
+
+/* 橫向連接線 */
+.committee-connector {
+  width: 40px;
+  height: 2px;
+  background-color: #333;
+}
+
+/* --- 下方三個組別 --- */
 .org-groups-wrapper {
   display: flex;
   justify-content: center;
@@ -393,7 +434,7 @@ ul.news li a:hover {
   padding-top: 20px;
 }
 
-/* 橫向連接線 */
+/* 橫向連接線 (三個組別上方) */
 .org-groups-wrapper::before {
   content: '';
   position: absolute;
@@ -404,7 +445,7 @@ ul.news li a:hover {
   background-color: #333;
 }
 
-/* 連接總直線 */
+/* 連接總直線 (從上面的 spine 連下來) */
 .org-groups-wrapper::after {
   content: '';
   position: absolute;
@@ -448,13 +489,13 @@ ul.news li a:hover {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .box-group h4 {
   margin: 0 0 10px 0;
   font-size: 1.1rem;
-  color: #1e3a8a; /* 使用您網站的主色調藍色 */
+  color: #1e3a8a;
   border-bottom: 1px dashed #ccc;
   padding-bottom: 5px;
 }
@@ -463,23 +504,53 @@ ul.news li a:hover {
   margin: 3px 0;
   font-size: 0.95rem;
   line-height: 1.5;
-  text-align: left; /* 成員名單靠左對齊較整齊 */
+  text-align: left;
 }
 
-/* 手機版響應式調整 */
+/* --- 手機版響應式調整 --- */
 @media (max-width: 768px) {
+  /* 中間層改回垂直堆疊 */
+  .org-middle-section {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vertical-spine {
+    height: 20px; /* 變回短連接線 */
+  }
+
+  /* 取消左側分支定位，改為垂直排列 */
+  .committee-branch {
+    position: static;
+    transform: none;
+    flex-direction: column-reverse; /* 讓線條在下方連接 */
+    align-items: center;
+  }
+
+  /* 橫向線轉為垂直線 */
+  .committee-connector {
+    width: 2px;
+    height: 20px;
+  }
+
+  /* 組別部分 */
   .org-groups-wrapper {
     flex-direction: column;
   }
-  .org-groups-wrapper::before, .org-groups-wrapper::after, .group-col::before {
+
+  .org-groups-wrapper::before,
+  .org-groups-wrapper::after,
+  .group-col::before {
     display: none;
   }
-  .org-line-vertical { height: 15px; }
   
-  /* 手機版將方框寬度設為 100% */
-  .box-chief, .box-committee { width: 100%; box-sizing: border-box; }
+  /* 方框寬度滿版 */
+  .box-chief, .box-committee {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
-
 /* ===========================
    回到頂部按鈕
 =========================== */
