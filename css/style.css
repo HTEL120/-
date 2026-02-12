@@ -348,7 +348,7 @@ ul.news li a:hover {
 }
 
 /* ===========================
-   組織架構圖 (Org Chart)
+   組織架構圖 (Org Chart) - 精修版
 =========================== */
 .org-chart-container {
   display: flex;
@@ -358,73 +358,83 @@ ul.news li a:hover {
   width: 100%;
 }
 
+/* --- 共用變數：統一線條顏色與粗細 --- */
+:root {
+  --org-line-color: #333; /* 線條顏色 */
+  --org-line-width: 2px;  /* 線條粗細 (統一設定) */
+}
+
 /* 通用方框樣式 */
 .org-box {
-  border: 2px solid #333;
+  border: var(--org-line-width) solid var(--org-line-color);
   background-color: #fff;
   padding: 10px 20px;
   text-align: center;
   color: #333;
   font-weight: bold;
   position: relative;
-  z-index: 2;
+  z-index: 10; /* 確保方框蓋在線條上面 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* 主任與委員會的寬度設定 */
-.box-chief {
-  min-width: 150px;
-  font-size: 1.2rem;
-}
+/* 主任與委員會的寬度 */
+.box-chief { min-width: 150px; font-size: 1.2rem; }
+.box-committee { min-width: 180px; font-size: 1.1rem; }
 
-.box-committee {
-  min-width: 180px;
-  font-size: 1.1rem;
-}
 
-/* 上方垂直連接線 (主任下方) */
+/* --- 第一段：主任下方的垂直線 --- */
 .org-line-vertical {
-  width: 2px;
+  width: var(--org-line-width);
   height: 25px;
-  background-color: #333;
+  background-color: var(--org-line-color);
+  margin-bottom: -2px; /* 關鍵：稍微往下重疊，消除與下一段的間隙 */
+  position: relative;
+  z-index: 1;
 }
 
-/* --- 中間分支區塊 (執行委員會向左) --- */
+
+/* --- 第二段：中間分支區塊 (執行委員會向左 + 垂直骨幹) --- */
 .org-middle-section {
   position: relative;
   width: 100%;
-  height: 80px; /* 給予高度以容納左側分支 */
+  height: 80px; 
   display: flex;
   justify-content: center;
-  margin-bottom: 0;
 }
 
-/* 中間垂直骨幹 (貫穿這一層) */
+/* 中間的垂直主幹 (貫穿此區域) */
 .vertical-spine {
-  width: 2px;
-  background-color: #333;
+  width: var(--org-line-width);
   height: 100%;
+  background-color: var(--org-line-color);
+  position: relative;
+  z-index: 1;
 }
 
-/* 左側分支容器 */
+/* 左側分支容器 (定位在中心線左邊) */
 .committee-branch {
   position: absolute;
-  right: 50%; /* 定位在中心線左側 */
+  /* 讓容器的最右邊剛好在畫面中心 */
+  right: 50%; 
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
-  padding-right: 0;
+  
+  /* 修正：讓橫線稍微「刺」進中間的垂直線裡，確保看起來像連在一起 */
+  margin-right: -1px; 
+  z-index: 2; /* 確保橫線層級 */
 }
 
-/* 橫向連接線 */
+/* 連接委員會的橫線 */
 .committee-connector {
   width: 40px;
-  height: 2px;
-  background-color: #333;
+  height: var(--org-line-width);
+  background-color: var(--org-line-color);
 }
 
-/* --- 下方三個組別 --- */
+
+/* --- 第三段：下方三個組別 --- */
 .org-groups-wrapper {
   display: flex;
   justify-content: center;
@@ -432,32 +442,37 @@ ul.news li a:hover {
   width: 100%;
   position: relative;
   padding-top: 20px;
+  margin-top: -2px; /* 關鍵：往上拉一點，銜接上方的垂直線 */
 }
 
-/* 橫向連接線 (三個組別上方) */
+/* 橫向長線 (貫穿三個組別上方) */
 .org-groups-wrapper::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 16.66%;
+  /* 控制橫線長度：從左邊組別中間到右邊組別中間 */
+  left: 16.66%; 
   right: 16.66%;
-  height: 2px;
-  background-color: #333;
+  height: var(--org-line-width);
+  background-color: var(--org-line-color);
+  z-index: 1;
 }
 
-/* 連接總直線 (從上面的 spine 連下來) */
+/* 從上方銜接下來的垂直小線段 (補足視覺連接) */
 .org-groups-wrapper::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: -5px; /* 稍微往上延伸，確保與 vertical-spine 重疊 */
   left: 50%;
-  width: 2px;
-  height: 20px;
-  background-color: #333;
+  width: var(--org-line-width);
+  height: 25px; /* 連接到橫線 */
+  background-color: var(--org-line-color);
   transform: translateX(-50%);
+  z-index: 1;
 }
 
-/* 個別組別欄位 */
+
+/* --- 組別個別設定 --- */
 .group-col {
   flex: 1;
   display: flex;
@@ -466,20 +481,22 @@ ul.news li a:hover {
   position: relative;
 }
 
-/* 每個組別上方的小直線 */
+/* 每個組別上方連接到橫線的垂直線 */
 .group-col::before {
   content: '';
   position: absolute;
-  top: -20px;
+  top: -20px; /* 往上連到橫線 */
   left: 50%;
-  width: 2px;
-  height: 20px;
-  background-color: #333;
+  width: var(--org-line-width);
+  height: 22px; /* 多 2px 確保重疊 */
+  background-color: var(--org-line-color);
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-/* 組別方框的樣式 */
+/* 組別方框樣式 */
 .box-group {
-  border: 2px solid #333;
+  border: var(--org-line-width) solid var(--org-line-color);
   padding: 15px;
   width: 100%;
   box-sizing: border-box;
@@ -490,6 +507,8 @@ ul.news li a:hover {
   flex-direction: column;
   justify-content: flex-start;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative; 
+  z-index: 10;
 }
 
 .box-group h4 {
@@ -507,7 +526,8 @@ ul.news li a:hover {
   text-align: left;
 }
 
-/* --- 手機版響應式調整 --- */
+
+/* --- 手機版響應式 (RWD) --- */
 @media (max-width: 768px) {
   /* 中間層改回垂直堆疊 */
   .org-middle-section {
@@ -515,42 +535,60 @@ ul.news li a:hover {
     flex-direction: column;
     align-items: center;
   }
-
+  
+  /* 垂直線長度調整 */
   .vertical-spine {
-    height: 20px; /* 變回短連接線 */
+    height: 20px;
+    width: var(--org-line-width);
   }
 
-  /* 取消左側分支定位，改為垂直排列 */
+  /* 委員會分支改為垂直排列 */
   .committee-branch {
     position: static;
     transform: none;
-    flex-direction: column-reverse; /* 讓線條在下方連接 */
+    flex-direction: column-reverse; /* 線在下方 */
     align-items: center;
+    margin-right: 0;
+    width: 100%;
   }
 
-  /* 橫向線轉為垂直線 */
+  /* 橫線變直線 */
   .committee-connector {
-    width: 2px;
+    width: var(--org-line-width);
     height: 20px;
   }
 
-  /* 組別部分 */
+  /* 下方組別改為垂直堆疊 */
   .org-groups-wrapper {
     flex-direction: column;
+    padding-top: 0;
+    margin-top: 0;
   }
 
+  /* 隱藏電腦版的連接線 */
   .org-groups-wrapper::before,
   .org-groups-wrapper::after,
   .group-col::before {
     display: none;
   }
   
-  /* 方框寬度滿版 */
+  /* 手機版方框滿版 */
   .box-chief, .box-committee {
     width: 100%;
     box-sizing: border-box;
   }
+  
+  /* 組別之間增加間距 */
+  .group-col {
+    margin-bottom: 20px;
+  }
+  
+  /* 手機版補上組別之間的連接短線 (選用) */
+  .group-col::after {
+    display: none; /* 預設不顯示，保持乾淨 */
+  }
 }
+
 /* ===========================
    回到頂部按鈕
 =========================== */
